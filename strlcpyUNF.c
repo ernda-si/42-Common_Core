@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 19:14:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/13 15:23:16 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/13 19:48:39 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 
 unsigned int ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	while (size > *src)
-	{
-		*dest = *src;
-	}
 	
-	return(dest);
 }
 
 int main(void)
