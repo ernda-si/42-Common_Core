@@ -12,15 +12,16 @@
 
 #include <stdio.h>
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		return(c + 32);
-	return(0);
+		return (c + 32);
+	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	(void) ac;
 	printf("%c\n", ft_tolower(av[1][0]));
 }
+

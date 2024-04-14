@@ -12,11 +12,11 @@
 
 #include <stdio.h>
 
-int ft_atoi(char *str)
+int	ft_atoi(char *str)
 {
-	int i;
-	int signal;
-	int num;
+	int	i;
+	int	signal;
+	int	num;
 
 	i = 0;
 	signal = 1;
@@ -37,7 +37,8 @@ int ft_atoi(char *str)
 	return (signal * num);
 }
 
-int main(void)
+int	main(void)
 {
 	printf("%d\n", ft_atoi("   +12"));
 }
+

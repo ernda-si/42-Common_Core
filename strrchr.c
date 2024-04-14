@@ -12,19 +12,20 @@
 
 #include <stdio.h>
 
-char    *ft_strrchr(char *str, int c)
+char	*ft_strrchr(char *str, int c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
 		i++;
 	while (str[i] != c)
 		i--;
-	return(&str[i]);
+	return (&str[i]);
 }
 
-int main(void)
+int	main(void)
 {
 	printf("%s\n", ft_strrchr("abacaxi", 'a'));
 }
+

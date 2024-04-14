@@ -13,9 +13,11 @@
 #include <stdio.h>
 #include <strings.h>
 
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
-	char *vs = s;
+	char	*vs;
+
+	*vs = s;
 	while (s && n--)
 	{
 		*vs = '\0';
@@ -24,12 +26,13 @@ void ft_bzero(void *s, size_t n)
 
 int	main(void)
 {
-	int i;
-	char s[] = "Abacaxi";
-	bzero(s + 3, sizeof(char) * 3);
+	int	i;
+	char	s[] = "Abacaxi";
+	bzero (s + 3, sizeof(char) * 3);
 	printf("Original: %s\n", s);
 
-	char s2[] = "Abacaxi";
+	char	s2[] = "Abacaxi";
 	ft_bzero(s2 + 3, sizeof(char) * 3);
 	printf("My bzero: %s\n", s2);
 }
+

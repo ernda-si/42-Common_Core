@@ -12,15 +12,16 @@
 
 #include <stdio.h>
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
-		return(c -= 32);
-	return(0);
+		return (c -= 32);
+	return (0);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	(void) ac;
 	printf("%c\n", ft_toupper(av[1][0]));
 }
+

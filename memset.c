@@ -15,15 +15,16 @@
 
 void	*ft_memset(void *ptr, int x, size_t n)
 {
-	char *vptr = ptr;
+	char	*vptr;
 
+	*vptr = ptr;
 	while (n--)
 	{
 		*vptr++ = x;
 	}
 	if (*vptr == '\0')
 		return ("NULL");
-	return(ptr);
+	return (ptr);
 }
 
 int	main(void)

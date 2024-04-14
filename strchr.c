@@ -12,9 +12,9 @@
 
 #include <stdio.h>
 
-char    *ft_strchr(char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
-	int  i;
+	int	i;
 
 	i = 0;
 	while (str[i] != c)
@@ -22,11 +22,12 @@ char    *ft_strchr(char *str, int c)
 		i++;
 	}
 	if (str[i] == c)
-		return(&str[i]);
-	return(0);
+		return (&str[i]);
+	return (0);
 }
 
-int main(void)
+int	main(void)
 {
 	printf("%s\n", ft_strchr("abacaxi", 'c'));
 }
+

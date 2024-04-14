@@ -13,10 +13,10 @@
 #include <stdio.h>
 #include <string.h>
 
-char    *ft_strnstr(char *str1, char *str2, int len)
+char	*ft_strnstr(char *str1, char *str2, int len)
 {
-	int i;
-	int i2;
+	int	i;
+	int	i2;
 
 	i = 0;
 	i2 = 0;
@@ -37,7 +37,8 @@ char    *ft_strnstr(char *str1, char *str2, int len)
 	return ("NULL");
 }
 
-int main(void)
+int	main(void)
 {
 	printf("%s\n", ft_strnstr("acbacaxi", "ca", 9));
 }
+

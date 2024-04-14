@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <string.h>
 
-size_t ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	i2;
@@ -29,6 +29,7 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
 
 int	main(void)
 {
-	printf("Original strlcat: %ld\n", strlcat("Abacaxi", "Uva", sizeof(char) * 3));
-	printf("My strlcat: %ld\n", ft_strlcat("Abacaxi", "Uva", sizeof (char) * 3));
+	printf ("Original strlcat: %ld\n", strlcat("Abacaxi", "Uva", sizeof(char) * 3));
+	printf ("My strlcat: %ld\n", ft_strlcat("Abacaxi", "Uva", sizeof (char) * 3));
 }
+

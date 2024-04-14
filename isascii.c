@@ -12,12 +12,13 @@
 
 #include <stdio.h>
 
-int ft_isascii(char av)
+int	ft_isascii(char av)
 {
-	return(av >= 0 && av < 127);
+	return (av >= 0 && av < 127);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	printf("%d\n", ft_isascii(av[1][0]));
 }
+
