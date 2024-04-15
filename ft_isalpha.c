@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tolower.c                                          :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 18:44:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:35:24 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 13:20:20 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:16:44 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_tolower(int c)
+int	ft_isalpha(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (c + 32);
-	return (0);
+	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
 }
 
-int	main(int ac, char **av)
+/* int	main(int ac, char **av)
 {
 	(void) ac;
-	printf("%c\n", ft_tolower(av[1][0]));
-}
-
+	printf("%d\n", ft_isalpha(av[1][0]));
+} */

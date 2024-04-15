@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isascii.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:46:48 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:33:59 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 18:26:37 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:00:31 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_isascii(char av)
+void	*ft_memset(void *ptr, int x, size_t n)
 {
-	return (av >= 0 && av < 127);
-}
+	char	*vptr;
 
-int	main(int ac, char **av)
+	vptr = ptr;
+	while (n--)
+	{
+		*vptr++ = x;
+	}
+	if (*vptr == '\0')
+		return ("NULL");
+	return (ptr);
+}
+/* 
+int	main(void)
 {
-	printf("%d\n", ft_isascii(av[1][0]));
-}
-
+	char ptr[] = "abcdef";
+	printf("Original memset: %s\n", memset(ptr, 42, 3));
+	printf("My memset: %s\n", ft_memset(ptr, 42, 3));
+} */

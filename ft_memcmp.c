@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memset.c                                           :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 18:26:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/13 15:11:07 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/14 12:51:33 by kali              #+#    #+#             */
+/*   Updated: 2024/04/15 13:19:00 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-void	*ft_memset(void *ptr, int x, size_t n)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*vptr;
+	const char	*vs1;
+	const char	*vs2;
+	size_t		i;
 
-	*vptr = ptr;
-	while (n--)
-	{
-		*vptr++ = x;
-	}
-	if (*vptr == '\0')
-		return ("NULL");
-	return (ptr);
+	i = 0;
+	vs1 = s1;
+	vs2 = s2;
+	while (vs1[i] == vs2[i] && i < (n - 1))
+		i++;
+	return (vs1[i] - vs2[i]);
 }
 
-int	main(void)
+/* int	main(void)
 {
-	/*int	test = 42; ask about it!!!*/
-	char ptr[] = "abcdef";
-	printf("Original memset: %s\n", memset(ptr, 42, 3));
-	printf("My memset: %s\n", ft_memset(ptr, 42, 3));
-}
+	char *str = "ABakaxi";
+	char *str2 = "Abacaxi";
+
+	printf("Original memcmp: %i\n", memcmp(str, str2, 2));
+	printf("My memcmp: %i\n", ft_memcmp(str, str2, 2));
+} */

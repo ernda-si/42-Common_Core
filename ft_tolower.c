@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:02:25 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:35:18 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 18:44:11 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:26:34 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-char	*ft_strrchr(char *str, int c)
+int	ft_tolower(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	while (str[i] != c)
-		i--;
-	return (&str[i]);
+	if (c >= 'A' && c <= 'Z')
+		return (c + 32);
+	return (c);
 }
 
-int	main(void)
+/* int	main(int ac, char **av)
 {
-	printf("%s\n", ft_strrchr("abacaxi", 'a'));
+	(void) ac;
+	printf("%c\n", ft_tolower(av[1][0]));
 }
-
+ */

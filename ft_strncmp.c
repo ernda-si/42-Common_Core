@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 17:23:29 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/13 19:49:09 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 15:15:20 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 16:29:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_strncmp(char *str1, char *str2, int n)
 {
-	size_t	i;
-	size_t	i2;
+	int	i;
 
 	i = 0;
-	i2 = 0;
-	while (dst[i] != '\0' && size > i)
+	if (n == 0)
+		return (0);
+	while (str1[i] == str2[i] && i < (n - 1) && *str1 && *str2)
+	{
 		i++;
-	while (src[i2] != '\0')
-		i2++;
-	return (i + i2);
+	}
+	return (str1[i] - str2[i]);
 }
 
-int	main(void)
+/* int	main(int ac, char **av)
 {
-	printf ("Original strlcat: %ld\n", strlcat("Abacaxi", "Uva", sizeof(char) * 3));
-	printf ("My strlcat: %ld\n", ft_strlcat("Abacaxi", "Uva", sizeof (char) * 3));
-}
-
+	(void) ac;
+	
+	printf("My: %d\n", ft_strncmp(av[1], av[2], 6));
+	printf("Original: %d\n", strncmp(av[1], av[2], 6));
+} */

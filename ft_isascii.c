@@ -1,44 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 15:05:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:33:10 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 14:46:48 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:27:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_isascii(int av)
 {
-	int	i;
-	int	signal;
-	int	num;
-
-	i = 0;
-	signal = 1;
-	num = 0;
-	while (str[i] == ' ')
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			signal *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num *= 10;
-		num += str[i++] - '0';
-	}
-	return (signal * num);
+	return (av >= 0 && av <= 127);
 }
 
-int	main(void)
+/* int	main(int ac, char **av)
 {
-	printf("%d\n", ft_atoi("   +12"));
-}
-
+	printf("%d\n", ac);
+	printf("%d\n", ft_isascii(av[1][0]));
+} */

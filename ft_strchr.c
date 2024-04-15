@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalpha.c                                          :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 13:20:20 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/08 13:42:43 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 18:51:43 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:16:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strchr(char *str, int c)
 {
-	return ((c >= 65 && c <= 90) || (c >= 97 && c <= 122));
+	int	i;
+
+	i = 0;
+	while (str[i] != c)
+	{
+		i++;
+	}
+	if (str[i] == c)
+		return (&str[i]);
+	return (0);
 }
 
-int	main(int ac, char **av)
+/* int	main(void)
 {
-	(void) ac;
-	printf("%d\n", ft_isalpha(av[1][0]));
-}
-
+	printf("%s\n", ft_strchr("abacaxi", 'c'));
+} */

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isprint.c                                          :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:28:43 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:34:13 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 14:08:04 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:16:49 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-// 32 to 126 (printable characters)
-int	ft_isprint(char av)
+#include "libft.h"
+
+int	ft_isdigit(char av)
 {
-	return (av >= 32 && av <= 126);
+	return (av <= '9' && av >= '0');
 }
 
-int	main(int ac, char **av)
+/* int	main(int ac, char **av)
 {
 	(void) ac;
-	printf("%d\n", ft_isprint(av[1][0]));
-}
-
+	printf("%d\n", ft_isdigit(av[1][0]));
+} */

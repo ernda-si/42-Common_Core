@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 15:09:30 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:35:02 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/08 18:34:44 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:26:30 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_strlen(char *str)
+int	ft_toupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
 }
 
-int	main(void)
+/* int	main(int ac, char **av)
 {
-	printf("%d\n", ft_strlen("Teste"));
-}
-
+	(void) ac;
+	printf("%c\n", ft_toupper(av[1][0]));
+} */

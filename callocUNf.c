@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdigit.c                                          :+:      :+:    :+:   */
+/*   callocUNf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:08:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 12:34:07 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 15:57:12 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <stdio.h>
 
-int	ft_isdigit(char av)
-{
-	return (av <= '9' && av >= '0');
-}
+//void * calloc(size_t __nmemb, size_t __size)
 
-int	main(int ac, char **av)
+int	main(void)
 {
-	(void) ac;
-	printf("%d\n", ft_isdigit(av[1][0]));
+	printf("Original calloc: %d\n", calloc());
 }
-

@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isalnum.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 14:18:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/10 18:30:57 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/13 16:54:57 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/15 13:15:07 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_isalnum(char av)
+void	ft_bzero(void *s, size_t n)
 {
-	return ((av >= 'a' && av <= 'z') || (av >= 'A' && av <= 'Z') || (av >= '0' && av <= '9'));
+	char	*vs;
+
+	vs = s;
+	while (s && n--)
+	{
+		*vs = '\0';
+	}
 }
 
-int	main(int ac, char **av)
+/* int	main(void)
 {
-	(void) ac;
-	printf("%d\n", ft_isalnum(av[1][0]));
-}
+	char	s[] = "Abacaxi";
+	bzero (s + 3, sizeof(char) * 3);
+	printf("Original: %s\n", s);
 
+	char	s2[] = "Abacaxi";
+	ft_bzero(s2 + 3, sizeof(char) * 3);
+	printf("My bzero: %s\n", s2);
+}*/
