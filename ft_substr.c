@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_substrUNF.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/13 17:23:29 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/17 16:30:13 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/17 16:55:11 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/17 17:49:01 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	size_t	i2;
+	char *ss;
+	size_t i;
 
 	i = 0;
-	i2 = 0;
-	while (dst[i] != '\0' && size > i)
+	ss = (char*)malloc((len + 1) * sizeof(char));
+	if (ss == NULL)
+		return (NULL);
+	while (i < len && s[start + 1] != '\0')
+	{
+		ss[i] = s[start + i];
 		i++;
-	while (src[i2] != '\0')
-		i2++;
-	return (i + i2);
+	}
+	ss[i] = '\0';
+	return(ss);
 }
 
 /* int	main(void)
 {
-	printf ("Original strlcat: %ld\n", strlcat("愛", "a", sizeof(char) * 3));
-	printf ("My strlcat: %ld\n", ft_strlcat("愛", "a", sizeof(char) * 3));
+	char const *s2 = "Teste";
+	unsigned int start2 = 1;
+	size_t len2 = 3;
+	printf("Old str: %s\n", "teste");
+	printf("New str: %s\n", ft_substr(s2, start2, len2));
 } */

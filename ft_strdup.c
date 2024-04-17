@@ -1,28 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcpyUNF.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/08 19:14:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 15:30:13 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/17 14:48:15 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/17 18:38:53 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-/* size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+char *ft_strdup(const char *s)
 {
-	
-} */
+	int len;
+	int i;
+	char *s2;
 
-int	main(void)
-{
-	char	*dest = "///////";
-	const char	*src = "abc";
-
-	printf ("Original: %ld\n", strlcpy(dest, src, 3));
-	//printf ("%s\n", ft_strlcpy(dest, src, 7));
+	i = 0;
+	len = 0;
+	while (s[len])
+		len++;
+	s2 = (char*)malloc(sizeof(char) * (len + 1));
+	while (s[i] != '\0')
+	{
+		s2[i] = s[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return(s2);
 }
+
+/* int	main(int ac, char **av)
+{
+	printf("Original strdup: %s\n", strdup(av[1]));
+	printf("My strdup: %s\n", ft_strdup(av[1]));
+} */
