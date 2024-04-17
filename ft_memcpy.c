@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   callocUNf.c                                        :+:      :+:    :+:   */
+/*   memcpyUNF.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 15:57:12 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/14 16:42:39 by kali              #+#    #+#             */
+/*   Updated: 2024/04/17 14:24:15 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
 
-//void * calloc(size_t __nmemb, size_t __size)
-
-int	main(void)
+void *ft_memcpy(void *dest, void *src, size_t n)
 {
-	printf("Original calloc: %d\n", calloc());
+	char *vdest;
+	char *vsrc;
+	size_t i;
+
+	vdest = dest;
+	vsrc = src;
+	i = 0;
+	while (i < n)
+	{
+		i++;
+		vdest[i] = vsrc[i];
+	}
+	return (vsrc);
 }
+
+/* int	main(int ac, char **av)
+{
+	(void) ac;
+	printf("Original memcpy: %s\n", memcpy(av[1], av[2], 3));
+	printf("My memcpy: %s", ft_memcpy (av[1], av[2], 3));
+} */
+

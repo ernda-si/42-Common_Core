@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:05:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 15:18:10 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:24:20 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int	ft_atoi(char *str)
 /* int	main(int ac, char **av)
 {
 	(void)ac;
-	printf("%d\n", ft_atoi(av[1]));
+	printf("Created: %d\n", ft_atoi(av[1]));
+	printf("Original: %d\n", ft_atoi(av[1]));
 } */

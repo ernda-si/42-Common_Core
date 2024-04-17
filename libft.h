@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:35:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 13:52:15 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:25:37 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
@@ -33,7 +34,9 @@ char	*ft_strnstr(char *str1, char *str2, int len);
 char	*ft_strrchr(char *str, int c);
 char	*ft_strchr(char *str, int c);
 void	*ft_memchr(const void *str, int c, size_t n);
+void	*ft_memcpy(void *dest, void *src, size_t n);
 void	*ft_memset(void *ptr, int x, size_t n);
 void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif
