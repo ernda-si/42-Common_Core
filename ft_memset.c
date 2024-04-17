@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:26:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 13:00:31 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/17 20:11:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_memset(void *ptr, int x, size_t n)
 		*vptr++ = x;
 	}
 	if (*vptr == '\0')
-		return ("NULL");
+		return (NULL);
 	return (ptr);
 }
 /* 
