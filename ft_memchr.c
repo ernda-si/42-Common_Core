@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:20:51 by kali              #+#    #+#             */
-/*   Updated: 2024/04/15 13:18:55 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/18 14:56:35 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	const unsigned char	*vstr;
-	size_t				i;
+	const char	*vstr;
+	size_t		i;
 
 	vstr = str;
 	i = 0;
@@ -30,10 +30,12 @@ void	*ft_memchr(const void *str, int c, size_t n)
 
 /* int	main(void)
 {
-	char	test = 'a';
 	char	*str = "Abacaxi";
+	int tab[7] = {-49, 49, 1, -1, 0, -2, 2};
 
-	printf("%i\n", test);
-	printf ("Original memchr:%s\n", memchr(str, 'a', 5));
-	printf ("My memchr:%s\n", ft_memchr(str, 'a', 5));
+	printf ("Original memchr: %s\n", (char *)memchr(str, -1, 5));
+	printf ("My memchr: %s\n", (char *)ft_memchr(str, -1, 5));
+
+	printf("Original memchr2: %s\n", (char *)memchr(tab, -1, 7));
+	printf("My memchr2: %s\n", (char *)ft_memchr(tab, -1, 7));
 } */

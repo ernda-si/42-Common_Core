@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strjoin.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:39:45 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/17 20:15:48 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:47:15 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,22 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i2;
 	char	*s3;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	i = 0;
+	len1 = strlen(s1);
+	len2 = strlen(s2);
+	i = -1;
 	i2 = 0;
 	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));
 	if (s3 == 0)
-		return (0);
-	while (i < len1)
-	{
+		return (NULL);
+	while (++i < len1)
 		s3[i] = s1[i];
-		i++;
-	}
 	while (i2 < len2)
-	{
-		s3[i] = s2[i2];
-		i++;
-		i2++;
-	}
+		s3[i++] = s2[i2++];
 	s3[i] = '\0';
 	return (s3);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	char	*ts;
 	char	*ts2;
@@ -52,4 +45,4 @@ int	main(void)
 	printf("str1: %s\n", ts);
 	printf("str2: %s\n", ts2);
 	printf("strjoin: %s\n", ft_strjoin(ts, ts2));
-}
+} */

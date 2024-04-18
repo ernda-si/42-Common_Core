@@ -6,20 +6,20 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/17 14:40:02 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/18 13:23:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *s;
+	void	*s;
 
 	s = malloc (nmemb * size);
 	if (s == 0)
 		return (0);
-	bzero(s, nmemb * size);
+	bzero (s, nmemb * size);
 	return (s);
 }
 
