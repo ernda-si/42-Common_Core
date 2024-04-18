@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/18 15:51:31 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 18:05:53 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/18 18:22:29 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/18 19:14:59 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,31 @@
 char *ft_strtrim(char const *s1, char const *set)
 {
 	int	i;
-	int j;
-	int k;
+	int	j;
 	char *s2;
-
-	s2 = (char *)s1;
+	
 	i = 0;
 	j = 0;
-	k = 0;
-	while (*s1)
+	s2 = (char *)malloc(sizeof(char) * strlen(s1) + 1);
+	if(s2 == 0)
+		return (0);
+	while (s1[i] != '\0')
 	{
-		while (s2[i] != set[j] && set[j] != '\0')
+		if (s1[i] == set[j] && set[j] != '\0')
 		{
 			j++;
-			if (s1[i] == set[j])
-			{
-				j = 0;
-				i++;
-				k++;
-			}
+			i++;
 		}
-		j = 0;
-		s2[i] = s1[i];
-		i++;
+	s2[i] = s1[i];
+	i++;
 	}
-	//s2 = (char *)malloc(sizeof(char) * (i - k));
+	s2[i] = '\0';
 	return (s2);
 }
+
 int	main(int ac, char **av)
 {
 	(void) ac;
-	printf("strtrim: %s", ft_strtrim(av[1], av[2]));
+	printf("Old str: %s\n", av[1]);
+	printf("New str: %s\n", ft_strtrim(av[1], av[2]));
 }
