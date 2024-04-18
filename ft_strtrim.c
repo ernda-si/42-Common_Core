@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:51:31 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 16:36:23 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:05:53 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ char *ft_strtrim(char const *s1, char const *set)
 	s2 = (char *)s1;
 	i = 0;
 	j = 0;
+	k = 0;
 	while (*s1)
 	{
 		while (s2[i] != set[j] && set[j] != '\0')
