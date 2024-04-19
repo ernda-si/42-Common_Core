@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:23:29 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:37:09 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:52:38 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	return (i + i2);
 }
 // 1 3 4 issue //
-/* int	main(void)
+/* int	main(int ac, char **av)
 {
-	printf ("Original strlcat: %ld\n", strlcat("愛", "a", sizeof(char) * 3));
-	printf ("My strlcat: %ld\n", ft_strlcat("愛", "a", sizeof(char) * 3));
+	(void) ac;
+
+	printf ("Original strlcat: %ld\n", strlcat(av[1], av[2], 2));
+	printf ("My strlcat: %ld\n", ft_strlcat(av[1], av[2], 2));
 } */

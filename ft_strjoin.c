@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:39:45 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:47:15 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:55:35 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s3);
 }
 
-/* int	main(void)
+/* int	main(int ac, char **av)
 {
-	char	*ts;
-	char	*ts2;
-
-	ts = "te";
-	ts2 = "a";
 	printf("str1: %s\n", ts);
 	printf("str2: %s\n", ts2);
 	printf("strjoin: %s\n", ft_strjoin(ts, ts2));

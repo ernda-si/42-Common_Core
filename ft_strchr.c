@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:51:43 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 13:16:18 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:26:26 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ char	*ft_strchr(char *str, int c)
 {
 	int	i;
 
-	i = 0;
-	while (str[i] != c)
+	i = -1;
+	while (str[++i] != c)
 	{
-		i++;
+		if (str[i] == '\0' && str[i] != c)
+			return ("NULL");
 	}
 	if (str[i] == c)
 		return (&str[i]);
-	return (0);
+	return ("NULL");
 }
-
+// 4th test failed //
 /* int	main(void)
 {
-	printf("%s\n", ft_strchr("abacaxi", 'c'));
+	printf("%s\n", ft_strchr("aa", ' '));
 } */

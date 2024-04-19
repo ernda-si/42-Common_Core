@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:35:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:48:35 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:55:03 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,12 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strnstr(char *str1, char *str2, int len);
+char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strrchr(char *str, int c);
 char	*ft_strchr(char *str, int c);
 char	*ft_strdup(const char *s);
+void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *str, int c, size_t n);
 void	*ft_memcpy(void *dest, void *src, size_t n);
 void	*ft_memset(void *ptr, int x, size_t n);

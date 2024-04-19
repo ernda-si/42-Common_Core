@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:51:33 by kali              #+#    #+#             */
-/*   Updated: 2024/04/18 15:44:14 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/19 11:13:01 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	*vs1;
 	const unsigned char	*vs2;
-	size_t		i;
+	size_t				i;
 
 	i = 0;
 	vs1 = s1;
@@ -31,7 +31,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-int	main(void)
+/* int	main(void)
 {
 	char *str = "ABakaxi";
 	char *str2 = "Abacaxi";
@@ -44,4 +44,4 @@ int	main(void)
 
 	printf("Original memcmp3: %i\n", memcmp("zyxbcdefgh", "abcdefgxyz", 0));
 	printf("My memcmp3: %i\n", ft_memcmp("zyxbcdefgh", "abcdefgxyz", 0));
-}
+} */
