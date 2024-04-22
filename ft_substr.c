@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:55:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/18 15:50:34 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/22 12:46:51 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ss[i] = '\0';
 	return (ss);
 }
+
 /* int	main(void)
 {
 	char const *s2 = "Teste";

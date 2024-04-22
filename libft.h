@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:35:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 14:55:03 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:37:51 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	*ft_memchr(const void *str, int c, size_t n);
 void	*ft_memcpy(void *dest, void *src, size_t n);
 void	*ft_memset(void *ptr, int x, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putchar_fd(char c, int fd);
 void	ft_bzero(void *s, size_t n);
 
 #endif

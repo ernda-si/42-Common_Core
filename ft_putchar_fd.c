@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/19 15:08:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 15:14:26 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/22 16:26:15 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/22 16:33:55 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char **ft_split(char const *s, char c)
+void	ft_putchar_fd(char c, int fd)
 {
-	
+	write(fd, &c, sizeof(c));
 }
 
-int	main(int ac, char **av)
+/* int	main(int ac, char **av)
 {
 	(void) ac;
-	printf("str before split: %d\n", av[1]);
-	printf("str after split: %d\n", ft_split(av[1], av[2]));
-}
+
+	printf ("char: %c\n", ft_putchar_fd(*av[1], *av[2]));
+} */
