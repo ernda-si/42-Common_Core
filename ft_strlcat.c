@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 17:23:29 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 11:52:38 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:50:36 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,33 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	i2;
+	size_t	len;
+	size_t	left;
 
 	i = 0;
 	i2 = 0;
+	len = 0;
+	while (src[len])
+		len++;
 	while (dst[i] != '\0' && i < size)
 		i++;
-	while (src[i2] != '\0')
+	left = size - i;
+	if (left == 0)
+		return (i + len);
+	while (src[i2] != '\0' && i + i2 < (size - 1))
+	{
+		dst[i + i2] = src[i2];
 		i2++;
-	return (i + i2);
+	}
+	dst[i + i2] = '\0';
+	return (i + len);
 }
-// 1 3 4 issue //
-/* int	main(int ac, char **av)
+// 5 6 7 8 issue //
+/* int	main(void)
 {
-	(void) ac;
+	char *dst = "abcd";
+	char *src = "123";
 
-	printf ("Original strlcat: %ld\n", strlcat(av[1], av[2], 2));
-	printf ("My strlcat: %ld\n", ft_strlcat(av[1], av[2], 2));
+	printf ("Original strlcat: %ld\n", strlcat(dst, src, 1));
+	printf ("My strlcat: %ld\n", ft_strlcat(dst, src, 1));
 } */

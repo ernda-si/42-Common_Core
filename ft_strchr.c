@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:51:43 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 11:26:26 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:33:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ char	*ft_strchr(char *str, int c)
 	while (str[++i] != c)
 	{
 		if (str[i] == '\0' && str[i] != c)
-			return ("NULL");
+			return (NULL);
 	}
 	if (str[i] == c)
 		return (&str[i]);
-	return ("NULL");
+	return (NULL);
 }
 // 4th test failed //
 /* int	main(void)

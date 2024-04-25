@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:02:48 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 13:16:22 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/25 17:36:03 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,27 @@ char	*ft_strnstr(char *str1, char *str2, int len)
 	i2 = 0;
 	if (str2[0] == '\0')
 		return (str1);
-	while (str1[i] != '\0' && i < (len - 1))
+	while (str1[i] != '\0' && i < len)
 	{
 		while (str1[i] == str2[i2] || str2[i2] == '\0')
 		{
-			i2++;
-			i++;
 			if (str2[i2] == '\0')
 				return (&str1[i - i2]);
+			i2++;
+			i++;
 		}
 		i++;
 		i2 = 0;
 	}
-	return ("NULL");
+	if (str2[0] == '\0')
+		return (str1);
+	return (NULL);
 }
 
-/* int	main(void)
+/* int main(void)
 {
-	printf("%s\n", ft_strnstr("acbacaxi", "ca", 9));
+	char haystack[] = "lorem ipsum dolor sit amet";
+	char needle[] = "dolor";
+	printf("%s\n", ft_strnstr(haystack, needle, 15));
+	return 0;
 } */

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 19:14:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/23 18:28:24 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/25 14:17:05 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,7 @@
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	len;
-	size_t	len2;
 
-	i = 0;
-	len = strlen(src);
-	len2 = strlen(dest);
-	if (size == 0)
-		return (len);
-	while (i <= size + 1)
-	{
-		if (src[i])
-		{
-			dest[i] = src[i];
-			i++;
-		}
-		else
-			break;
-	}
-	dest[i] = '\0';
-	return (i);
 } 
 
 /* int	main(void)

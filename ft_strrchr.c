@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strrchr.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 19:02:25 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/15 12:44:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/25 18:59:26 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@ char	*ft_strrchr(char *str, int c)
 	i = 0;
 	while (str[i] != '\0')
 		i++;
-	while (str[i] != c)
+	while (str[i] != c && i != 0)
 		i--;
+	if (i == 0 && str[i] != c)
+		return (NULL);
 	return (&str[i]);
 }
-
+// 5 8 issues //
 /* int	main(void)
 {
-	printf("%s\n", ft_strrchr("abacaxi", 'a'));
-}
- */
+	printf("%s\n", ft_strrchr("abacaxi", ' '));
+	printf("%s\n", strrchr("abacaxi", ' '));
+} */

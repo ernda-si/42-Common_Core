@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:15:20 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 11:34:16 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:56:50 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_strncmp(char *str1, char *str2, int n)
 	while (str1[i] == str2[i] && i < (n - 1) && *str1 && *str2)
 	{
 		i++;
-		if (str1[i] > 126 || str2[i] > 126)
+		if (str1[i] > 126 || str2[i] > 126 || str2[i] == '\0')
 			return (1);
-	} 
+	}
 	return (str1[i] - str2[i]);
 }
 
