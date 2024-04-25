@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fdUNF.c                                 :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/22 16:47:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/23 11:43:25 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/10 12:25:30 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/23 19:13:17 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <string.h>
+#include <stdio.h>
 
-void	ft_putendl_fd(char *s, int fd)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write (fd, &s[i], 1);
-		i++;
-	}
-	s[--i] = '\n';
-}
-
-/* int	main(void)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	
-} */
+}
+
+int main(void)
+{
+	char dest[] = "abcdef";
+	char src[] = "123";
+
+	printf("My memmove: %s\n", ft_memmove(dest, src, sizeof(char) * 2));
+	printf("Original memmove: %s\n", memmove(dest, src, sizeof(char) * 2));
+}

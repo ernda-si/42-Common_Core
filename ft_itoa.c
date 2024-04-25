@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:17:02 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/23 14:13:53 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/23 19:10:02 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ char	*ft_itoa(int n)
 	len = ft_len(n);
 	end = len;
 	if (n == 0)
-		return (str = "0");
+		return ("0");
+	if (n == -2147483648)
+		return ("-2147483648");
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
-	if (n == -2147483648)
-		return ("-2147483648");
 	if (n < 0)
 	{
 		n *= -1;
