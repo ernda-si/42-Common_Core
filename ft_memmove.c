@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 13:38:24 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/25 13:38:36 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/26 11:59:00 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,9 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	char	*vsrc;
 	char	*vdest;
 	size_t	i;
-	size_t	srclen;
 
 	vsrc = (char *) src;
 	vdest = (char *) dest;
-	srclen = 0;
 	i = 0;
 	while (dest <= src && i < n)
 	{

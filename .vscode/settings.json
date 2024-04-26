@@ -3,5 +3,8 @@
 		"stdio.h": "c",
 		"string.h": "c",
 		"libft.h": "c"
-	}
+	},
+	"terminal.integrated.env.linux": {
+		"LD_PRELOAD": null,
+		},
 }
