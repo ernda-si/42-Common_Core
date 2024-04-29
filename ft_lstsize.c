@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/29 12:24:24 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/29 13:27:14 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/29 15:53:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_lstsize(t_list *lst)
 {
-	void	*s;
+	int	i;
 
-	s = malloc (nmemb * size);
-	if (s == 0)
-		return (0);
-	ft_bzero (s, nmemb * size);
-	return (s);
+	i = 0;
+	while (lst != NULL)
+	{
+		lst = lst -> next;
+		i++;
+	}
+	return (i);
 }
-
-/* int	main(void)
-{
-	printf("Original calloc: %s\n", calloc(1, 1000));
-	printf("My calloc: %s\n", ft_calloc(1, 1000));
-} */

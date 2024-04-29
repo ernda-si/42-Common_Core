@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:35:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/26 16:30:54 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:54:05 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ typedef struct s_list
 	struct s_list *next;
 }	t_list;
 
+t_list *ft_lstnew(void *content);
 size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strncmp(char *str1, char *str2, int n);
+int		ft_lstsize(t_list *lst);
 int		ft_isalnum(char av);
 int		ft_isdigit(char av);
 int		ft_isprint(char av);
@@ -50,6 +52,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *str, int c, size_t n);
 void	*ft_memcpy(void *dest, void *src, size_t n);
+void	ft_lstadd_front(t_list **lst, t_list *new);
 void	*ft_memset(void *ptr, int x, size_t n);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	ft_putendl_fd(char *s, int fd);
@@ -58,6 +61,5 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_bzero(void *s, size_t n);
 char	*ft_strtrim(char const *s1, char const *set);
-
 
 #endif

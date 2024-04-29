@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:39:45 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/19 14:55:35 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/29 12:24:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i2;
 	char	*s3;
 
-	len1 = strlen(s1);
-	len2 = strlen(s2);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
 	i = -1;
 	i2 = 0;
 	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));

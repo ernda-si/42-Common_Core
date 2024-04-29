@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/29 12:24:24 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/29 15:55:14 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/29 15:56:29 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list *ft_lstlast(t_list *lst)
 {
-	void	*s;
-
-	s = malloc (nmemb * size);
-	if (s == 0)
-		return (0);
-	ft_bzero (s, nmemb * size);
-	return (s);
+	while (lst + 1 != NULL)
+	{
+		
+	}
 }
-
-/* int	main(void)
-{
-	printf("Original calloc: %s\n", calloc(1, 1000));
-	printf("My calloc: %s\n", ft_calloc(1, 1000));
-} */

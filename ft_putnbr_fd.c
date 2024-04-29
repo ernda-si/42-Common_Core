@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:55:07 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/26 16:58:17 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/04/29 12:23:34 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	ft_putnbr_fd(int nb, int fd)
 		}
 		if (nb >= 10)
 		{
-			ft_putnbr(nb / 10, fd);
-			ft_putnbr(nb % 10, fd);
+			ft_putnbr_fd(nb / 10, fd);
+			ft_putnbr_fd(nb % 10, fd);
 		}
 	}
 }

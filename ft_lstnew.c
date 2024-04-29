@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/29 12:24:24 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/04/29 11:31:56 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/04/29 14:12:15 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-	void	*s;
+	t_list	*new;
 
-	s = malloc (nmemb * size);
-	if (s == 0)
-		return (0);
-	ft_bzero (s, nmemb * size);
-	return (s);
+	new = (t_list *) malloc(sizeof(t_list));
+	if (!(new))
+		return (NULL);
+	new -> content = content;
+	new -> next = NULL;
+	return (new);
 }
-
 /* int	main(void)
 {
-	printf("Original calloc: %s\n", calloc(1, 1000));
-	printf("My calloc: %s\n", ft_calloc(1, 1000));
+	int	i = 1;
+	printf("%d", ft_lstnew((void *)i));
 } */
