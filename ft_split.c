@@ -6,19 +6,33 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:08:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/07 19:27:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:07:56 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*ft_strncpy(char *dest, char const *src, unsigned int n)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (src[i] != '\0' && i < n)
+	{
+		dest [i] = src [i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
 int	ft_safe_malloc(char **str, int position, size_t len)
 {
 	int	i;
 
 	i = 0;
-	str[position] = malloc(len);
-	if (NULL == str[position])
+	str[position] = malloc(len + 1);
+	if (str[position] == NULL)
 	{
 		while (i < position)
 			free(str[i++]);
@@ -37,9 +51,9 @@ int	ft_wordcpy(char **str, char const *s, char d)
 	while (*s)
 	{
 		len = 0;
-		while (*s == d && *s)
+		while (*s && *s == d)
 			s++;
-		while (*s != d && *s)
+		while (*s && *s != d)
 		{
 			s++;
 			len++;
@@ -48,9 +62,9 @@ int	ft_wordcpy(char **str, char const *s, char d)
 		{
 			if (ft_safe_malloc(str, token, len + 1))
 				return (1);
+			ft_strncpy(str[token], s - len, len);
+			token++;
 		}
-		ft_strlcpy(str[token], s - len, len + 1);
-		token++;
 	}
 	return (0);
 }
@@ -66,11 +80,11 @@ size_t	ft_count_words(char const *s, char d)
 	i = 0;
 	while (s[i])
 	{
-		while (s[i] == d && s[i])
+		while (s[i] && s[i] == d)
 			i++;
-		while (s[i] != d && s[i])
+		while (s[i] && s[i] != d)
 		{
-			if (signal == 0)
+			if (!signal)
 			{
 				j++;
 				signal = 1;
@@ -90,7 +104,7 @@ char	**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	words = ft_count_words(s, c);
-	str = malloc((words + 1) * sizeof(char *));
+	str = malloc(sizeof(char *) * (words + 1));
 	if (str == NULL)
 		return (NULL);
 	str[words] = NULL;
@@ -101,7 +115,11 @@ char	**ft_split(char const *s, char c)
 
 /* int	main(int ac, char **av)
 {
-	(void) ac;
-	printf("word count: %ld\n", ft_count_words(av[1], *av[2]));
-	printf("split: %s\n", (char *)ft_split(av[1], *av[2]));
+	(void)ac;
+	(void)av;
+	char *str = " a b c def   ";
+	char **split = ft_split(str, ' ');
+	for (size_t i = 0; i < ft_count_words(str, ' '); i++) {
+		printf("%s\n", split[i]);
+	}
 } */

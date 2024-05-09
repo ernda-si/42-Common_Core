@@ -6,13 +6,13 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:05:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/17 14:24:20 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:23:50 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(char const *str)
 {
 	int		i;
 	int		signal;

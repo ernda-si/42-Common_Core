@@ -6,13 +6,13 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 16:02:48 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/26 12:27:49 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:59:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(char *str1, char *str2, int len)
+char	*ft_strnstr(char *str1, char const *str2, int len)
 {
 	int	i;
 	int	i2;

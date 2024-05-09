@@ -6,13 +6,13 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:15:20 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/25 15:56:50 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:32:27 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(char *str1, char *str2, int n)
+int	ft_strncmp(char const *str1, char const *str2, int n)
 {
 	int	i;
 
