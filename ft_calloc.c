@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:01:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/29 12:24:24 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:54:54 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*s;
 
+	if (size && nmemb > SIZE_MAX / size)
+		return (NULL);
 	s = malloc (nmemb * size);
-	if (s == 0)
-		return (0);
+	if (s == NULL)
+		return (NULL);
 	ft_bzero (s, nmemb * size);
 	return (s);
 }
 
 /* int	main(void)
 {
-	printf("Original calloc: %s\n", calloc(1, 1000));
-	printf("My calloc: %s\n", ft_calloc(1, 1000));
+	printf("Original calloc: %s\n", (char *)calloc(-5, -5));
+	printf("My calloc: %s\n", (char *)ft_calloc(-5, -5));
 } */

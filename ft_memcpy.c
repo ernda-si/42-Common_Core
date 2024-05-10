@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 16:42:39 by kali              #+#    #+#             */
-/*   Updated: 2024/05/09 16:21:12 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:05:15 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memcpy(void *dest, void const *src, size_t n)
 {
-	char	*vdest;
+	char		*vdest;
 	char const	*vsrc;
-	size_t	i;
+	size_t		i;
 
 	vdest = dest;
 	vsrc = src;

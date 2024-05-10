@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:08:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/09 16:07:56 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/10 13:36:58 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_wordcpy(char **str, char const *s, char d)
 		}
 		if (len != 0)
 		{
-			if (ft_safe_malloc(str, token, len + 1))
+			if (ft_safe_malloc(str, token, len))
 				return (1);
 			ft_strncpy(str[token], s - len, len);
 			token++;

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:20:51 by kali              #+#    #+#             */
-/*   Updated: 2024/05/09 19:13:26 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:14:26 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memchr(const void *str, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (vstr[i] == c)
+		if (vstr[i] == (unsigned char)c || vstr[i] == c)
 			return ((void *)&vstr[i]);
 		i++;
 	}
@@ -38,7 +38,4 @@ void	*ft_memchr(const void *str, int c, size_t n)
 
 	printf("Original memchr2: %s\n", (char *)memchr(tab, -1, 7));
 	printf("My memchr2: %s\n", (char *)ft_memchr(tab, -1, 7));
-
-	printf("libfttester5: %s\n", (char *)(ft_memchr(str, 2 + 256, 3) == str + 2));
-	printf("Originallibfttester5: %s\n", (char *)(memchr(str, 2 + 256, 3) == str + 2));
 } */

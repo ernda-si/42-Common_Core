@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:55:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/09 19:19:41 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/10 12:41:24 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	ss = (char *)malloc((len + 1) * sizeof(char));
+	ss = (char *)malloc(sizeof(char) * (len + 1));
 	if (ss == NULL)
 		return (NULL);
 	while (i < len && s[start + 1] != '\0')

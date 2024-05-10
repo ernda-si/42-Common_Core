@@ -6,18 +6,18 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:35:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/09 16:38:27 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:15:09 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+# ifndef LIBFT_H
 # define LIBFT_H
 
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
 # include <stdlib.h>
-
+# include <stdint.h>
 
 typedef struct s_list
 {
