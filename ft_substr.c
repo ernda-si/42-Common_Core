@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 16:55:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/13 14:10:14 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:27:12 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	char	*nullstr;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	if (len > ft_strlen(s) || ft_strlen(s) < len + start)
 		len = ft_strlen(s) - start;
 	if (start > ft_strlen(s))
@@ -43,7 +45,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char const *s2 = "Teste";
 	unsigned int start2 = 1;
-	size_t len2 = 3;
+	// size_t len2 = 3;
 	printf("Old str: %s\n", "teste");
-	printf("New str: %s\n", ft_substr(s2, start2, len2));
+	printf("New str: %s\n", ft_substr(s2, start2, 0));
 } */

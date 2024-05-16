@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:08:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/13 14:23:47 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:52:04 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	**ft_split(char const *s, char c)
 	size_t	words;
 	char	**str;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	words = ft_count_words(s, c);
 	str = malloc(sizeof(char *) * (words + 1));
@@ -117,9 +117,16 @@ char	**ft_split(char const *s, char c)
 {
 	(void)ac;
 	(void)av;
-	char *str = " a b c def   ";
-	char **split = ft_split(str, ' ');
-	for (size_t i = 0; i < ft_count_words(str, ' '); i++) {
-		printf("%s\n", split[i]);
+	char	*str = NULL;
+	char	sep = 'z';
+	char	**split = ft_split(str, sep);
+
+	if (split == NULL)
+	{
+		printf("Split failed\n");
+		return(1);
 	}
+	for (size_t i = 0; i < ft_count_words(str, sep); i++)
+		printf("%s\n", split[i]);
+	return 0;
 } */

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:17:02 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/13 14:08:51 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:47:16 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,9 @@ char	*ft_itoa(int n)
 
 /* int	main(void)
 {
+	printf("itoa test: %s\n", ft_itoa(214748367));
 	printf("itoa test: %s\n", ft_itoa(-2147483648LL));
+	printf("itoa test: %s\n", ft_itoa(0));
+	printf("itoa test: %s\n", ft_itoa('\0'));
+	printf("itoa test: %s\n", ft_itoa(' '));
 } */

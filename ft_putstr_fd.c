@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:34:51 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/22 16:43:18 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:59:00 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return ;
 	while (s[i])
 	{
 		write (fd, &s[i], 1);
@@ -26,5 +28,5 @@ void	ft_putstr_fd(char *s, int fd)
 
 /* int	main(void)
 {
-	
+
 } */

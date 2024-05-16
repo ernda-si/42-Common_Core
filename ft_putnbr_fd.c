@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:55:07 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/04/29 12:23:34 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/05/16 14:34:50 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,18 @@ void	ft_putnbr_fd(int nb, int fd)
 /*
 int	main(void)
 {
-	ft_putnbr(2147483647);
+	ft_putnbr_fd(2147483647);
 	write(1, "\n", 1);
-	ft_putnbr(-2147483648);
+	ft_putnbr_fd(-2147483648);
 	write(1, "\n", 1);
-	ft_putnbr(-42);
+	ft_putnbr_fd(-42);
 	write(1, "\n", 1);
-	ft_putnbr(0);
+	ft_putnbr_fd(0);
 	write(1, "\n", 1);
-	ft_putnbr(402);
+	ft_putnbr_fd(402);
 	write(1, "\n", 1);
-	ft_putnbr(10);
+	ft_putnbr_fd(10);
 	write(1, "\n", 1);
-	ft_putnbr(-10);
+	ft_putnbr_fd(-10);
 }
 */
