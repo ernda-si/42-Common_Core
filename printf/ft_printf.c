@@ -6,14 +6,11 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:24:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/31 16:22:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:52:12 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdlib.h>
+#include "ft_printf.h"
 
 static int	ft_putchar(char c)
 {
@@ -98,7 +95,7 @@ int	main(void)
 
 	str = "test";
 	nb = 42;
-/*	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d %i %c %s %u %x %X\n", nb, nb, nb, str, 2147483647, 123, 123));
+	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d %i %c %s %u %x %X\n", nb, nb, nb, str, 2147483647, 123, 123));
 	printf("original printf len: %d\n", printf("Oprintf: %d %i %c %s %u %x %X\n", nb, nb, nb, str, 2147483647, 123, 123));
 
 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d\n", nb));
@@ -126,7 +123,7 @@ int	main(void)
 	printf("original printf len: %d\n", printf("Oprintf: %p\n", -123));
 
 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %%\n"));
-	printf("original printf len: %d\n", printf("Oprintf: %%\n")); */
+	printf("original printf len: %d\n", printf("Oprintf: %%\n"));
 
 	ft_printf("my printf len: %d\n", ft_printf("%s %d\n", NULL, 123));
 	printf("original printf len: %d\n", printf("%s %d\n", NULL, 123));

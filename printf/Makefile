@@ -6,7 +6,7 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 16:24:54 by ernda-si          #+#    #+#              #
-#    Updated: 2024/05/31 16:24:55 by ernda-si         ###   ########.fr        #
+#    Updated: 2024/06/03 13:46:58 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = ft_printf
+NAME = libftprintf.a
 
 all: $(NAME)
 
