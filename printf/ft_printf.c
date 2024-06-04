@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:24:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/03 13:52:12 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/06/04 13:18:25 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	ft_printf(const char *str, ...)
 			len += write(1, str, 1);
 		else
 		{
-			*str++;
+			str++;
 			if (*str == 'i' || *str == 'd')
 				len += ft_putnbr(va_arg(args, int));
 			else if (*str == 'c')
@@ -73,22 +73,23 @@ int	ft_printf(const char *str, ...)
 				len += ft_putstr(va_arg(args, char *));
 			else if (*str == 'u')
 				len += ft_putunbr(va_arg(args, unsigned int));
-			else if (*str == 'x')
-				len += ft_puthexasmall(va_arg(args, unsigned int));
 			else if (*str == 'X')
 				len += ft_puthexabig(va_arg(args, unsigned int));
+			else if (*str == 'x')
+				len += ft_puthexasmall(va_arg(args, unsigned int));
 			else if (*str == 'p')
 				len += ft_puthexadress(va_arg(args, unsigned int));
 			else if (*str == '%')
 				len += write (1, "%", 1);
 		}
-		*str++;
+		str++;
 	}
+	
 	va_end(args);
 	return (len);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	int		nb;
 	char	*str;
@@ -127,7 +128,7 @@ int	main(void)
 
 	ft_printf("my printf len: %d\n", ft_printf("%s %d\n", NULL, 123));
 	printf("original printf len: %d\n", printf("%s %d\n", NULL, 123));
-}
+} */
 
 /*%c Prints a single character.-----
 • %s Prints a string (as defined by the common C convention).-----

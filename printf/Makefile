@@ -6,13 +6,13 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 16:24:54 by ernda-si          #+#    #+#              #
-#    Updated: 2024/06/03 13:46:58 by ernda-si         ###   ########.fr        #
+#    Updated: 2024/06/04 19:12:59 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = ft_printf.c ft_auxfuncs.c
 
-OBJ = $(SRC:.c:.o)
+OBJ = $(SRC:.c=.o)
 
 CC = cc
 
