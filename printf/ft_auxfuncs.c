@@ -6,15 +6,19 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 16:21:54 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/05/31 16:23:35 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:27:14 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_puthexadress(unsigned int nb)
+#include "ft_printf.h"
+
+int	ft_puthexadress(unsigned long nb)
 {
 	int	i;
 
 	i = 0;
+	if (nb == 0)
+		return (i += write (1, "(nil)", 5));
 	if (nb >= 16)
 		i += ft_puthexadress(nb / 16);
 	if (i == 0)
