@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   static_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/06 11:59:27 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/07 13:12:28 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/06/07 13:36:40 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/06/07 14:02:09 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "get_next_line.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <limits.h>
-# include <stdarg.h>
+void	func(void)
+{
+	static int x = 0;
+	int y = 0;
+	y++;
+	x++;
+	printf("static int bm: %d\nint bm: %d\n", x, y);
+	x += y;
+	printf("static int am: %d\nint am: %d\n", x, y);
+}
+int	main(void)
+{
+	func();
+	func();
+	func();
+	func();
+	func();
 
-int	ft_puthexadress(unsigned long nb);
-int	ft_puthexasmall(unsigned int nb);
-int	ft_puthexabig(unsigned int nb);
-int	ft_putunbr(unsigned int unb);
-int	ft_printf(const char *str, ...);
-
-#endif
+	return 0;
+}

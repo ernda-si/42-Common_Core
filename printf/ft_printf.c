@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:24:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/06 19:00:09 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:13:24 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,71 +106,78 @@ int	ft_printf(const char *str, ...)
 
 // 	str = "test";
 // 	nb = 42;
-// ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d %i %c %s %u %x %X\n", nb, nb, nb, str, 2147483647, 123, 123));
+// ft_printf("my printf len: %d\n", 
+//ft_printf("Mprintf: %d %i %c %s %u %x %X\n", 
+//nb, nb, nb, str, 2147483647, 123, 123));
 // }
 
-/* int	main(void)
-{
-	int		nb;
-	char	*str;
+// int	main(void)
+// {
+// 	int		nb;
+// 	char	*str;
 
-	str = "test";
-	nb = 42;
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d %i %c %s %u %x %X\n", nb, nb, nb, str, 2147483647, 123, 123));
-	printf("original printf len: %d\n", printf("Oprintf: %d %i %c %s %u %x %X\n", nb, nb, nb, str, 2147483647, 123, 123));
+// 	str = "test";
+// 	nb = 42;
+// 	ft_printf("my printf len: %d\n", 
+//ft_printf("Mprintf: %d %i %c %s %u %x %X\n", 
+//nb, nb, nb, str, 2147483647, 123, 123));
+// 	printf("original printf len: %d\n", 
+//printf("Oprintf: %d %i %c %s %u %x %X\n", 
+//nb, nb, nb, str, 2147483647, 123, 123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d\n", nb));
-	printf("original printf len: %d\n", printf("Oprintf: %d\n", nb));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d\n", nb));
+// 	printf("original printf len: %d\n", printf("Oprintf: %d\n", nb));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %i\n", nb));
-	printf("original printf len: %d\n", printf("Oprintf: %i\n", nb));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %i\n", nb));
+// 	printf("original printf len: %d\n", printf("Oprintf: %i\n", nb));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %c\n", nb));
-	printf("original printf len: %d\n", printf("Oprintf: %c\n", nb));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %c\n", nb));
+// 	printf("original printf len: %d\n", printf("Oprintf: %c\n", nb));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %s\n", str));
-	printf("original printf len: %d\n", printf("Oprintf: %s\n", str));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %s\n", str));
+// 	printf("original printf len: %d\n", printf("Oprintf: %s\n", str));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %u\n", 2147483647));
-	printf("original printf len: %d\n", printf("Oprintf: %u\n", 2147483647));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %u\n", 2147483647));
+// 	printf("original printf len: %d\n", printf("Oprintf: %u\n", 2147483647));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %x\n", -123));
-	printf("original printf len: %d\n", printf("oprintf: %x\n", -123));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %x\n", -123));
+// 	printf("original printf len: %d\n", printf("oprintf: %x\n", -123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %X\n", -123));
-	printf("original printf len: %d\n", printf("Oprintf: %X\n", -123));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %X\n", -123));
+// 	printf("original printf len: %d\n", printf("Oprintf: %X\n", -123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %p\n", -123));
-	printf("original printf len: %d\n", printf("Oprintf: %p\n", -123));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %p\n", -123));
+// 	printf("original printf len: %d\n", printf("Oprintf: %p\n", -123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %%\n"));
-	printf("original printf len: %d\n", printf("Oprintf: %%\n"));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %%\n"));
+// 	printf("original printf len: %d\n", printf("Oprintf: %%\n"));
 
-	ft_printf("my printf len: %d\n", ft_printf("%s %d\n", NULL, 123));
-	printf("original printf len: %d\n", printf("%s %d\n", NULL, 123));
+// 	ft_printf("my printf len: %d\n", ft_printf("%s %d\n", NULL, 123));
+// 	printf("original printf len: %d\n", printf("%s %d\n", NULL, 123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %x\n", -123));
-	printf("original printf len: %d\n", printf("oprintf: %x\n", -123));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %x\n", -123));
+// 	printf("original printf len: %d\n", printf("oprintf: %x\n", -123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %X\n", -123));
-	printf("original printf len: %d\n", printf("Oprintf: %X\n", -123));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %X\n", -123));
+// 	printf("original printf len: %d\n", printf("Oprintf: %X\n", -123));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %p\n", 0));
-	printf("original printf len: %d\n", printf("Oprintf: %p\n", 0));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %p\n", 0));
+// 	printf("original printf len: %d\n", printf("Oprintf: %p\n", 0));
 
-	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %%\n"));
-	printf("original printf len: %d\n", printf("Oprintf: %%\n"));
+// 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %%\n"));
+// 	printf("original printf len: %d\n", printf("Oprintf: %%\n"));
 
-	ft_printf("my printf len: %d\n", ft_printf("%s %d\n", NULL, 123));
-	printf("original printf len: %d\n", printf("%s %d\n", NULL, 123));
-} */
+// 	ft_printf("my printf len: %d\n", ft_printf("%s %d\n", NULL, 123));
+// 	printf("original printf len: %d\n", printf("%s %d\n", NULL, 123));
+// }
 
-/*%c Prints a single character.-----
-• %s Prints a string (as defined by the common C convention).-----
-• %p The void * pointer argument has to be printed in hexadecimal format. -----
-• %d Prints a decimal (base 10) number.-----
-• %i Prints an integer in base 10.-----
-• %u Prints an unsigned decimal (base 10) number.-----
-• %x Prints a number in hexadecimal (base 16) lowercase format.-----
-• %X Prints a number in hexadecimal (base 16) uppercase format.-----int	main(void)
-• %% Prints a percent sign.----- */
+// %c Prints a single character.-----
+// • %s Prints a string (as defined by the common C convention).-----
+// • %p The void * pointer argument has 
+//to be printed in hexadecimal format. -----
+// • %d Prints a decimal (base 10) number.-----
+// • %i Prints an integer in base 10.-----
+// • %u Prints an unsigned decimal (base 10) number.-----
+// • %x Prints a number in hexadecimal (base 16) lowercase format.-----
+// • %X Prints a number in hexadecimal (base 16) uppercase format.-----
+// • %% Prints a percent sign.-----
