@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 13:24:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/07 13:13:24 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/06/11 13:49:40 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,6 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-// int	main(void)
-// {
-// 	printf("Org %d\n", (int)-2147483648);
-// 	ft_printf("Cpy %d\n", (int)-2147483648);
-// }
-
 // int	main(void) {
 // 	int		nb;
 // 	char	*str;
@@ -107,8 +101,8 @@ int	ft_printf(const char *str, ...)
 // 	str = "test";
 // 	nb = 42;
 // ft_printf("my printf len: %d\n", 
-//ft_printf("Mprintf: %d %i %c %s %u %x %X\n", 
-//nb, nb, nb, str, 2147483647, 123, 123));
+// ft_printf("Mprintf: %d %i %c %s %u %x %X\n", 
+// nb, nb, nb, str, 2147483647, 123, 123));
 // }
 
 // int	main(void)
@@ -119,11 +113,11 @@ int	ft_printf(const char *str, ...)
 // 	str = "test";
 // 	nb = 42;
 // 	ft_printf("my printf len: %d\n", 
-//ft_printf("Mprintf: %d %i %c %s %u %x %X\n", 
-//nb, nb, nb, str, 2147483647, 123, 123));
+// ft_printf("Mprintf: %d %i %c %s %u %x %X\n", 
+// nb, nb, nb, str, 2147483647, 123, 123));
 // 	printf("original printf len: %d\n", 
-//printf("Oprintf: %d %i %c %s %u %x %X\n", 
-//nb, nb, nb, str, 2147483647, 123, 123));
+// printf("Oprintf: %d %i %c %s %u %x %X\n", 
+// nb, nb, nb, str, 2147483647, 123, 123));
 
 // 	ft_printf("my printf len: %d\n", ft_printf("Mprintf: %d\n", nb));
 // 	printf("original printf len: %d\n", printf("Oprintf: %d\n", nb));

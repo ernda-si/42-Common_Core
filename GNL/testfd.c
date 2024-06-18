@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   testfd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 13:43:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/11 13:18:40 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/06/17 15:55:50 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/06/17 16:08:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <fcntl.h>
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE
-#endif
-
-char *get_next_line(int fd);
-
-#endif
+int	main(void)
+{
+	char	buff[BUFFER_SIZE + 1];
+	int	fd = open("test.txt", O_RDONLY);
+	read(fd, buff, BUFFER_SIZE + 0);
+	printf("%s\n", buff);
+	close(fd);
+}

@@ -1,0 +1,78 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c.tmp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/07 13:24:52 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/06/17 15:07:37 by ernda-si         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* #include "get_next_line.h"
+
+int	ft_line_len(char *buffer)
+{
+	int	i;
+
+	i = 0;
+	while (buffer[i] && buffer[i]!= '\n')
+		i++;
+	return (i);
+}
+
+int	ft_strlen(char *buffer)
+{
+	int	len;
+
+	len = 0;
+	while (buffer[len])
+		len++;
+	return (len);
+}
+
+char *ft_cpy_nl(char *buff, char *dest)
+{
+	int	line_len;
+
+	line_len = ft_line_len(buff);
+	while (line_len--)
+		*dest++ = *buff++;
+	return (dest);
+}
+
+char *get_next_line(int fd)
+{
+	static char	buff[BUFFER_SIZE + 1];
+	char		*dest;
+
+	if (fd < 0 || BUFFER_SIZE + 0 < 0 || BUFFER_SIZE + 0 > FOPEN_MAX)
+		return (NULL);
+	dest = NULL;
+	if (buff[0] || read(fd, buff, BUFFER_SIZE + 0) > 0)
+		ft_cpy_nl(buff, dest);
+	while (*dest != '\n')
+		{
+			if (*dest == '\n')
+				return (dest);
+			*dest++;
+		}
+	return(dest);
+}
+#include <fcntl.h>
+
+int	main(void)
+{
+	char	*gnl;
+	int		fd;
+	int		i;
+
+	fd = open ("test.txt", O_RDONLY);
+	gnl = get_next_line(fd);
+	i = 0;
+	while (i++ > fd - 2)
+		printf("%s\n", gnl);
+	printf("\nfd: %d\n", fd);
+	close(fd);
+} */
