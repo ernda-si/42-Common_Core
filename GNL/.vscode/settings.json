@@ -3,6 +3,7 @@
 		"get_next_line.h": "c",
 		"fcntl.h": "c",
 		"*.tmp": "c",
-		"unistd.h": "c"
+		"unistd.h": "c",
+		"stdio.h": "c"
 	}
 }

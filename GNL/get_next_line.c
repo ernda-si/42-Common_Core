@@ -5,95 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/20 12:13:43 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/20 18:55:07 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/08/09 14:37:18 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/08/14 15:50:29 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
 #include <fcntl.h>
-#include "get_next_line.h"
+#include <limits.h>
+#include <stdlib.h>
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 1
+#endif
 
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int		len1;
-	int		len2;
-	int		i;
-	int		i2;
-	char	*s3;
-
-	if (!s1)
-		return ((char *)s2);
-	else if (!s2)
-		return ((char *)s1);
-	else if (!s1 && !s2)
-		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	i = -1;
-	i2 = 0;
-	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));
-	if (s3 == 0)
-		return (NULL);
-	while (++i < len1)
-		s3[i] = s1[i];
-	while (i2 < len2)
-		s3[i++] = s2[i2++];
-	s3[i] = '\0';
-	return (s3);
-}
-
-int check_new_line(char *buffer)
+int	nllen(char *buffer)
 {
 	int i;
 
-	if (!buffer)
-		return (0);
 	i = 0;
-	while (buffer[i])
-	{
-		if (buffer[i] == '\n')
-			return (1);
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
-	}
-	return (0);
+	return(i);
 }
 
-char *build_line(char *new_line, char *buffer)
+char	*nlcpy(char *buffer, char *line, int position)
 {
-	char *str;
+	int	nlen;
+	int	i;
 
-	str = ft_strjoin(new_line, buffer);
-	free (buffer);
-	return (str);
-	//remember to free the old line after creating the new one
-}
-
-char *save_and_cut(gnl)
-{
-	
-}
-
-char *get_next_line(int fd)
-{
-	static char	*gnl;
-	char		*line;
-	char		*buffer;
-	int			chars_read;
-
-	//first, check if static variable has a new_line
-	
-	buffer = calloc(sizeof(BUFFER_SIZE + 1), 1);
-	while (!check_new_line(buffer))
+	i = 0;
+	nlen = nllen(buffer);
+	line = (char *) malloc(sizeof(char) * nllen(buffer));
+	while (nlen--)
 	{
-		chars_read = read(fd, buffer, BUFFER_SIZE + 0);
-		{
-			if (chars_read == 0)
-				break;
-			buffer = build_line(line, buffer);
-		}
+		printf("nlen: %d\n", nlen);
+		// printf("teste\n");
+		line[position] = buffer[i];
+		i++;
+		position++;
+		printf("line bc: %s\n", line);
+		printf("buffer bc: %s\n", buffer);
 	}
-	save_and_cut(); //check if there is anything after newline, if so, save on char *gnl
-	return (line);
+	return(line);
+}
+
+char	*get_next_line(int fd)
+{
+	static char	buffer[BUFFER_SIZE];
+	char		*line;
+	int			position;
+
+	position = 0;
+	line = NULL;
+	while(read(fd, buffer, BUFFER_SIZE) && *buffer)
+	{
+		if (*buffer != '\n' && *buffer)
+		{
+			line = nlcpy(buffer, line, position);
+			break;
+		}
+		// printf("checking\n");
+		printf("line ac: %s\n", line);
+		printf("buffer ac: %s\n", buffer);
+	}
+	// printf("line ac2: %s\n", line);
+	// printf("buffer ac2: %s\n", buffer);
+	return(line);
 }
 
 int	main(void)
@@ -102,8 +81,8 @@ int	main(void)
 	int	i;
 
 	i = 0;
-	fd = open("test22.txt", O_RDONLY);
-	while(i++ < 3)
-		printf("%s\n", get_next_line(fd));
-	close (fd);
+	fd = open("test", O_RDONLY);
+	while (i++ < 2)
+		printf("GNL: %s\n", get_next_line(fd));
+	close(fd);
 }

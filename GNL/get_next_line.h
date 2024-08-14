@@ -6,19 +6,22 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:43:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/06/20 16:47:37 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/06/25 13:39:20 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include <limits.h>
+# include <unistd.h>
+# include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
+# include <stdint.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE
+#  define BUFFER_SIZE 1
 # endif
 
 char *get_next_line(int fd);
