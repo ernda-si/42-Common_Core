@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:37:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/14 15:50:29 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/14 15:55:48 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(void)
 	int	i;
 
 	i = 0;
-	fd = open("test", O_RDONLY);
+	fd = open("test.txt", O_RDONLY);
 	while (i++ < 2)
 		printf("GNL: %s\n", get_next_line(fd));
 	close(fd);
