@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 14:37:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/14 15:55:48 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/14 16:15:27 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1
 #endif
+
+int	nlchecker(char *line)
+{
+	int	i;
+	
+	i = strlen(line);
+	if (line[i] != '\n' && line[i])
+		return(1);
+	return(0);
+}
 
 int	nllen(char *buffer)
 {
@@ -64,7 +74,9 @@ char	*get_next_line(int fd)
 		if (*buffer != '\n' && *buffer)
 		{
 			line = nlcpy(buffer, line, position);
-			break;
+			if (nlchecker(line))
+				break;
+			printf("teste\n\n\n");
 		}
 		// printf("checking\n");
 		printf("line ac: %s\n", line);
