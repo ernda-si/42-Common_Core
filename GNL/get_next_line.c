@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/09 14:37:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/14 16:15:27 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/08/16 14:02:53 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/08/16 16:57:53 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,70 +20,86 @@
 # define BUFFER_SIZE 1
 #endif
 
-int	nlchecker(char *line)
+int	hasnl(char *buffer)
 {
 	int	i;
-	
-	i = strlen(line);
-	if (line[i] != '\n' && line[i])
-		return(1);
-	return(0);
-}
-
-int	nllen(char *buffer)
-{
-	int i;
 
 	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
+	while (buffer[i] != '\n')
+	{
 		i++;
+		if (buffer[i] == '\n')
+			return(i);
+	}
 	return(i);
 }
 
-char	*nlcpy(char *buffer, char *line, int position)
+size_t	ft_strlen(const char *str)
 {
-	int	nlen;
 	int	i;
 
 	i = 0;
-	nlen = nllen(buffer);
-	line = (char *) malloc(sizeof(char) * nllen(buffer));
-	while (nlen--)
-	{
-		printf("nlen: %d\n", nlen);
-		// printf("teste\n");
-		line[position] = buffer[i];
+	while (str[i] != '\n' && str[i])
 		i++;
-		position++;
-		printf("line bc: %s\n", line);
-		printf("buffer bc: %s\n", buffer);
-	}
-	return(line);
+	return (i);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		len1;
+	int		len2;
+	int		i;
+	int		j;
+	char	*s3;
+
+	if (!s1)
+		return ((char *)s2);
+	if (!s2)
+		return ((char *)s1);
+	else if (!s1 && !s2)
+		return (NULL);
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	i = -1;
+	j = 0;
+	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));
+	if (s3 == 0)
+		return (NULL);
+	while (++i < len1)
+		s3[i] = s1[i];
+	while (j < len2)
+		s3[i++] = s2[j++];
+	s3[i] = '\0';
+	return (s3);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE];
 	char		*line;
-	int			position;
+	int			i;
 
-	position = 0;
+	i = 0;
 	line = NULL;
-	while(read(fd, buffer, BUFFER_SIZE) && *buffer)
+	while (!buffer[0])
 	{
-		if (*buffer != '\n' && *buffer)
+		while (read(fd, buffer, BUFFER_SIZE))
 		{
-			line = nlcpy(buffer, line, position);
-			if (nlchecker(line))
-				break;
-			printf("teste\n\n\n");
+			line = ft_strjoin(line, buffer);
+			while (line && line[i] != '\n')
+			{
+				printf("buffer: %s\n", buffer);
+				printf("line: %s\n", line);
+				i++;
+				if (line[i] == '\n')
+				{
+					line[i + 1] = '\0';
+					return(line);
+				}
+			}
 		}
-		// printf("checking\n");
-		printf("line ac: %s\n", line);
-		printf("buffer ac: %s\n", buffer);
+		break;
 	}
-	// printf("line ac2: %s\n", line);
-	// printf("buffer ac2: %s\n", buffer);
 	return(line);
 }
 
@@ -94,7 +110,7 @@ int	main(void)
 
 	i = 0;
 	fd = open("test.txt", O_RDONLY);
-	while (i++ < 2)
+	while (i++ < 3)
 		printf("GNL: %s\n", get_next_line(fd));
 	close(fd);
 }
