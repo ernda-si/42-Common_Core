@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 13:03:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/21 16:03:28 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/08/16 14:02:53 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/08/21 13:02:44 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ int	hasnl(char *buffer)
 
 	i = 0;
 	if (!buffer[i])
-		return(0);
+		return(1);
 	while (buffer[i] != '\n')
-	{
 		i++;
-		if (buffer[i] == '\n')
-			return(1);
-	}
+	if (buffer[i] == '\n')
+		return(1);
 	return(0);
 }
 
@@ -56,68 +54,51 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1)
 		return ((char *)s2);
+	if (!s2)
+		return ((char *)s1);
+	else if (!s1 && !s2)
+		return (NULL);
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	i = -1;
 	j = 0;
-	printf("len1: %d\n",len1);
 	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));
 	if (s3 == 0)
 		return (NULL);
-	while (++i < len1)	
+	while (++i < len1)
 		s3[i] = s1[i];
 	while (j < len2)
 		s3[i++] = s2[j++];
-	s3[i + 1] = '\0';
+	s3[i] = '\0';
 	return (s3);
-}
-
-char	*cut_buff(char *buffer)
-{
-	char	*storage;
-	int		i;
-	int		len;
-
-	i = 0;
-	while (buffer[i] != '\n')
-	{
-		if (!buffer[i])
-			break;
-		i++;
-	}
-	len = ft_strlen(buffer + i);
-	storage = (char *) malloc(sizeof(char) * len + 1);
-	while (len-- && i++)
-		storage[i] = buffer[i];
-	storage[i] = '\0';
-	return(buffer);
 }
 
 char	*get_next_line(int fd)
 {
-	char	buffer[BUFFER_SIZE + 1];
-	char	*line;
-	int		i;
+	static char	buffer[BUFFER_SIZE];
+	char		*line;
+	int			i;
+	int			bytes_read;
 
 	i = 0;
 	line = NULL;
-	while (read(fd, buffer, BUFFER_SIZE) > 0 || !buffer[0])
+	while (!buffer[0])
 	{
-		line = ft_strjoin(line, buffer);
-		printf("buffer: %s\n", buffer);
-		printf("line: %s\n", line);
-		if (!line)
-			return(NULL);
-		while (line && line[i] && hasnl(buffer))
+		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		while (hasnl(buffer) && bytes_read <= 0)
 		{
-			printf("buffer after nl check: %s\n", buffer);
-			if (line[i] == '\n')
-				break;
-			i++;
+			line = ft_strjoin(line, buffer);
+			printf("buffer: %s\n", buffer);
+			while (line[i] && line[i] != '\n')
+			{
+				i++;
+				if (hasnl(line))
+					return(line);
+			}
 		}
+		break;
 	}
-	cut_buff(buffer);
-	printf("newbuff: %s\n", buffer);
+	printf("end\n");
 	return(line);
 }
 
