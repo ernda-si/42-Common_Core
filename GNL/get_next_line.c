@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:03:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/21 16:03:28 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/22 14:39:38 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ int	hasnl(char *buffer)
 	int	i;
 
 	i = 0;
-	if (!buffer[i])
+	if (!buffer)
 		return(0);
-	while (buffer[i] != '\n')
-	{
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
-		if (buffer[i] == '\n')
-			return(1);
-	}
+	if (buffer[i] == '\n')
+		return(1);
 	return(0);
 }
 
@@ -41,6 +39,8 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
+	if (str[i] == '\n' && str[i])
+		i++;
 	while (str[i] != '\n' && str[i])
 		i++;
 	return (i);
@@ -48,31 +48,32 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len1;
-	int		len2;
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j; 
 	char	*s3;
 
 	if (!s1)
 		return ((char *)s2);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
 	i = -1;
 	j = 0;
-	printf("len1: %d\n",len1);
-	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));
-	if (s3 == 0)
+	s3 = (char *) malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (!s3)
 		return (NULL);
-	while (++i < len1)	
+	while (++i < ft_strlen(s1))
+	{
+		// printf("s3 on s1: %s\n", s3);
 		s3[i] = s1[i];
-	while (j < len2)
+	}
+	while (j < ft_strlen(s2))
+	{
+		// printf("s3 on s2: %s\n", s3);
 		s3[i++] = s2[j++];
+	}
 	s3[i + 1] = '\0';
 	return (s3);
 }
 
-char	*cut_buff(char *buffer)
+/* char	*cut_buff(char *buffer)
 {
 	char	*storage;
 	int		i;
@@ -91,33 +92,32 @@ char	*cut_buff(char *buffer)
 		storage[i] = buffer[i];
 	storage[i] = '\0';
 	return(buffer);
-}
+} */
 
 char	*get_next_line(int fd)
 {
-	char	buffer[BUFFER_SIZE + 1];
+	static char	buffer[BUFFER_SIZE + 1];
 	char	*line;
 	int		i;
 
 	i = 0;
 	line = NULL;
-	while (read(fd, buffer, BUFFER_SIZE) > 0 || !buffer[0])
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
+		return(NULL);
+	while (read(fd, buffer, BUFFER_SIZE) > 0)
 	{
-		line = ft_strjoin(line, buffer);
 		printf("buffer: %s\n", buffer);
-		printf("line: %s\n", line);
+		line = ft_strjoin(line, buffer);
 		if (!line)
 			return(NULL);
 		while (line && line[i] && hasnl(buffer))
 		{
-			printf("buffer after nl check: %s\n", buffer);
 			if (line[i] == '\n')
 				break;
 			i++;
 		}
 	}
-	cut_buff(buffer);
-	printf("newbuff: %s\n", buffer);
+	// cut_buff(buffer);
 	return(line);
 }
 
