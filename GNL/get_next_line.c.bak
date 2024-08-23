@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/16 14:02:53 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/21 13:02:44 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/23 15:35:12 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	hasnl(char *buffer)
 	int	i;
 
 	i = 0;
-	if (!buffer[i])
-		return(1);
-	while (buffer[i] != '\n')
+	if (!buffer)
+		return(0);
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
 		return(1);
@@ -39,38 +39,42 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\n' && str[i])
+	if (!str)
+		return(0);
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (str[i] == '\n')
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *line, const char *buff)
 {
-	int		len1;
-	int		len2;
 	int		i;
 	int		j;
-	char	*s3;
+	int		linelen;
+	int		bufflen;
+	char	*result;
 
-	if (!s1)
-		return ((char *)s2);
-	if (!s2)
-		return ((char *)s1);
-	else if (!s1 && !s2)
-		return (NULL);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	i = -1;
+	i = 0;
 	j = 0;
-	s3 = (char *) malloc (sizeof(char) * (len1 + len2 + 1));
-	if (s3 == 0)
-		return (NULL);
-	while (++i < len1)
-		s3[i] = s1[i];
-	while (j < len2)
-		s3[i++] = s2[j++];
-	s3[i] = '\0';
-	return (s3);
+	linelen = ft_strlen(line);
+	bufflen = ft_strlen(buff);
+	result = (char *) malloc(linelen + bufflen + 1);
+	if (!result)
+		return(NULL);
+	while (i < linelen)
+	{
+		result[i] = line[i];
+		i++;
+	}
+	while (j < bufflen)
+	{
+		result[i + j] = buff[j];
+		j++;
+	}
+	result[i + j] = '\0';
+	return (result);
 }
 
 char	*get_next_line(int fd)

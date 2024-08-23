@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:03:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/22 14:39:38 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:04:07 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ int	hasnl(char *buffer)
 
 	i = 0;
 	if (!buffer)
-		return(0);
+		return(i);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
-		return(1);
-	return(0);
+	{
+		printf("reached newline\n");
+		return(i);
+	}
+	return(i);
 }
 
 size_t	ft_strlen(const char *str)
@@ -39,60 +42,53 @@ size_t	ft_strlen(const char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '\n' && str[i])
+	if (!str)
+		return(0);
+	while (str[i] && str[i] != '\n')
 		i++;
-	while (str[i] != '\n' && str[i])
+	if (str[i] == '\n')
 		i++;
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *line, const char *buff)
 {
-	size_t		i;
-	size_t		j; 
-	char	*s3;
-
-	if (!s1)
-		return ((char *)s2);
-	i = -1;
-	j = 0;
-	s3 = (char *) malloc (sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!s3)
-		return (NULL);
-	while (++i < ft_strlen(s1))
-	{
-		// printf("s3 on s1: %s\n", s3);
-		s3[i] = s1[i];
-	}
-	while (j < ft_strlen(s2))
-	{
-		// printf("s3 on s2: %s\n", s3);
-		s3[i++] = s2[j++];
-	}
-	s3[i + 1] = '\0';
-	return (s3);
-}
-
-/* char	*cut_buff(char *buffer)
-{
-	char	*storage;
 	int		i;
-	int		len;
+	int		j;
+	int		linelen;
+	int		bufflen;
+	char	*result;
 
 	i = 0;
-	while (buffer[i] != '\n')
+	j = 0;
+	linelen = ft_strlen(line);
+	bufflen = ft_strlen(buff);
+	result = (char *) malloc(linelen + bufflen + 1);
+	if (!result)
+		return(NULL);
+	while (i < linelen)
 	{
-		if (!buffer[i])
-			break;
+		result[i] = line[i];
 		i++;
 	}
-	len = ft_strlen(buffer + i);
-	storage = (char *) malloc(sizeof(char) * len + 1);
-	while (len-- && i++)
-		storage[i] = buffer[i];
-	storage[i] = '\0';
-	return(buffer);
-} */
+	while (j < bufflen)
+	{
+		result[i + j] = buff[j];
+		j++;
+	}
+	result[i + j] = '\0';
+	return (result);
+}
+
+void	cut_buff(char *buffer, int start)
+{
+	int i;
+
+	i = 0;
+	while (buffer[start])
+		buffer[i++] = buffer[start++];
+	buffer[i] = '\0';
+}
 
 char	*get_next_line(int fd)
 {
@@ -117,7 +113,9 @@ char	*get_next_line(int fd)
 			i++;
 		}
 	}
-	// cut_buff(buffer);
+	line[i] = '\0';
+	cut_buff(buffer, hasnl(buffer));
+	printf("buffer af: %s\n", buffer);
 	return(line);
 }
 
@@ -129,5 +127,6 @@ int	main(void)
 	fd = open("test.txt", O_RDONLY);
 	// while (i++ < 3)
 	printf("GNL: %s\n", get_next_line(fd));
+	// printf("GNL: %s\n", get_next_line(fd));
 	close(fd);
 }
