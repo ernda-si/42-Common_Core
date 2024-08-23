@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:03:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/23 16:04:07 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/23 16:41:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	hasnl(char *buffer)
 	if (buffer[i] == '\n')
 	{
 		printf("reached newline\n");
-		return(i);
+		return(i + 1);
 	}
 	return(i);
 }
@@ -80,15 +80,15 @@ char	*ft_strjoin(const char *line, const char *buff)
 	return (result);
 }
 
-void	cut_buff(char *buffer, int start)
-{
-	int i;
+// void	cut_buff(char *buffer, int start)
+// {
+// 	int i;
 
-	i = 0;
-	while (buffer[start])
-		buffer[i++] = buffer[start++];
-	buffer[i] = '\0';
-}
+// 	i = 0;
+// 	while (buffer[start])
+// 		buffer[i++] = buffer[start++];
+// 	buffer[i] = '\0';
+// }
 
 char	*get_next_line(int fd)
 {
@@ -112,9 +112,13 @@ char	*get_next_line(int fd)
 				break;
 			i++;
 		}
+		// if (hasnl(buffer))
+		// {
+		// 	cut_buff(buffer, hasnl(buffer));
+		// 	break;
+		// }
 	}
 	line[i] = '\0';
-	cut_buff(buffer, hasnl(buffer));
 	printf("buffer af: %s\n", buffer);
 	return(line);
 }
