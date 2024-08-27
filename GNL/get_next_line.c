@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:03:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/27 17:44:37 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/27 18:11:34 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,12 @@ int	hasnl(char *buffer)
 
 	i = 0;
 	if (!buffer)
-		return(0);
+		return (0);
 	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	if (buffer[i] == '\n')
-	{
-		// printf("Reached NL!\n");
-		return(1);
-	}
-	return(0);
+		return (1);
+	return (0);
 }
 
 size_t	ft_strlen(const char *str)
@@ -43,7 +40,7 @@ size_t	ft_strlen(const char *str)
 
 	i = 0;
 	if (!str)
-		return(0);
+		return (0);
 	while (str[i] && str[i] != '\n')
 		i++;
 	if (str[i] == '\n')
@@ -91,65 +88,50 @@ int	cut_buff(char *buffer)
 		buffer[i++] = '\0';
 	}
 	return (j != -1);
-	// printf("buffer after cut: %s\n", buffer);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
-	char	*line;
-	int		i;
-	int		oi;
+	char		*line;
+	int			bytes_read;
 
-	i = 0;
 	line = NULL;
-	oi = 1;
-	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0 || BUFFER_SIZE > 2147483647)
-		return(NULL);
-	while (oi)
+	bytes_read = 1;
+	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
+		return (NULL);
+	while (bytes_read)
 	{
 		if (buffer[0] == 0)
-			oi = read(fd, buffer, BUFFER_SIZE);
-		if (oi == -1)
+			bytes_read = read(fd, buffer, BUFFER_SIZE);
+		if (bytes_read == -1)
 		{
 			free(line);
-			return(NULL);
+			return (NULL);
 		}
-		if (oi == 0)
-			break;
-		// printf("line before join: %s\n", line);
-		// printf("buffer before join: %s\n", buffer);
+		if (bytes_read == 0)
+			break ;
 		line = ft_strjoin(line, buffer);
 		if (cut_buff(buffer))
-			break;
-		// printf("line after join: %s\n", line);
-		// printf("buffer after join: %s\n", buffer);
+			break ;
 	}
-	// if (!line)
-	// 	line = ft_strjoin(line, buffer);
-	// cut_buff(buffer);
-	return(line);
+	return (line);
 }
-/// buffer antigo \n\n\na\nb
-/// laco ate nl ou nulo; se nl ir proximo e verificar se e nulo; se nao for nulo 
-/// buffer novo  b
-/// x = 1; y = 0;
-///               buffer[y] = buffer[x]
 
-int	main(void)
-{
-	int	fd;
-	int	i;
-	char	*line;
+// int	main(void)
+// {
+// 	int	fd;
+// 	int	i;
+// 	char	*line;
 
-	i = 1;
-	fd = open("test.txt", O_RDONLY);
+// 	i = 1;
+// 	fd = open("test.txt", O_RDONLY);
 
-	printf("BUFFER_SIZE: %d\n\n", BUFFER_SIZE);
-	while ((line = get_next_line(fd)))
-	{
-		printf("GNL[%d]: %s", i++, line);
-		free(line);
-	}
-	close(fd);
-}
+// 	printf("BUFFER_SIZE: %d\n\n", BUFFER_SIZE);
+// 	while ((line = get_next_line(fd)))
+// 	{
+// 		printf("GNL[%d]: %s", i++, line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// }
