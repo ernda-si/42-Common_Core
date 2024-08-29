@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 13:03:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/29 15:21:36 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/08/29 15:20:25 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/08/29 16:17:37 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*get_next_line(int fd)
 {
@@ -34,27 +34,33 @@ char	*get_next_line(int fd)
 		if (bytes_read == 0)
 			break ;
 		line = ft_strjoin(line, buffer, ft_strlen(line), ft_strlen(buffer));
+		printf("Buff[fd:%d]: %s\n", fd, buffer);
 		if (cut_buff(buffer))
 			break ;
 	}
+	printf("Line[fd:%d]: %s\n", fd, line);
 	return (line);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	int	fd;
+	int	fd2;
 	int	i;
 	char	*line;
 
 	i = 1;
-	fd = open("test.txt", O_RDONLY);
+	fd = open("bonus1", O_RDONLY);
+	fd2 = open("bonus2", O_RDONLY);
 
 	printf("BUFFER_SIZE: %d\n\n", BUFFER_SIZE);
-	while ((line = get_next_line(fd)))
+	while ((line = get_next_line(fd)) && (line = get_next_line(fd2)))
 	{
-		printf("GNL[%d]: %s", i++, line);
+		printf("GNL[%d][fd%d]: %s", i++, fd,line);
+		printf("GNL[%d][fd%d]: %s", i++, fd2,line);
 		free(line);
 	}
 	printf("\n");
 	close(fd);
-} */
+	close(fd2);
+}

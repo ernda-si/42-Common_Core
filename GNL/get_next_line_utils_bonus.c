@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 13:24:54 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/29 15:02:30 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/08/29 15:20:14 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/08/29 15:57:54 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /* int	hasnl(char *buffer)
 {
