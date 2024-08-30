@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:20:25 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/29 16:17:37 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:57:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			bytes_read;
 
-	line = NULL;
+	line = NULL;	
 	bytes_read = 1;
-	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (bytes_read)
 	{
@@ -34,15 +34,15 @@ char	*get_next_line(int fd)
 		if (bytes_read == 0)
 			break ;
 		line = ft_strjoin(line, buffer, ft_strlen(line), ft_strlen(buffer));
-		printf("Buff[fd:%d]: %s\n", fd, buffer);
+		// printf("Buff[fd:%d]: %s\n", fd, buffer);
 		if (cut_buff(buffer))
 			break ;
 	}
-	printf("Line[fd:%d]: %s\n", fd, line);
+	// printf("Line[fd:%d]: %s\n", fd, line);
 	return (line);
 }
 
-int	main(void)
+/* int	main(void)
 {
 	int	fd;
 	int	fd2;
@@ -50,17 +50,22 @@ int	main(void)
 	char	*line;
 
 	i = 1;
-	fd = open("bonus1", O_RDONLY);
-	fd2 = open("bonus2", O_RDONLY);
+	fd = open("text1", O_RDONLY);
+	fd2 = open("text2", O_RDONLY);
 
 	printf("BUFFER_SIZE: %d\n\n", BUFFER_SIZE);
-	while ((line = get_next_line(fd)) && (line = get_next_line(fd2)))
+	while ((line = get_next_line(fd)))
 	{
-		printf("GNL[%d][fd%d]: %s", i++, fd,line);
-		printf("GNL[%d][fd%d]: %s", i++, fd2,line);
+		printf("GNL[%d][fd%d]: %s", i++, fd, line);
+		free(line);
+	}
+	i = 1;
+	while ((line = get_next_line(fd2)))
+	{
+		printf("GNL[%d][fd%d]: %s", i++, fd2, line);
 		free(line);
 	}
 	printf("\n");
 	close(fd);
 	close(fd2);
-}
+} */
