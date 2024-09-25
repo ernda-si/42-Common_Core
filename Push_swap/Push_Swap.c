@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Push_Swappp.c                                      :+:      :+:    :+:   */
+/*   Push_Swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/25 17:33:22 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:01:02 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ struct Stacks *head = NULL;
 int str_checker(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (!str)
 		return (0);
@@ -107,15 +107,21 @@ struct	Stacks *lstadd(int new_data)
 	return (node);
 }
 
-void	print_list()
+int	print_list()
 {
 	struct Stacks *h;
+	int	i;
 
+	i = 0;
+	if (!head)
+		exit(0);
+	h = head;
 	while (h)
 	{
-		printf("value on node: %d\n", h -> number);
+		i += printf("value on nodes: %d\n", h -> number);
 		h = h -> next;
 	}
+	return(i);
 }
 
 void print_node(struct Stacks *node)
@@ -140,6 +146,7 @@ int	push_swap(int ac, char *arr[])
 	}
 	printf("outside\n");
 	print_node(head);
+	print_list();
 	return(1);
 }
 
