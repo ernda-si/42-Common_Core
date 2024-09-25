@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/25 15:28:59 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/25 17:33:22 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	ft_atoi(char const *str)
 	return (0);
 }
 
-int	GetMax(int arr[])
+/* int	GetMax(int arr[])
 {
 	int max;
 	int i;
@@ -82,26 +82,45 @@ int	arr_size(int arr[])
 	while (arr++)
 		size++;
 	return(size);
-}
+} */
 
-void	lstadd(int data)
+struct Stacks *create_node(int new_data)
 {
-	struct Stacks *node = (struct Stacks*)malloc (sizeof(struct Stacks));
-	node -> number = data;
-	if (head -> next != NULL)
-		head -> next = node;
-	while (node -> next != NULL)
-		node = node -> next;
+	struct Stacks *new_node = (struct Stacks*)malloc (sizeof(struct Stacks));
+	new_node -> number = new_data;
+	new_node -> next = NULL;
+	return (new_node);
 }
 
-void	printlst()
+struct	Stacks *lstadd(int new_data)
+{
+	struct Stacks *end;
+	struct Stacks *node;
+
+	node = create_node(new_data);
+	if (!head)
+		return (head = node);
+	end = head;
+	while (end)
+		end = end -> next;
+	node = end;
+	return (node);
+}
+
+void	print_list()
 {
 	struct Stacks *h;
+
 	while (h)
 	{
-		printf("%d\n", h -> number);
+		printf("value on node: %d\n", h -> number);
 		h = h -> next;
 	}
+}
+
+void print_node(struct Stacks *node)
+{
+	printf("node value: %d\n", node -> number);
 }
 
 int	push_swap(int ac, char *arr[])
@@ -110,16 +129,17 @@ int	push_swap(int ac, char *arr[])
 	int	num;
 
 	arg = 0;
-	while (++arg)
+	while (++arg < ac)
 	{
 		printf("Reveiced string: %s\n", arr[arg]);
 		if (!str_checker(arr[arg]))
 			return(0);
 		num = ft_atoi(arr[arg]);
 		lstadd(num);
-		printlst();
 		printf("Converted string: %d\n", num);
 	}
+	printf("outside\n");
+	print_node(head);
 	return(1);
 }
 
