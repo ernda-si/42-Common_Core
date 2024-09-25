@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   bit_shift.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 13:43:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/29 15:02:33 by ernda-si         ###   ########.fr       */
+/*   Created: 2024/09/25 12:32:32 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/09/25 13:41:12 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-
 #include <unistd.h>
 #include <stdio.h>
-#include <string.h>
-#include <fcntl.h>
-#include <limits.h>
-#include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1
-#endif
+// 1 2 4 8 16 32 64 128 256
+// right shifting: a=a/(2^2)
+// left shifting: a=a*(2^2)
+// 00000000 (8 per block)
 
-char	*ft_strjoin(char *line, char *buff, size_t	line_len, size_t buff_len);
-char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-int		cut_buff(char *buffer);
-// int		hasnl(char *buffer);
+//binary operators for sorting algorithms: 
 
-#endif
+int	main(void)
+{
+	int	a;
+	int	b;
+
+	a = 5; // 00000101
+	b = 2;
+
+	a = a << b; // a == 00000101 | a << 2 or == 00010100 (20) | a >> 2 == 00000001 (1)
+	printf("a: %d\n", a);
+	printf("b: %d\n", b);
+
+	return (1);
+}

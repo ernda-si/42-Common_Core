@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:20:25 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/08/30 16:57:18 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/11 12:55:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/* int	main(void)
+int	main(void)
 {
 	int	fd;
 	int	fd2;
@@ -68,4 +68,4 @@ char	*get_next_line(int fd)
 	printf("\n");
 	close(fd);
 	close(fd2);
-} */
+}
