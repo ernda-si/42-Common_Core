@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_commands.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:22:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/23 16:04:34 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:43:37 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,71 +14,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	ft_atoi(char const *str)
-{
-	int		i;
-	int		signal;
-	long	num;
+typedef struct Stacks{
+	int	data;
+	struct Stacks *next;
+} Stacks;
 
-	i = 0;
-	signal = 1;
-	num = 0;
-	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			signal *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		num *= 10;
-		num += str[i++] - '0';
-	}
-	if (num * signal >= -2147483648 && num * signal <= 2147483647) 
-		return (signal * num);
-	return (0);
+int	ft_listsize(struct Stacks node)
+{
+	
 }
 
-struct stacks{
-	int data;
-	struct stacks *next;
-};
-
-struct stacks *head = NULL;
-struct stacks *current = NULL;
-
-void InsertAtEnd(int content)
+void swap_a()
 {
-	struct stacks *link = (struct stacks*)malloc (sizeof(struct stacks));
 	
 }
 
-void sa()
+int	main(void)
 {
-	
-	int temp;
-	temp = head->data;
-
-	write(1, "sa\n", 3);
+	swap_a()
 }
 
-void PrintList()
-{
-	struct stacks *h = head;
-	while (h != NULL)
-	{
-		printf("%d\n", h -> data);
-		h = h -> next;
-	}
-}
+// sa (swap a): Swap the first 2 elements at the top of stack a.
+// Do nothing if there is only one or no elements.
 
-int	main()
-{
-	InsertAtEnd(1);
-	InsertAtEnd(2);
-	InsertAtEnd(3);
-	// sa();
-	PrintList();
-}
+// sb (swap b): Swap the first 2 elements at the top of stack b.
+// Do nothing if there is only one or no elements.
+
+// ss : sa and sb at the same time.
+
+// pa (push a): Take the first element at the top of b and put it at the top of a.
+// Do nothing if b is empty.
+
+// pb (push b): Take the first element at the top of a and put it at the top of b.
+// Do nothing if a is empty.
+
+// ra (rotate a): Shift up all elements of stack a by 1.
+// The first element becomes the last one.
+
+// rb (rotate b): Shift up all elements of stack b by 1.
+// The first element becomes the last one.
+
+// rr : ra and rb at the same time.
+
+// rra (reverse rotate a): Shift down all elements of stack a by 1.
+// The last element becomes the first one.
+
+// rrb (reverse rotate b): Shift down all elements of stack b by 1.
+// The last element becomes the first one.
+
+// rrr : rra and rrb at the same time.
