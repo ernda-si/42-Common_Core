@@ -6,12 +6,12 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/09/26 13:24:37 by kali             ###   ########.fr       */
+/*   Updated: 2024/09/26 18:12:53 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP
-# define PUSH_SWAP
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdio.h>
 # include <stdlib.h>

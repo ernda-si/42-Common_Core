@@ -6,33 +6,11 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 15:22:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/26 10:43:37 by kali             ###   ########.fr       */
+/*   Updated: 2024/09/26 18:12:41 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Stacks{
-	int	data;
-	struct Stacks *next;
-} Stacks;
-
-int	ft_listsize(struct Stacks node)
-{
-	
-}
-
-void swap_a()
-{
-	
-}
-
-int	main(void)
-{
-	swap_a()
-}
+#include "Push_Swap.h"
 
 // sa (swap a): Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.
