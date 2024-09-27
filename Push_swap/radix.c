@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Push_Swap.h                                        :+:      :+:    :+:   */
+/*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/09/26 18:12:53 by kali             ###   ########.fr       */
+/*   Created: 2024/09/27 17:43:09 by ernda-si          #+#    #+#             */
+/*   Updated: 2024/09/27 17:44:16 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+void	radix_sort(struct Stacks *head, struct Stacks *head_b)
+{
+	
+}
 
-typedef struct Stacks{
-	int number;
-	struct Stacks *next;
-} Stacks;
+int	main(void)
+{
 
-struct Stacks *head = NULL;
-struct Stacks *head_b = NULL;
-
-
-#endif
+}

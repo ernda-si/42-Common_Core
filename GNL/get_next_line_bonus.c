@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:20:25 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/11 12:55:06 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/27 12:45:44 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			bytes_read;
 
-	line = NULL;	
+	line = NULL;
 	bytes_read = 1;
 	if (fd < 0 || fd > 1024 || BUFFER_SIZE <= 0)
 		return (NULL);
