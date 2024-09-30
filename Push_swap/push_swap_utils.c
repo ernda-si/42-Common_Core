@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/27 17:42:11 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:06:57 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ struct Stacks	*lstadd(int new_data, struct Stacks *start)
 void	print_list(struct Stacks *head)
 {
 	struct Stacks	*temp_2;
-	int	i;
+	int				i;
 
 	i = 0;
 	temp_2 = head;

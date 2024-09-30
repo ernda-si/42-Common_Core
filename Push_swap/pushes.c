@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:54:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/27 17:26:16 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/09/30 16:53:45 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	push_b(struct Stacks **head_b, struct Stacks **head)
 	if (!*head)
 		exit(0);
 	new_node = create_node((*head_b)-> number);
-	new_node -> next = (*head_b)-> next;
+	if (!head_b)
+		new_node = (*head_b);
+	else
+		new_node -> next = (*head_b)-> next;
 	(*head_b)-> next = new_node;
 	(*head_b)-> number = (*head)-> number;
 	temp = *head;
