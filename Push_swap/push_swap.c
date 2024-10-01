@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/30 16:54:40 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:51:21 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,59 +27,62 @@ int	find_max_num(struct Stacks *head)
 		if ((temp -> number) < (big_num -> number) && big_num)
 			temp -> number = big_num -> number;
 		big_num = big_num -> next;
-		// printf("max_num_process: %d\n", temp -> number);
 	}
 	num = temp->number;
 	free(temp);
 	return (num);
 }
 
-int	find_min_num(struct Stacks *head)
+int	bin_max(int max_num)
 {
-	struct Stacks	*min_num;
-	struct Stacks	*temp;
-	int				num;
+	int	bits;
 
-	min_num = head;
-	temp = create_node(head->number);
-	temp->next = head->next;
-
-	while (min_num)
+	bits = 0;
+	while (max_num)
 	{
-		if ((temp -> number) > (min_num -> number) && min_num)
-			temp -> number = min_num -> number;
-		min_num = min_num -> next;
-		// printf("min_num_process: %d\n", temp -> number);
+		printf("max_num: %d\n", max_num);
+		bits++;
+		max_num >>= 1;
 	}
-	num = temp->number;
-	free(temp);
-	return (num);
+	printf("bits:%d\n", bits);
+	return(bits);
+}
+
+int	bit_sets(int max_num)
+{
+	int	bits;
+
+	bits = 0;
+	while (max_num)
+	{
+		bits += max_num & 1;
+		max_num >>= 1;
+	}
+	return(bits);
 }
 
 void	radix_sort(struct Stacks **head, struct Stacks **head_b)
 {
-	// int	max_num;
-	// int	min_num;
+	// struct Stacks *current;
 	int	exp;
-	int	i = 0;
-
-	exp = 0;
-	// max_num = find_max_num(*head);
-	// min_num = find_min_num(*head);
-
-	while (i++ < 10)
+	int	i;
+	int	max_num;
+	// current = *head;
+	max_num = find_max_num(*head)
+	i = -1;
+	exp = bin_max(max_num);
+	printf("exp: %d\n", exp);
+	while (++i < exp && *head)
 	{
-		if ((((*head)-> number >> exp) & 1) == 1)
-		{
-			push_b(head_b, head);
-		}
-		printf("teste %d\n", i);
+		push_b(head_b, head);
+		// printf("teste %d\n", exp);
+		rotate_a(head);
+		// current = current -> next;
 	}
 
-	// printf("\nmax_num_final: %d\n", max_num);
-	// printf("\nmin_num_final: %d\n", min_num);
 	printf("\nhead: %d\n", (*head)-> number);
-	printf("\nhead_b: %d\n", (*head_b)-> number);
+	if ((*head_b))
+		printf("\nhead_b: %d\n", (*head_b)-> number);
 	print_list(*head);
 	print_list(*head_b);
 }
@@ -91,7 +94,7 @@ int	push_swap(int ac, char *arr[])
 	int				arg;
 	int				num;
 
-	head = NULL;
+	head_b = (struct Stacks *) malloc (sizeof(struct Stacks));
 	head_b = NULL;
 	arg = 0;
 	while (++arg < ac)
