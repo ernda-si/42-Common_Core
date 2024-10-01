@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/01 17:51:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/01 17:59:22 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,16 @@ void	radix_sort(struct Stacks **head, struct Stacks **head_b)
 	int	i;
 	int	max_num;
 	// current = *head;
-	max_num = find_max_num(*head)
+	max_num = find_max_num(*head);
 	i = -1;
 	exp = bin_max(max_num);
 	printf("exp: %d\n", exp);
 	while (++i < exp && *head)
 	{
-		push_b(head_b, head);
-		// printf("teste %d\n", exp);
-		rotate_a(head);
+		if (((*head)-> number >> i) & 1)
+			push_b(head_b, head);
+		else
+			rotate_a(head);
 		// current = current -> next;
 	}
 
