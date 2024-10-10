@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/01 17:59:22 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:00:13 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,8 @@ int	find_max_num(struct Stacks *head)
 	}
 	num = temp->number;
 	free(temp);
+	printf("max_number: %d\n", num);
 	return (num);
-}
-
-int	bin_max(int max_num)
-{
-	int	bits;
-
-	bits = 0;
-	while (max_num)
-	{
-		printf("max_num: %d\n", max_num);
-		bits++;
-		max_num >>= 1;
-	}
-	printf("bits:%d\n", bits);
-	return(bits);
 }
 
 int	bit_sets(int max_num)
@@ -55,33 +41,49 @@ int	bit_sets(int max_num)
 	bits = 0;
 	while (max_num)
 	{
-		bits += max_num & 1;
+		// printf("exp: %d\n", max_num);
+		bits++;
 		max_num >>= 1;
+		// printf("bits: %d\n", bits);
 	}
 	return(bits);
 }
 
+int	lst_size(struct Stacks *head)
+{
+	int	size;
+
+	size = 0;
+	while (head)
+	{
+		head = head -> next;
+		size++;
+	}
+	printf("size: %d\n", size);
+	return (size);
+}
+
 void	radix_sort(struct Stacks **head, struct Stacks **head_b)
 {
-	// struct Stacks *current;
+	int	lsize;
 	int	exp;
 	int	i;
-	int	max_num;
-	// current = *head;
-	max_num = find_max_num(*head);
-	i = -1;
-	exp = bin_max(max_num);
-	printf("exp: %d\n", exp);
-	while (++i < exp && *head)
-	{
-		if (((*head)-> number >> i) & 1)
-			push_b(head_b, head);
-		else
-			rotate_a(head);
-		// current = current -> next;
-	}
 
-	printf("\nhead: %d\n", (*head)-> number);
+	i = 0;
+	exp = bit_sets(find_max_num(*head));
+	printf("exp: %d\n", exp);
+	while (i < exp && *head)
+	{
+		lsize = lst_size(*head) + 1;
+		while (--lsize)
+		{
+			if (((*head)-> number >> i) & 1)
+				push_b(head_b, head);
+			else
+				rotate_a(head);
+		}
+		i++;
+	}
 	if ((*head_b))
 		printf("\nhead_b: %d\n", (*head_b)-> number);
 	print_list(*head);
@@ -105,7 +107,20 @@ int	push_swap(int ac, char *arr[])
 		num = ft_atoi (arr[arg]);
 		head = lstadd (num, head);
 	}
+	printf("Stack A before command:\n");
+	print_list(head);
+	printf("Stack B before command:\n");
+	print_list(head_b);
+
 	radix_sort(&head, &head_b);
+	// push_b(&head_b, &head);
+	// push_a(&head, &head_b);
+
+	printf("Stack A after command:\n");
+	print_list(head);
+	printf("Stack B after command:\n");
+	print_list(head_b);
+
 	free(head);
 	free(head_b);
 	return (1);
@@ -116,12 +131,9 @@ int	main(int ac, char *av[])
 	printf ("%d\n", push_swap(ac, av));
 	return(1);
 }
-	// printf("Stack B before command:\n");
-	// print_list(head_b);
+	// push_a(&head, &head_b);
 	// printf("Stack A after command:\n");
 	// print_list(head);
-	// printf("Stack B after command:\n");
-	// print_list(head_b);
 
 	// print_node(head);
 	// printf("Stack A before command:\n");
@@ -138,8 +150,6 @@ int	main(int ac, char *av[])
 	// rotate_ab(&head, &head_b);
 	// rotate_a(&head);
 	// rotate_b(&head_b);
-	// push_a(&head, &head_b);
-	// push_b(&head_b, &head);
 	// swap_a(head);
 	// swap_b(head_b);
 	// swap_swap(head, head_b);
