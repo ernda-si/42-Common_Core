@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/10 16:00:13 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:18:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ int	lst_size(struct Stacks *head)
 	return (size);
 }
 
+void	small_sort(struct Stacks **head)
+{
+	if ((*head)-> number > (*head)-> next -> number)
+		swap_a(*head);
+	else
+		return ;
+}
+
 void	radix_sort(struct Stacks **head, struct Stacks **head_b)
 {
 	int	lsize;
@@ -81,6 +89,12 @@ void	radix_sort(struct Stacks **head, struct Stacks **head_b)
 				push_b(head_b, head);
 			else
 				rotate_a(head);
+		}
+		while (*head_b)
+		{
+			push_a(head, head_b);
+			// if (*head_b)
+			// 	rotate_a(head);
 		}
 		i++;
 	}
@@ -111,8 +125,10 @@ int	push_swap(int ac, char *arr[])
 	print_list(head);
 	printf("Stack B before command:\n");
 	print_list(head_b);
-
-	radix_sort(&head, &head_b);
+	if (lst_size(head) > 2)
+		radix_sort(&head, &head_b);
+	else
+		small_sort(&head);
 	// push_b(&head_b, &head);
 	// push_a(&head, &head_b);
 

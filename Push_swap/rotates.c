@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:55:03 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/27 17:26:16 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/14 17:10:53 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	rotate_a(struct Stacks **head)
 	struct Stacks	*temp;
 
 	if (!*head || !(*head)-> next)
-		exit(0);
+		return ;
 	end_node = create_node((*head)-> number);
 	end = *head;
 	while (end -> next)
