@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/01 17:17:28 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:45:29 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	str_checker(char *str)
 	i = 0;
 	if (!str)
 		return (0);
+	if (str[i] == '-')
+		i++;
 	while (str[i] >= 48 && str[i] <= 57 && str[i])
 	{
 		if (str[i] < 48 && str[i] > 57 && str[i])

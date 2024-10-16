@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*    push_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/14 17:18:42 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/16 13:48:07 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	find_max_num(struct Stacks *head)
 {
 	struct Stacks	*big_num;
 	struct Stacks	*temp;
-	int				num;
+	int				max;
 
 	big_num = head;
 	temp = create_node(head->number);
@@ -28,25 +28,32 @@ int	find_max_num(struct Stacks *head)
 			temp -> number = big_num -> number;
 		big_num = big_num -> next;
 	}
-	num = temp->number;
+	max = temp->number;
 	free(temp);
-	printf("max_number: %d\n", num);
-	return (num);
+	printf("max_number: %d\n", max);
+	return (max);
 }
 
-int	bit_sets(int max_num)
+int	find_min_num(struct Stacks *head)
 {
-	int	bits;
+	struct Stacks	*small_num;
+	struct Stacks	*temp;
+	int				min;
 
-	bits = 0;
-	while (max_num)
+	small_num = head;
+	temp = create_node(head->number);
+	temp->next = head->next;
+
+	while (small_num)
 	{
-		// printf("exp: %d\n", max_num);
-		bits++;
-		max_num >>= 1;
-		// printf("bits: %d\n", bits);
+		if ((temp -> number) > (small_num -> number) && small_num)
+			temp -> number = small_num -> number;
+		small_num = small_num -> next;
 	}
-	return(bits);
+	min = temp->number;
+	free(temp);
+	printf("min_number: %d\n", min);
+	return (min);
 }
 
 int	lst_size(struct Stacks *head)
@@ -71,37 +78,69 @@ void	small_sort(struct Stacks **head)
 		return ;
 }
 
-void	radix_sort(struct Stacks **head, struct Stacks **head_b)
+void	min_max(struct Stacks **head, struct Stacks **head_b)
 {
-	int	lsize;
-	int	exp;
-	int	i;
+	int	max_num;
+	int	min_num;
 
-	i = 0;
-	exp = bit_sets(find_max_num(*head));
-	printf("exp: %d\n", exp);
-	while (i < exp && *head)
+	max_num = find_max_num(*head);
+	min_num = find_min_num(*head);
+	while ((*head))
 	{
-		lsize = lst_size(*head) + 1;
-		while (--lsize)
+		rotate_a(head);
+		if ((*head)-> number == max_num)
 		{
-			if (((*head)-> number >> i) & 1)
-				push_b(head_b, head);
-			else
-				rotate_a(head);
+		push_b(head_b, head);
+			break;
 		}
-		while (*head_b)
-		{
-			push_a(head, head_b);
-			// if (*head_b)
-			// 	rotate_a(head);
-		}
-		i++;
 	}
-	if ((*head_b))
-		printf("\nhead_b: %d\n", (*head_b)-> number);
-	print_list(*head);
-	print_list(*head_b);
+	while ((*head))
+	{
+		rotate_a(head);
+		if ((*head)-> number == min_num)
+		{
+			push_b(head_b, head);
+			break;
+		}
+	}
+}
+
+void	sort(struct Stacks **head, struct Stacks **head_b)
+{
+	min_max(head, head_b);
+	int	count;
+
+	count = 1;
+	while ((*head))
+	{
+		while ((*head)-> number < (*head_b)-> number)
+		{
+			count++;
+			rotate_b(head_b);
+		}
+		if ((*head)-> number > (*head_b)-> number)
+			push_b(head_b, head);
+		while (count)
+		{
+			count--;
+			rrotate_b(head_b);
+		}
+	}
+	while ((*head_b))
+		push_a(head, head_b);
+}
+
+int	has_num(struct Stacks *head, int num)
+{
+	struct Stacks *check;
+	check = head;
+	while (check -> next)
+	{
+		if (check -> number == num)
+			return(1);
+		check = check -> next;
+	}
+	return(0);
 }
 
 int	push_swap(int ac, char *arr[])
@@ -119,24 +158,22 @@ int	push_swap(int ac, char *arr[])
 		if (!str_checker (arr[arg]))
 			return (0);
 		num = ft_atoi (arr[arg]);
+		if (head && has_num(head, num))
+		{
+			write(2, "Error\n", 6);
+			exit(1);
+		}
 		head = lstadd (num, head);
 	}
 	printf("Stack A before command:\n");
 	print_list(head);
 	printf("Stack B before command:\n");
 	print_list(head_b);
-	if (lst_size(head) > 2)
-		radix_sort(&head, &head_b);
-	else
-		small_sort(&head);
-	// push_b(&head_b, &head);
-	// push_a(&head, &head_b);
-
+	sort(&head, &head_b); // custom sorting
 	printf("Stack A after command:\n");
 	print_list(head);
 	printf("Stack B after command:\n");
 	print_list(head_b);
-
 	free(head);
 	free(head_b);
 	return (1);
@@ -147,26 +184,3 @@ int	main(int ac, char *av[])
 	printf ("%d\n", push_swap(ac, av));
 	return(1);
 }
-	// push_a(&head, &head_b);
-	// printf("Stack A after command:\n");
-	// print_list(head);
-
-	// print_node(head);
-	// printf("Stack A before command:\n");
-	// print_list(head);
-	// printf("Stack B before command:\n");
-	// print_list(head_b);
-	// printf("Stack A after command:\n");
-	// print_list(head);
-	// printf("Stack B after command:\n");
-	// print_list(head_b);
-	// rrotate_a(&head);
-	// rrotate_b(&head_b);
-	// rrotate_ab(&head, &head_b);
-	// rotate_ab(&head, &head_b);
-	// rotate_a(&head);
-	// rotate_b(&head_b);
-	// swap_a(head);
-	// swap_b(head_b);
-	// swap_swap(head, head_b);
-
