@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/16 14:51:12 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/16 16:13:47 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,6 @@ int	lst_size(struct Stacks *head)
 	return (size);
 }
 
-void	small_sort(struct Stacks **head)
-{
-	if ((*head)-> number > (*head)-> next -> number)
-		swap_a(*head);
-	else
-		return ;
-}
-
 void	min_max(struct Stacks **head, struct Stacks **head_b)
 {
 	int	max_num;
@@ -102,6 +94,19 @@ void	min_max(struct Stacks **head, struct Stacks **head_b)
 		}
 	}
 }
+
+void	small_sort(struct Stacks **head)
+{
+	if ((*head)-> number > (*head)-> next -> number)
+		swap_a(*head);
+	else
+		return ;
+}
+
+// void	medium_sort(struct Stacks **head)
+// {
+	// if(); 
+// }
 
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
