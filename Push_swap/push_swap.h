@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/10/16 14:36:52 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:39:53 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ struct Stacks	*create_node(int new_data);
 int				has_num(struct Stacks *head, int num);
 int				find_max_num(struct Stacks *head);
 int				find_min_num(struct Stacks *head);
+int				ft_strlen(const char *str);
 int				ft_atoi(char const *str);
 int				str_checker(char *str);
 void			rrotate_ab(struct Stacks **head, struct Stacks **head_b);
@@ -49,5 +50,6 @@ void			swap_a(struct Stacks *head);
 void			sort(struct Stacks **head, struct Stacks **head_b);
 void			min_max(struct Stacks **head, struct Stacks **head_b);
 void			small_sort(struct Stacks **head);
+void			big_sort(struct Stacks **head, struct Stacks **head_b);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/16 14:53:01 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:51:31 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,20 @@
 int	str_checker(char *str)
 {
 	int	i;
+	int	len;
 
+	len = ft_strlen(str);
 	i = 0;
-	if (!str)
+	if (!str || !*str)
+	{
+		write(2, "Error\n", 6);
 		return (0);
+	}
+	if (str[i] != '-' && len > 10)
+	{
+		write(2, "Error\n", 6);
+		return (0);
+	}
 	if (str[i] == '-' && str[i + 1] >= 48 && str[i + 1] <= 57)
 		i++;
 	while (str[i] >= 48 && str[i] <= 57 && str[i])
@@ -60,7 +70,8 @@ int	ft_atoi(char const *str)
 	}
 	if (num * signal >= -2147483648 && num * signal <= 2147483647)
 		return (signal * num);
-	return (0);
+	write(2, "Error\n", 6);
+	exit(0);
 }
 
 struct Stacks	*create_node(int new_data)

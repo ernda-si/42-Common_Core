@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/16 16:13:47 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:51:58 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,61 @@ void	small_sort(struct Stacks **head)
 		return ;
 }
 
-// void	medium_sort(struct Stacks **head)
-// {
-	// if(); 
-// }
+void	medium_sort(struct Stacks **head)
+{
+	int	first;
+	int	second;
+	int	third;
+	
+	first = (*head)-> number;
+	second = (*head)-> next -> number;
+	third = (*head)-> next -> next -> number;
+	// 1 < 2  < 3 null
+	if (first < second && second < third)
+		return ;
+	// 1 < 3 > 2 sa ra
+	else if (first < second && second > third && third > first)
+		return (swap_a(*head), rotate_a(head));
+	// 2 > 1 < 3 sa
+	else if(first > second && second < third && third > first)
+		return (swap_a(*head));
+	// 2 < 3 > 1 rra
+	else if(first < second && second > third && third < first)
+		return (rrotate_a(head));
+	// 3 > 2 > 1 rra rra
+	else if(first > second && second > third)
+		return (rotate_a(head), swap_a(*head));
+	// 3 > 1 < 2 ra
+	else if(first > second && second < third)
+		return (rotate_a(head));
+}
+
+void	big_sort(struct Stacks **head, struct Stacks **head_b)
+{
+	// 2 1 3 6 5 +1||2> 1 2 3 6 5 +2> 6 5 1 2 3 +0||1> 5 6 1 2 3 +0||2> 1 2 3 5 6
+	int	count;
+
+	count = 1;
+	push_b(head_b, head);
+	push_b(head_b, head);
+	medium_sort(head);
+	small_sort(head_b);
+	while (*head_b)
+	{
+		while ((*head_b)-> number < (*head)-> number)
+		{
+			count++;
+			rotate_a(head);
+		}
+		if ((*head_b)-> number > (*head)-> number)
+			push_a(head, head_b);
+		while (count)
+		{
+			count--;
+			rrotate_a(head);
+		}
+	}
+}
 
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
@@ -138,7 +189,7 @@ int	has_num(struct Stacks *head, int num)
 	struct Stacks	*check;
 
 	check = head;
-	while (check -> next)
+	while (check)
 	{
 		if (check -> number == num)
 			return (1);
@@ -149,28 +200,60 @@ int	has_num(struct Stacks *head, int num)
 
 void	free_lst(struct Stacks **head, struct Stacks **head_b)
 {
-	struct Stacks *temp;
+	struct Stacks	*temp;
+	int				size;
+	int				size_b;
 
+	size = lst_size(*head);
+	size_b = lst_size(*head_b);
 	if ((*head))
 	{
-		while ((*head))
+		while (--size)
 		{
 			temp = (*head);
-			while (temp && temp -> next)
+			while (temp)
 				temp = temp -> next;
 			free(temp);
 		}
 	}
 	if ((*head_b))
 	{
-		while ((*head_b))
+		while (--size_b)
 		{
 			temp = (*head_b);
-			while (temp && temp -> next)
+			while (temp)
 				temp = temp -> next;
 			free(temp);
 		}	
 	}
+}
+
+void sort_handler(struct Stacks **head, struct Stacks **head_b)
+{
+	int	size;
+
+	size = lst_size(*head);
+	if (size == 1)
+		return ;
+	else if (size == 2)
+		return (small_sort(head));
+	else if (size == 3)
+		return (medium_sort(head));
+	else if (size == 5)
+		return (big_sort(head, head_b));
+	else if (size > 5)
+		return (sort(head, head_b));
+	return ;
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
 void	push_swap(int ac, char *arr[])
@@ -180,33 +263,42 @@ void	push_swap(int ac, char *arr[])
 	int				arg;
 	int				num;
 
-	head_b = (struct Stacks *) malloc (sizeof(struct Stacks));
-	head_b = NULL;
 	arg = 0;
 	while (++arg < ac)
 	{
 		if (!str_checker (arr[arg]))
+		{
+			free_lst(&head, &head_b);
 			exit(1);
+		}
 		num = ft_atoi (arr[arg]);
-		if (head && has_num(head, num))
+		if ((head && has_num(head, num)))
 		{
 			write(2, "Error\n", 6);
+			free_lst(&head, &head_b);
 			exit(1);
 		}
 		head = lstadd (num, head);
 	}
+	head_b = (struct Stacks *) malloc (sizeof(struct Stacks));
+	if (!head_b)
+		return ;
+	head_b = NULL;
+
 	printf("Stack A before sorting:\n");
 	print_list(head);
 	printf("Stack B before sorting:\n");
 	print_list(head_b);
-	sort(&head, &head_b);
+
+	sort_handler(&head, &head_b);
+
 	printf("Stack A after sorting:\n");
 	print_list(head);
 	printf("Stack B after sorting:\n");
 	print_list(head_b);
-	// free_lst(&head, &head_b);
-	free(head);
-	free(head_b);
+
+	free_lst(&head, &head_b);
+	return ;
 }
 
 int	main(int ac, char *av[])
