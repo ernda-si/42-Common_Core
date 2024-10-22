@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/21 17:51:58 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/22 17:37:00 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	lst_size(struct Stacks *head)
 		head = head -> next;
 		size++;
 	}
-	printf("size: %d\n", size);
+	// printf("size: %d\n", size);
 	return (size);
 }
 
@@ -202,10 +202,10 @@ void	free_lst(struct Stacks **head, struct Stacks **head_b)
 {
 	struct Stacks	*temp;
 	int				size;
-	int				size_b;
+	// int				size_b;
 
 	size = lst_size(*head);
-	size_b = lst_size(*head_b);
+	// size_b = lst_size(*head_b);
 	if ((*head))
 	{
 		while (--size)
@@ -217,15 +217,7 @@ void	free_lst(struct Stacks **head, struct Stacks **head_b)
 		}
 	}
 	if ((*head_b))
-	{
-		while (--size_b)
-		{
-			temp = (*head_b);
-			while (temp)
-				temp = temp -> next;
-			free(temp);
-		}	
-	}
+		free(head_b);
 }
 
 void sort_handler(struct Stacks **head, struct Stacks **head_b)
