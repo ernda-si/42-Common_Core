@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/22 17:37:00 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/24 18:06:13 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	lst_size(struct Stacks *head)
 	return (size);
 }
 
-void	min_max(struct Stacks **head, struct Stacks **head_b)
+/* void	min_max(struct Stacks **head, struct Stacks **head_b)
 {
 	int	max_num;
 	int	min_num;
@@ -93,7 +93,7 @@ void	min_max(struct Stacks **head, struct Stacks **head_b)
 			break ;
 		}
 	}
-}
+} */
 
 void	small_sort(struct Stacks **head)
 {
@@ -132,56 +132,69 @@ void	medium_sort(struct Stacks **head)
 		return (rotate_a(head));
 }
 
+int	last_node(struct Stacks *head)
+{
+	int	size;
+	struct Stacks *temp;
+
+	size = lst_size(head);
+	temp = head;
+	while (--size)
+		temp = temp -> next;
+	return (temp -> number);
+}
+
 void	big_sort(struct Stacks **head, struct Stacks **head_b)
 {
-	// 2 1 3 6 5 +1||2> 1 2 3 6 5 +2> 6 5 1 2 3 +0||1> 5 6 1 2 3 +0||2> 1 2 3 5 6
-	int	count;
-
-	count = 1;
+	int	last;
 	push_b(head_b, head);
 	push_b(head_b, head);
 	medium_sort(head);
 	small_sort(head_b);
 	while (*head_b)
-	{
-		while ((*head_b)-> number < (*head)-> number)
+	{ // 1 3 5 4 2 > 2 4 5 | 1 3 >ra,pa 1 4 5 2 | 3 >
+		last = last_node(*head);
+		if ((*head_b)-> number > last && (*head_b)-> number < (*head)-> number)
 		{
-			count++;
 			rotate_a(head);
-		}
-		if ((*head_b)-> number > (*head)-> number)
 			push_a(head, head_b);
-		while (count)
-		{
-			count--;
-			rrotate_a(head);
 		}
+		else if ((*head_b)-> number < last && (*head_b)-> number > (*head)-> number)
+			rotate_a(head);
 	}
+}
+
+int	better_moves(struct Stacks *head)
+{
+	int	size;
+	int	mid;
+	int	counter;
+	struct Stacks *temp;
+
+	size = lst_size(head);
+	mid = size / 2;
+	counter = 0;
+	temp = head;
+	while (temp -> number < head -> number && temp -> number > head -> number)
+	{
+		temp = temp -> next;
+		counter++;
+	}
+	if (counter < mid && counter < size)
+		return (0);
+	else if (counter > mid && counter < size)
+		return (1);
+	return(123);
 }
 
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
-	int	count;
-
-	count = 1;
-	min_max(head, head_b);
-	while ((*head))
-	{
-		while ((*head)-> number < (*head_b)-> number)
-		{
-			count++;
-			rotate_b(head_b);
-		}
-		if ((*head)-> number > (*head_b)-> number)
-			push_b(head_b, head);
-		while (count)
-		{
-			count--;
-			rrotate_b(head_b);
-		}
-	}
-	while ((*head_b))
-		push_a(head, head_b);
+	
+	while (lst_size(head_b) != 3)
+		push_b(head_b, head);
+	medium_sort(head_b);
+	if (better_moves((*head)) == 1)
+		exit (0);
 }
 
 int	has_num(struct Stacks *head, int num)
@@ -202,10 +215,10 @@ void	free_lst(struct Stacks **head, struct Stacks **head_b)
 {
 	struct Stacks	*temp;
 	int				size;
-	// int				size_b;
+	int				size_b;
 
 	size = lst_size(*head);
-	// size_b = lst_size(*head_b);
+	size_b = lst_size(*head_b);
 	if ((*head))
 	{
 		while (--size)
@@ -217,7 +230,15 @@ void	free_lst(struct Stacks **head, struct Stacks **head_b)
 		}
 	}
 	if ((*head_b))
-		free(head_b);
+	{
+		while (--size_b)
+		{
+			temp = (*head_b);
+			while (temp)
+				temp = temp -> next;
+			free(temp);
+		}
+	}
 }
 
 void sort_handler(struct Stacks **head, struct Stacks **head_b)
@@ -240,12 +261,9 @@ void sort_handler(struct Stacks **head, struct Stacks **head_b)
 
 int	ft_strlen(const char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (!*str)
+		return 0;
+	return ft_strlen((str + 1)) + 1;
 }
 
 void	push_swap(int ac, char *arr[])
@@ -255,6 +273,7 @@ void	push_swap(int ac, char *arr[])
 	int				arg;
 	int				num;
 
+	ft_strlen("gabriel");
 	arg = 0;
 	while (++arg < ac)
 	{

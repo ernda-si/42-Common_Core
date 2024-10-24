@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/10/22 15:18:21 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/24 15:34:59 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ struct Stacks	*create_node(int new_data);
 int				has_num(struct Stacks *head, int num);
 int				find_max_num(struct Stacks *head);
 int				find_min_num(struct Stacks *head);
+int				get_middle(struct Stacks *head);
 int				ft_strlen(const char *str);
 int				ft_atoi(char const *str);
 int				str_checker(char *str);
