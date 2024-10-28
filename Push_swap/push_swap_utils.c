@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/21 15:51:31 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/28 15:37:48 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ struct Stacks	*create_node(int new_data)
 	struct Stacks	*new_node;
 
 	new_node = (struct Stacks *)malloc (sizeof(struct Stacks));
+	if (!new_node)
+		exit(0);
 	new_node -> number = new_data;
 	new_node -> next = NULL;
 	return (new_node);
