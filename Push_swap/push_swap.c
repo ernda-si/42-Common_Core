@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/28 18:01:23 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/10/30 13:14:41 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	lst_size(struct Stacks *head)
 	return (size);
 }
 
-/* void	min_max(struct Stacks **head, struct Stacks **head_b)
+void	min_max(struct Stacks **head, struct Stacks **head_b)
 {
 	int	max_num;
 	int	min_num;
@@ -93,7 +93,7 @@ int	lst_size(struct Stacks *head)
 			break ;
 		}
 	}
-} */
+}
 
 void	small_sort(struct Stacks **head)
 {
@@ -159,7 +159,7 @@ int	better_moves(struct Stacks *head, struct Stacks *head_b)
 	{
 		temp = temp -> next;
 		counter++;
-		printf("test\n");
+		printf("count ");
 	}
 	if (counter < mid && counter < size)
 		return (counter);
@@ -193,37 +193,71 @@ void	big_sort(struct Stacks **head, struct Stacks **head_b)
 	}
 	return ;
 }
+
+void	rmedium_sort(struct Stacks **head)
+{
+	int	first;
+	int	second;
+	int	third;
+	
+	first = (*head)-> number;
+	second = (*head)-> next -> number;
+	third = (*head)-> next -> next -> number;
+	// 1 < 2  < 3 null
+	if (first > second && second > third)
+		return ;
+	// 1 < 3 > 2 sa ra
+	else if (first > second && second < third && third < first)
+		return (swap_a(*head), rotate_a(head));
+	// 2 > 1 < 3 sa
+	else if(first < second && second > third && third < first)
+		return (swap_a(*head));
+	// 2 < 3 > 1 rra
+	else if(first > second && second < third && third > first)
+		return (rrotate_a(head));
+	// 3 > 2 > 1 rra rra
+	else if(first < second && second < third)
+		return (rotate_a(head), swap_a(*head));
+	// 3 > 1 < 2 ra
+	else if(first < second && second > third)
+		return (rotate_a(head));
+}
+
 // 1 3 2 5 4 6 8 9 7
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
 	int	mid;
-	int	bm;
+	int	i = 0;
 
 	mid = lst_size(*head) / 2;
 	while (lst_size(*head_b) != 3)
 	{
-		if ((*head)-> number == find_min_num(*head))
+		if ((*head)-> number == find_min_num(*head) || (*head)-> number == find_max_num(*head))
 			rotate_a(head);
 		push_b(head_b, head);
 	}
-	medium_sort(head_b);
-	while (head && head_b)
+	rmedium_sort(head_b);
+	while (head_b && head)
 	{
-		// printf("A: %d\n", (*head)-> number);
-		// printf("B: %d\n", (*head_b)-> number);
-		bm = better_moves(*head, *head_b);
-		while (bm && bm-- < mid)
-			rotate_a(head);
-		while (bm && bm > mid && bm < lst_size(*head) && bm++)
-			rrotate_a(head);
-		push_b(head_b, head);
-		if (!bm)
+		if ((*head)-> number > (*head_b)-> number 
+			&& (*head)-> number < last_node(*head_b))
+			push_b(head_b, head);
+		else if (better_moves(*head, *head_b) > mid)
+			rrotate_b(head_b);
+		else if (better_moves(*head, *head_b) <= mid)
+			rotate_b(head_b);
+		i++;
+		if (i == 15 || (*head)-> number < last_node(*head_b)
+			&& (*head_b)-> number == find_max_num(*head_b))
 		{
-			printf("!mb\n");
+			push_b(head_b, head);
 			break;
 		}
 	}
-}
+	rotate_b(head_b);
+	while ((*head_b))
+		push_a(head, head_b);
+} // 1 3 2 7 4 6 5 // 
 
 int	has_num(struct Stacks *head, int num)
 {
