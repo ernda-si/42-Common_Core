@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:53:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/27 17:26:16 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:34:46 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	swap_b(struct Stacks *head_b)
 	struct Stacks	temp_b;
 
 	if (!head_b || !head_b -> next)
-		exit(0);
+		return ;
 	temp_b . number = head_b -> number;
 	head_b -> number = head_b -> next -> number;
 	head_b -> next -> number = temp_b . number;
