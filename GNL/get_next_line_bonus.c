@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 15:20:25 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/09/27 12:45:44 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:56:36 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,28 @@ char	*get_next_line(int fd)
 
 int	main(void)
 {
-	int	fd;
-	int	fd2;
-	int	i;
-	char	*line;
+	// int	fd;
+	// int	fd2;
+	// int	i;
+	// char	*line;
+	printf("%s\n", get_next_line(5));
+	// i = 1;
+	// fd = open("text1", O_RDONLY);
+	// fd2 = open("text2", O_RDONLY);
 
-	i = 1;
-	fd = open("text1", O_RDONLY);
-	fd2 = open("text2", O_RDONLY);
-
-	printf("BUFFER_SIZE: %d\n\n", BUFFER_SIZE);
-	while ((line = get_next_line(fd)))
-	{
-		printf("GNL[%d][fd%d]: %s", i++, fd, line);
-		free(line);
-	}
-	i = 1;
-	while ((line = get_next_line(fd2)))
-	{
-		printf("GNL[%d][fd%d]: %s", i++, fd2, line);
-		free(line);
-	}
-	printf("\n");
-	close(fd);
-	close(fd2);
+	// printf("BUFFER_SIZE: %d\n\n", BUFFER_SIZE);
+	// while ((line = get_next_line(5)))
+	// {
+	// 	printf("GNL[%d][fd%d]: %s", i++, fd, line);
+	// 	free(line);
+	// }
+	// i = 1;
+	// while ((line = get_next_line(5)))
+	// {
+	// 	printf("GNL[%d][fd%d]: %s", i++, fd2, line);
+	// 	free(line);
+	// }
+	// printf("\n");
+	// close(fd);
+	// close(fd2);
 }

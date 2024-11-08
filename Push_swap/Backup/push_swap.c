@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/11/08 17:42:39 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/11/07 16:44:08 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,46 +275,46 @@ void handler(struct Stacks **head, struct Stacks **head_b)
 	int	find_mx;
 	int	find_mn;
 
-	mid = lst_size(*head) / 2;
-	find_mx = find_max(head);
-	find_mn = find_min(head);
+	mid = lst_size(*head_b);
+	find_mx = find_max(head_b);
+	find_mn = find_min(head_b);
 	// printf("find_mx: %d\n", find_mx);
 	// printf("find_mn: %d\n", find_mn);
 	// printf("Ehandler\n");
-	if (((*head_b)-> number == max_n(*head_b) && find_mx <= mid) || (((*head_b)-> number == min_n(*head_b)) && find_mn <= mid))
+	if ((*head)-> number == max_n(*head) || ((*head)-> number == min_n(*head) && find_mx <= mid) || find_mn < mid)
 	{
 		printf("A\n");
-		if (min_n(*head_b) == (*head_b)-> number && min_n(*head) == (*head)-> number)
-			return(push_a(head, head_b));
-		else if (max_n(*head_b) == (*head_b)-> number && max_n(*head) == (*head)-> number)
+		if (min_n(*head) == (*head)-> number && min_n(*head_b) == (*head_b)-> number)
+			return(push_b(head_b, head));
+		else if (max_n(*head) == (*head)-> number && max_n(*head_b) == (*head_b)-> number)
 		{
-			push_a(head, head_b);
-			swap_a(*head);
+			push_b(head_b, head);
+			swap_b(*head_b);
 		}
-		return(rotate_a(head));
+		return(rotate_b(head_b));
 	}
-	else if (((*head_b) -> number == max_n(*head_b) && find_mx >= mid) || (((*head_b) -> number == min_n(*head_b) && find_mn > mid)))
+	else if ((*head) -> number == max_n(*head) || ((*head) -> number == min_n(*head) && find_mx >= mid) || find_mn > mid)
 	{
 		printf("B\n");
-		if (min_n(*head_b) == (*head_b)-> number && min_n(*head) == (*head)-> number)
+		if (min_n(*head) == (*head)-> number && min_n(*head_b) == (*head_b)-> number)
 		{
-			push_a(head, head_b);
-			swap_a(*head);
+			push_b(head_b, head);
+			swap_b(*head_b);
 		}
-		else if (max_n(*head_b) == (*head_b)-> number && max_n(*head) == (*head)-> number)
-			return(push_a(head, head_b));
-		return(rrotate_a(head));
+		else if (max_n(*head) == (*head)-> number && max_n(*head_b) == (*head_b)-> number)
+			return(push_b(head_b, head));
+		return(rrotate_b(head_b));
 	}
 	moves = better_moves(*head, *head_b);
 	if (moves < mid && moves)
 	{
 		printf("C\n");
-		return (rotate_a(head));
+		return (rotate_b(head_b));
 	}
-	else if (moves > mid && moves < lst_size(*head))
+	else if (moves > mid && moves < lst_size(*head_b))
 	{
 		printf("D\n");
-		return (rrotate_a(head));
+		return (rrotate_b(head_b));
 	}
 	printf("handler\n");
 }
@@ -327,39 +327,34 @@ void handler(struct Stacks **head, struct Stacks **head_b)
 // if (fA < fB && fA > lB) push_b
 // if (fA > fB && fA < lB) (rotate_b if < mid && existir) ou (rrotate_b if > mid && < size)
 
-// 1 9 2 7 6 3 4 8 10 -100 -12 12 
-
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
-	int	fB;
 	int	fA;
-	int	lA;
+	int	fB;
+	int	lB;
 	int	i = 0;
 	
-	while (lst_size(*head) > 3)
-	{
-		while ((*head)-> number == max_n((*head)) || (*head)-> number == min_n((*head)))
-			rotate_a(head);
-		push_b(head_b, head);
-	}
-	medium_sort(head);
+	push_b(head_b, head);
+	push_b(head_b, head);
+	rsmall_sort(head_b);
 	while (head && (*head))
 	{
-		fA = (*head_b)-> number;
-		lA = last_node(*head_b);
-		// printf("fB: %d\n", fB);
+		fA = (*head)-> number;
+		fB = (*head_b)-> number;
+		lB = last_node(*head_b);
 		// printf("fA: %d\n", fA);
-		// printf("lA: %d\n", lA);
-		if (fB > fA && fB < lA)
-			push_a(head, head_b);
-		else if ((fB < fA && fB < lA) || (fB > fA && fB > lA) || (fB < fA && fB > lA))
+		// printf("fB: %d\n", fB);
+		// printf("lB: %d\n", lB);
+		if (fA < fB && fA > lB)
+			push_b(head_b, head);
+		else if ((fA < fB && fA < lB) || (fA > fB && fA > lB) || (fA > fB && fA < lB))
 			handler(head, head_b);
-		i++;
-		if (i == 1)
-			break;
+		// i++;
+		// if (i == 14)
+		// 	break;
 	}
-	// while ((*head_b))
-	// 	push_a(head, head_b);
+	while ((*head_b))
+		push_a(head, head_b);
 } // 1 3 2 7 4 6 5 // 
 
 int	has_num(struct Stacks *head, int num)
