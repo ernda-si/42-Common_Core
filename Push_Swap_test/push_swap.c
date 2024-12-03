@@ -6,12 +6,13 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/11/25 16:36:00 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/11/25 16:22:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// return the biggest number
 int	max_n(struct Stacks *head)
 {
 	struct Stacks	*big_num;
@@ -32,6 +33,7 @@ int	max_n(struct Stacks *head)
 	return (max);
 }
 
+// return the smallest number
 int	min_n(struct Stacks *head)
 {
 	struct Stacks	*small_num;
@@ -52,6 +54,7 @@ int	min_n(struct Stacks *head)
 	return (min);
 }
 
+// returns list size
 int	lst_size(struct Stacks *head)
 {
 	int	size;
@@ -64,7 +67,7 @@ int	lst_size(struct Stacks *head)
 	}
 	return (size);
 }
-
+// pushes max and then min number from stack A to stack B
 void	min_max(struct Stacks **head, struct Stacks **head_b)
 {
 	int	max_num;
@@ -92,6 +95,7 @@ void	min_max(struct Stacks **head, struct Stacks **head_b)
 	}
 }
 
+// sorts 2 numbers
 void	small_sort(struct Stacks **head)
 {
 	if ((*head)-> number > (*head)-> next -> number)
@@ -100,6 +104,7 @@ void	small_sort(struct Stacks **head)
 		return ;
 }
 
+// sorts 2 number inverted
 void	rsmall_sort(struct Stacks **head)
 {
 	if ((*head)-> number < (*head)-> next -> number)
@@ -108,6 +113,7 @@ void	rsmall_sort(struct Stacks **head)
 		return ;
 }
 
+// sorts 3 numbers
 void	medium_sort(struct Stacks **head)
 {
 	int	first;
@@ -137,6 +143,7 @@ void	medium_sort(struct Stacks **head)
 		return (rotate_a(head));
 }
 
+// sorts 3 numbers inverted
 void	rmedium_sort(struct Stacks **head)
 {
 	int	first;
@@ -166,6 +173,7 @@ void	rmedium_sort(struct Stacks **head)
 		return (rotate_a(head));
 }
 
+// returns last node value
 int	last_node(struct Stacks *head)
 {
 	int	size;
@@ -196,6 +204,7 @@ int	bst_moves(struct Stacks *head, struct Stacks *head_b)
 	return(counter);
 }
 
+// sorts 5 numbers (not working yet)
 void	big_sort(struct Stacks **head, struct Stacks **head_b)
 {
 	int	last;
@@ -222,6 +231,7 @@ void	big_sort(struct Stacks **head, struct Stacks **head_b)
 	return ;
 }
 
+// amount of steps until max number on a list
 int	find_max(struct Stacks **head)
 {
 	struct Stacks *temp;
@@ -239,6 +249,7 @@ int	find_max(struct Stacks **head)
 	return (i);
 }
 
+// amount of steps until min number on a list
 int find_min(struct Stacks **head)
 {
 	struct Stacks *temp;
@@ -256,6 +267,7 @@ int find_min(struct Stacks **head)
 	return (i);
 }
 
+// verify if theres a bigger number on stack B compared to stack A's head
 int	has_bigger(struct Stacks **head, struct Stacks **head_b)
 {
 	struct Stacks *temp;
@@ -270,6 +282,7 @@ int	has_bigger(struct Stacks **head, struct Stacks **head_b)
 	return (1);
 }
 
+// verify if theres a smaller number on stack B compared to stack A's head
 int	has_smaller(struct Stacks **head, struct Stacks **head_b)
 {
 	struct Stacks *temp;
@@ -315,6 +328,7 @@ void handler(struct Stacks **head, struct Stacks **head_b)
 		return(rrotate_a(head));
 }
 
+
 void end_sort(struct Stacks **head)
 {
 	while (find_min(head) > lst_size(*head) / 2)
@@ -325,40 +339,35 @@ void end_sort(struct Stacks **head)
 		return (rrotate_a(head), swap_a(*head));
 }
 
-// 2 6 4 -1 1 3 | 7 -2 // 6 4 -1 1 3 | 2 7 -2 // 4 -1 1 3 | 6 7 -2 2 // -1 1 3 | 4 6 7 -2 2 //
-// 1 3 | 2 4 6 7 -2 -1 // 3 | 1 2 4 6 7 -2 -1 // 1 2 3 4 6 7 -2 -1 // -1 1 2 3 4 6 7 -2 //
-// -2 -1 1 2 3 4 6 7
-// if (fA > fB && fA > lB) (rotate_b if < mid && existir) ou (rrotate_b if > mid && < size)
-// if (fA < fB && fA < lB) (rotate_b if < mid && existir) ou (rrotate_b if > mid && < size)
-// if (fA < fB && fA > lB) push_b
-// if (fA > fB && fA < lB) (rotate_b if < mid && existir) ou (rrotate_b if > mid && < size)
+int	msd(int num)
+{
+	
+	return (exp);
+}
 
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
-	int	f_b;
-	int	f_a;
-	int	l_a;
-	int	i = 0;
+	int	exp;
+	int	size;
 
-	while ((lst_size(*head)) > 3)
-		push_b(head_b, head);
-	medium_sort(head);
-	while (head_b && (*head_b))
+	exp = msd(max_n(*head));
+	while (exp)
 	{
-		f_b = (*head_b)-> number;
-		f_a = (*head)-> number;
-		l_a = last_node(*head);
-		if (f_b < f_a && f_b > l_a)
-			push_a(head, head_b);
-		else if ((f_b < f_a && f_b < l_a) || (f_b > f_a && f_b > l_a) || (f_b > f_a && f_b < l_a))
-			handler(head, head_b);
-		i++;
-		if (i == 1)
-			break;
+	size = lst_size(head);
+		while (size)
+		{
+			if (((*head)-> number << exp) & 1)
+				push_b(head_b, head);
+			else
+				rotate_a(head);
+			size--;
+		}
+	exp--;
 	}
 	end_sort(head);
-} // 1 3 2 7 4 6 5 // 
+}
 
+// check if number exists already
 int	has_num(struct Stacks *head, int num)
 {
 	struct Stacks	*check;
@@ -373,6 +382,7 @@ int	has_num(struct Stacks *head, int num)
 	return (0);
 }
 
+// free both nodes
 void	free_lst(struct Stacks **head)
 {
 	struct Stacks	*temp;
@@ -409,6 +419,7 @@ void sort_handler(struct Stacks **head, struct Stacks **head_b)
 	return ;
 }
 
+// return str len
 int	ft_strlen(const char *str)
 {
 	if (!*str)
@@ -416,6 +427,7 @@ int	ft_strlen(const char *str)
 	return ft_strlen((str + 1)) + 1;
 }
 
+// main function for sorting
 void	push_swap(int ac, char *arr[])
 {
 	struct Stacks	*head;

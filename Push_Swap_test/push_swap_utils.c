@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/03 15:21:29 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/11/05 17:32:08 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void	print_list(struct Stacks *head)
 	temp_2 = head;
 	while (temp_2)
 	{
-		printf("value on node[%d]: %d | index: %d | flag: %d\n", ++i, temp_2 -> number, temp_2 -> index, temp_2 -> flag);
+		printf("value on node[%d]: %d\n", ++i, temp_2 -> number);
 		temp_2 = temp_2 -> next;
 	}
 }

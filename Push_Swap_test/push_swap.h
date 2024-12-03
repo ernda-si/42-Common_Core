@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/12/03 15:08:42 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/11/20 12:38:46 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 typedef struct Stacks
 {
 	int				number;
-	int				index;
-	int				flag;
 	struct Stacks	*next;
 }	t_Stacks;
 
