@@ -152,9 +152,9 @@ int	last_node(struct Stacks *head)
 void	big_sort(struct Stacks **head, struct Stacks **head_b)
 {
 	int	last;
-	printf("min number: %d\n", min_n(*head));
-	// while ((*head)-> number != min_n(*head))
-	// 	rotate_a(head);
+	// printf("min number: %d\n", min_n(*head));
+	while ((*head)-> number != min_n(*head))
+		rotate_a(head);
 	push_b(head_b, head);
 	push_b(head_b, head);
 	small_sort(head_b);
@@ -278,109 +278,91 @@ void	free_lst(struct Stacks **head)
 	}
 }
 
-int	bin_count(int num)
+int bin_count(int num)
 {
-	int	counter;
-	
-	counter = 1;
+    int	counter;
+
+	counter = 0;
 	while (num)
 	{
-		printf("num: %d\n", num);
-		printf("counter: %d\n", counter);
+		counter ++;
 		num = num >> 1;
-		counter++;
 	}
 	return (counter);
 }
 
-void	printf_bin(int num)
+
+void     printf_bin(unsigned int num)
 {
-	int	bin;
-
-	printf("binary of %d: ", num);
-	while (num)
-	{	
-		if (num >> 0 & 1)
-			printf("1");
-		else
-			printf("0");
-		num = num >> 1;
-	}
-	printf("\n");
-}
-
-void	positive(struct Stacks **head)
-{
-	struct Stacks *node;
-	int	min;
-
-	min = min_n(*head);
-	node = (*head);
-	while (node)
-	{
-		node -> number = node -> number + (min * -1);
-		node = node -> next;
-	}
+        if (num > 1)
+                printf_bin(num / 2);
+        write(1, &"0123456789"[num % 2], 1);
 }
 
 void	index_num(struct Stacks **head)
 {
 	struct Stacks *node;
-	int	size;
+	int	min;
 
-	size = lst_size(*head);
-	if (min_n(*head) < 0)
-		return positive(head);
-	while (size)
+	min = min_n(*head) * -1;
+	printf("min number: %d\n", min);
+	node = (*head);
+	while (node)
 	{
-		node = find_max(head);
-		node -> index = size;
-		node -> number = 0;
-		size--;
+		node -> number += min;
+		node = node -> next;
 	}
+	return ;
 }
 
 int	bin_left(struct Stacks *head, int exp)
 {
 	struct Stacks *temp;
-	int	counter;
 
-
-	counter = 0;
+	temp = head;
 	while (temp)
 	{
-		if (head -> index >> exp & 1)
-			counter++;
+		// printf("temp on function: %d\n", temp -> number);
+		if ((temp -> number << exp & 1) == 0)
+			return(1);
 		temp = temp -> next;
 	}
-	return (counter);
+	return (0);
 }
 
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
 	int	exp;
+	int	temp;
 	int	size;
 
-	index_num(head);
-	size = lst_size(*head);
-	printf_bin(max_n(*head));
-	while (size)
+	temp = 0;
+	if (min_n(*head) < 0)
+		index_num(head);
+	// printf_bin(max_n(*head));
+	// printf(" max: %d\n", max_n(*head));
+	exp = bin_count(max_n(*head));
+	// printf ("exp: %d\n", exp);
+	while (temp != exp)
 	{
-		exp = bin_count(max_n(*head));
-		printf ("exp: %d\n", exp);
-		while ((*head))
+		size = lst_size(*head);
+		while (size)
 		{
-			if ((*head) -> index >> exp & 1)
+			// printf_bin((*head)-> number);
+			// printf(" is the bit set of number: %d\n", (*head) -> number);
+			if (((*head) -> number >> temp & 1) == 0)
 				push_b(head_b, head);
 			else
 				rotate_a(head);
-			if (!bin_left(*head, exp))
+			if (!bin_left(*head, temp))
 				break;
+			size--;
 		}
-		exp--;
-		size--;
+		while ((*head_b))
+			push_a(head, head_b);
+		temp++;
 	}
-}
+}												// 2 1 9 8 10 5 3
 
 void sort_handler(struct Stacks **head, struct Stacks **head_b)
 {
@@ -419,7 +401,7 @@ void	push_swap(int ac, char *arr[])
 		exit(0);
 	arg = 0;
 	matrix = ft_split(arr[1], ' ');
-	printf("matrix: %s\n", *matrix);
+	// printf("matrix: %s\n", *matrix);
 	while (matrix[arg])
 	{
 		if (!str_checker (matrix[arg]))
@@ -442,17 +424,17 @@ void	push_swap(int ac, char *arr[])
 		return ;
 	head_b = NULL;
 
-	printf("Stack A before sorting:\n");
-	print_list(head);
-	printf("Stack B before sorting:\n");
-	print_list(head_b);
+	// printf("Stack A before sorting:\n");
+	// print_list(head);
+	// printf("Stack B before sorting:\n");
+	// print_list(head_b);
 
 	sort_handler(&head, &head_b);
 
-	printf("Stack A after sorting:\n");
-	print_list(head);
-	printf("Stack B after sorting:\n");
-	print_list(head_b);
+	// printf("Stack A after sorting:\n");
+	// print_list(head);
+	// printf("Stack B after sorting:\n");
+	// print_list(head_b);
 
 	free_lst(&head);
 	return ;
