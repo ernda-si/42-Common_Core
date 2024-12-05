@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/03 15:21:29 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:16:54 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,18 @@ int	str_checker(char *str)
 	len = ft_strlen(str);
 	i = 0;
 	if (!str || !*str)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
+		return (write(2, "Error\n", 6));
 	if (str[i] != '-' && len > 10)
-	{
-		write(2, "Error\n", 6);
-		return (0);
-	}
+		return (write(2, "Error\n", 6));
 	if (str[i] == '-' && str[i + 1] >= 48 && str[i + 1] <= 57)
 		i++;
-	while (str[i] >= 48 && str[i] <= 57 && str[i])
-	{
-		if (str[i] < 48 && str[i] > 57 && str[i])
-		{
-			write(2, "Error\n", 6);
-			return (0);
-		}
+	while (str[i] >= '0' && str[i] <= '9' && str[i])
 		i++;
-	}
+	if (str[i] < '0' && str[i] > '9' && str[i])
+		return (write(2, "Error\n", 6));
 	if (!str[i])
 		return (1);
-	write(2, "Error\n", 6);
-	return (0);
+	return (write(2, "Error\n", 6));
 }
 
 int	ft_atoi(char const *str)
@@ -102,18 +90,4 @@ struct Stacks	*lstadd(int new_data, struct Stacks *start)
 		end = end -> next;
 	end -> next = node;
 	return (start);
-}
-
-void	print_list(struct Stacks *head)
-{
-	struct Stacks	*temp_2;
-	int				i;
-
-	i = 0;
-	temp_2 = head;
-	while (temp_2)
-	{
-		printf("value on node[%d]: %d | index: %d | flag: %d\n", ++i, temp_2 -> number, temp_2 -> index, temp_2 -> flag);
-		temp_2 = temp_2 -> next;
-	}
 }

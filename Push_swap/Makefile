@@ -6,11 +6,12 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/27 16:58:06 by ernda-si          #+#    #+#              #
-#    Updated: 2024/10/28 15:24:31 by ernda-si         ###   ########.fr        #
+#    Updated: 2024/12/05 16:37:43 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = push_swap.c push_swap_utils.c pushes.c rotates.c rrotates.c swaps.c \
+SRC = push_swap.c push_swap_utils.c pushes.c rotates.c im_tired.c \
+rrotates.c swaps.c ft_split.c minions.c helper_functions.c
 
 OBJ = $(SRC:.c=.o)
 
