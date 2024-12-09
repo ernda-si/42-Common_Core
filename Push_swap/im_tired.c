@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:37:36 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/05 17:28:44 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:11:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	print_list(struct Stacks *head)
 		temp_2 = temp_2 -> next;
 }
 
-int	last_node(struct Stacks *head)
+struct Stacks	*last_node(struct Stacks *head)
 {
 	struct Stacks	*temp;
 	int				size;
@@ -46,5 +46,5 @@ int	last_node(struct Stacks *head)
 	temp = head;
 	while (--size)
 		temp = temp -> next;
-	return (temp -> number);
+	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:19:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/05 16:37:54 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:33:59 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,20 +79,31 @@ int	has_num(struct Stacks *head, int num)
 	return (0);
 }
 
-void	free_lst(struct Stacks **head)
+void	free_lst(struct Stacks *head, char **matrix)
 {
 	struct Stacks	*temp;
+	struct Stacks	*temp2;
+	int				i;
 	int				size;
 
-	size = lst_size (*head);
-	if ((*head))
+	size = lst_size(head) + 1;
+	i = 0;
+	temp = head;
+	temp2 = head;
+	while (--size && head)
 	{
-		while (--size)
-		{
-			temp = (*head);
-			while (temp)
-				temp = temp -> next;
-			free (temp);
-		}
+		temp = temp2;
+		while (temp)
+			temp = temp -> next;
+		head = temp;
+		free(head);
 	}
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+	// free(head);
+	return ;
 }

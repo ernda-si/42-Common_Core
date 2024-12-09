@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/05 17:00:15 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:30:07 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,11 @@ void	sort(struct Stacks **head, struct Stacks **head_b)
 	}
 }
 
-
+void	error()
+{
+	write(2, "Error\n", 6);
+	exit(0);
+}
 
 void	push_swap(int ac, char *arr[])
 {
@@ -85,35 +89,24 @@ void	push_swap(int ac, char *arr[])
 	struct Stacks	*head_b;
 	char			**matrix;
 	int				arg;
-	int				num;
 
 	if (ac > 2)
 		exit(0);
 	arg = 0;
 	matrix = ft_split(arr[1], ' ');
+	head = NULL;
 	while (matrix[arg])
 	{
 		if (!str_checker (matrix[arg]))
-		{
-			free_lst(&head);
-			exit(1);
-		}
-		num = ft_atoi (matrix[arg]);
-		if ((head && has_num(head, num)))
-		{
-			write(2, "Error\n", 6);
-			free_lst(&head);
-			exit(1);
-		}
-		head = lstadd (num, head);
+			error();
+		if ((head && has_num(head, ft_atoi (matrix[arg]))))
+			error();
+		head = lstadd (ft_atoi (matrix[arg]), head);
 		arg++;
 	}
-	head_b = (struct Stacks *) malloc (sizeof(struct Stacks));
-	if (!head_b)
-		return ;
 	head_b = NULL;
 	sort_handler(&head, &head_b);
-	free_lst(&head);
+	free_lst(head, matrix);
 	return ;
 }
 

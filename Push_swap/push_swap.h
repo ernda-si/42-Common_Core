@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/12/05 17:00:55 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:11:22 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			swap_a(struct Stacks *head);
 void			swap_b(struct Stacks *head_b);
 void			swap_swap(struct Stacks *head, struct Stacks *head_b);
 void			index_num(struct Stacks **head);
-void			free_lst(struct Stacks **head);
+void			free_lst(struct Stacks *head, char **matrix);
 void			sort_handler(struct Stacks **head, struct Stacks **head_b);
 void			printf_bin(unsigned int num);
 char			**ft_split(char const *s, char c);
@@ -56,7 +56,7 @@ int				max_n(struct Stacks *head);
 int				ft_strlen(const char *str);
 int				bin_count(int num);
 int				bin_left(struct Stacks *head, int exp);
-int				last_node(struct Stacks *head);
+struct Stacks	*last_node(struct Stacks *head);
 void			push_swap(int ac, char *arr[]);
 void			small_sort(struct Stacks **head);
 void			medium_sort(struct Stacks **head);

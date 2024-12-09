@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:54:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/10/16 13:58:26 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/09 16:20:47 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	push_a(struct Stacks **head, struct Stacks **head_b)
 	*head = new_node;
 	temp = *head_b;
 	*head_b = (*head_b)-> next;
-	free(temp);
 	write (1, "pa\n", 3);
 }
 
@@ -48,6 +47,5 @@ void	push_b(struct Stacks **head_b, struct Stacks **head)
 	*head_b = new_node;
 	temp = *head;
 	*head = (*head)-> next;
-	free(temp);
 	write (1, "pb\n", 3);
 }
