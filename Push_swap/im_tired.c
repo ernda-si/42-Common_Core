@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:37:36 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 16:57:22 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:56:17 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	index_num(struct Stacks **head)
 	return ;
 }
 
-void	print_list(struct Stacks *head)
+/* void	print_list(struct Stacks *head)
 {
 	struct Stacks	*temp;
 	int				i;
@@ -41,7 +41,7 @@ void	print_list(struct Stacks *head)
 		temp = temp -> next;
 	}
 	printf("\n");
-}
+} */
 
 struct Stacks	*last_node(struct Stacks *head)
 {
@@ -57,23 +57,25 @@ struct Stacks	*last_node(struct Stacks *head)
 
 void	error(struct Stacks *head, char **matrix, char *str)
 {
-	write(2, "Error\n", 6);
-	free_lst(head, matrix, str);
-	exit(0);
+	if (head && matrix && str)
+		free_lst (head, matrix, str);
+	exit(1);
 }
 
 void	big_sort(struct Stacks **head, struct Stacks **head_b)
 {
-	while(lst_size(*head) != 3)
+	while (lst_size(*head) != 3)
 	{
 		if ((*head)-> number == min_n(*head))
 			push_b(head_b, head);
 		else if ((*head)-> next -> next -> number == min_n(*head)
 			|| (*head)-> next -> next -> next -> number == min_n(*head)
-				|| last_node(*head) -> number == min_n(*head))
+			|| last_node(*head)-> number == min_n(*head))
 			rrotate_a(head);
 		else
 			rotate_a(head);
+		if (verify(*head))
+			return ;
 	}
 	medium_sort(head);
 	while (*head_b)

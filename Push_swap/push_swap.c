@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 16:56:11 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:56:38 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	push_swap(int ac, char *arr[])
 	matrix = ft_split(str, ' ');
 	while (matrix[num])
 	{
-		if (!str_checker (matrix[num])
+		if (str_checker (matrix[num])
 			|| (head && has_num(head, ft_atoi (matrix[num]))))
 			error(head, matrix, str);
 		head = lstadd (ft_atoi (matrix[num]), head);

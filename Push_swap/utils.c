@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 13:32:55 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 16:57:06 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:39:02 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ char	*ft_strjoin(char const *s1, char *s2)
 
 int	verify(struct Stacks *head)
 {
-	struct Stacks *temp;
-	struct Stacks *temp2;
+	struct Stacks	*temp;
+	struct Stacks	*temp2;
 
 	temp = head;
 	temp2 = head -> next;
-	while(temp2 -> next && temp -> number < temp2 -> number)
+	while (temp2 -> next && temp -> number < temp2 -> number)
 	{
 		temp = temp -> next;
 		temp2 = temp2 -> next;

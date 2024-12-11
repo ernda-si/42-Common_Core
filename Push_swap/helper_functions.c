@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:19:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 17:02:12 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:37:36 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ void	free_lst(struct Stacks *head, char **matrix, char *str)
 		free(matrix[i]);
 	free(matrix);
 	*str = '\0';
-	free(str);
 	return ;
 }
