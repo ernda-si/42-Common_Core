@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:54:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/09 16:20:47 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:09:02 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@
 // Do nothing if b is empty.
 void	push_a(struct Stacks **head, struct Stacks **head_b)
 {
-	struct Stacks	*new_node;
 	struct Stacks	*temp;
 
-	if (!*head_b)
+	if (!head_b || !*head_b)
 		return ;
-	new_node = create_node((*head_b)-> number);
-	new_node -> next = *head;
-	*head = new_node;
 	temp = *head_b;
 	*head_b = (*head_b)-> next;
+	if (!head)
+		*head = temp;
+	else
+	{
+		temp -> next = *head;
+		*head = temp;
+	}
 	write (1, "pa\n", 3);
 }
 
@@ -35,17 +38,18 @@ void	push_a(struct Stacks **head, struct Stacks **head_b)
 // Do nothing if a is empty.
 void	push_b(struct Stacks **head_b, struct Stacks **head)
 {
-	struct Stacks	*new_node;
 	struct Stacks	*temp;
 
-	if (!*head)
+	if (!head || !*head)
 		return ;
-	new_node = create_node((*head)-> number);
-	if (!new_node)
-		return ;
-	new_node -> next = *head_b;
-	*head_b = new_node;
 	temp = *head;
 	*head = (*head)-> next;
+	if (!head_b)
+		*head_b = temp;
+	else
+	{
+		temp -> next = *head_b;
+		*head_b = temp;
+	}
 	write (1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/09 17:49:16 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:56:11 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ void	medium_sort(struct Stacks **head)
 	first = (*head)-> number;
 	second = (*head)-> next -> number;
 	third = (*head)-> next -> next -> number;
-	if (first < second && second < third)
-		return ;
-	else if (first < second && second > third && third > first)
+	if (first < second && second > third && third > first)
 		return (swap_a(*head), rotate_a(head));
 	else if (first > second && second < third && third > first)
 		return (swap_a(*head));
@@ -42,11 +40,6 @@ void	medium_sort(struct Stacks **head)
 	else if (first > second && second < third)
 		return (rotate_a(head));
 }
-
-/* static void	big_sort(struct Stacks **head, struct Stacks **head_b)
-{
-	
-} */
 
 void	sort(struct Stacks **head, struct Stacks **head_b)
 {
@@ -77,37 +70,33 @@ void	sort(struct Stacks **head, struct Stacks **head_b)
 	}
 }
 
-void	error()
-{
-	write(2, "Error\n", 6);
-	exit(0);
-}
-
 void	push_swap(int ac, char *arr[])
 {
 	struct Stacks	*head;
 	struct Stacks	*head_b;
 	char			**matrix;
-	int				arg;
+	char			*str;
+	int				num;
 
-	if (ac > 2)
+	if (ac < 2)
 		exit(0);
-	arg = 0;
-	matrix = ft_split(arr[1], ' ');
+	num = 0;
 	head = NULL;
-	while (matrix[arg])
+	str = NULL;
+	while (*++arr)
+		str = ft_strjoin(*arr, str);
+	matrix = ft_split(str, ' ');
+	while (matrix[num])
 	{
-		if (!str_checker (matrix[arg]))
-			error();
-		if ((head && has_num(head, ft_atoi (matrix[arg]))))
-			error();
-		head = lstadd (ft_atoi (matrix[arg]), head);
-		arg++;
+		if (!str_checker (matrix[num])
+			|| (head && has_num(head, ft_atoi (matrix[num]))))
+			error(head, matrix, str);
+		head = lstadd (ft_atoi (matrix[num]), head);
+		num++;
 	}
 	head_b = NULL;
 	sort_handler(&head, &head_b);
-	free_lst(head, matrix);
-	return ;
+	return (free_lst(head, matrix, str));
 }
 
 int	main(int ac, char *av[])

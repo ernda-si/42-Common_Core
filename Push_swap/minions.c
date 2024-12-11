@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:25:26 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/09 17:49:01 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:56:44 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,16 @@ void	sort_handler(struct Stacks **head, struct Stacks **head_b)
 	int	size;
 
 	size = lst_size(*head);
+	if (verify(*head))
+		return ;
 	if (size == 1)
 		return ;
 	else if (size == 2)
 		return (small_sort(head));
 	else if (size == 3)
 		return (medium_sort(head));
-	// else if (size == 5)
-	// 	return (big_sort(head, head_b));
+	else if (size == 5 || size == 4)
+		return (big_sort(head, head_b));
 	else if (size > 5)
 		return (sort(head, head_b));
 	return ;
