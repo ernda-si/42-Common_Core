@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:19:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 17:37:36 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:39:02 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	has_num(struct Stacks *head, int num)
 	return (0);
 }
 
-void	free_lst(struct Stacks *head, char **matrix, char *str)
+void	free_all(struct Stacks *head, char **matrix)
 {
 	struct Stacks	*temp;
 	int				i;
@@ -94,6 +94,5 @@ void	free_lst(struct Stacks *head, char **matrix, char *str)
 	while (matrix[++i])
 		free(matrix[i]);
 	free(matrix);
-	*str = '\0';
 	return ;
 }

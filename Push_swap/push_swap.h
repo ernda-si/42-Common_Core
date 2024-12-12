@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/12/11 16:48:02 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:16:09 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,9 @@ void			small_sort(struct Stacks **head);
 void			rrotate_a(struct Stacks **head);
 void			index_num(struct Stacks **head);
 void			print_list(struct Stacks *head);
-void			push_swap(int ac, char *arr[]);
 void			rotate_a(struct Stacks **head);
 void			swap_b(struct Stacks *head_b);
-void			free_lst(struct Stacks *head, char **matrix, char *str);
+void			free_all(struct Stacks *head, char **matrix);
 void			printf_bin(unsigned int num);
 void			swap_a(struct Stacks *head);
 int				bin_left(struct Stacks *head, int exp);
@@ -62,8 +61,13 @@ int				ft_strlen(const char *str);
 int				ft_atoi(char const *str);
 int				str_checker(char *str);
 int				bin_count(int num);
-void			error(struct Stacks *head, char **matrix, char *str);
+void			error_all(struct Stacks *head, char **matrix);
 char			*ft_strjoin(char const *s1, char *s2);
 char			**ft_split(char const *s, char c);
+void			args_parse(int ac, char *arr[]);
+void			str_parse(int ac, char *arr[]);
+void			error(struct Stacks *head);
+void			free_lst(struct Stacks *head);
+int				check_num(char *str);
 
 #endif

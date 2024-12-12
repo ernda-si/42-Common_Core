@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 17:56:38 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:07:11 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,40 +70,14 @@ void	sort(struct Stacks **head, struct Stacks **head_b)
 	}
 }
 
-void	push_swap(int ac, char *arr[])
-{
-	struct Stacks	*head;
-	struct Stacks	*head_b;
-	char			**matrix;
-	char			*str;
-	int				num;
-
-	if (ac < 2)
-		exit(0);
-	num = 0;
-	head = NULL;
-	str = NULL;
-	while (*++arr)
-		str = ft_strjoin(*arr, str);
-	matrix = ft_split(str, ' ');
-	while (matrix[num])
-	{
-		if (str_checker (matrix[num])
-			|| (head && has_num(head, ft_atoi (matrix[num]))))
-			error(head, matrix, str);
-		head = lstadd (ft_atoi (matrix[num]), head);
-		num++;
-	}
-	head_b = NULL;
-	sort_handler(&head, &head_b);
-	return (free_lst(head, matrix, str));
-}
-
 int	main(int ac, char *av[])
 {
 	(void) ac;
 	if (ac < 2)
 		return (0);
-	push_swap(ac, av);
+	else if (ac > 2)
+		args_parse(ac, av);
+	else if (ac == 2)
+		str_parse(ac, av);
 	return (1);
 }

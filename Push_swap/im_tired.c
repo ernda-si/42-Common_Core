@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   im_tired.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:37:36 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 17:56:17 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/12 18:39:18 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	index_num(struct Stacks **head)
 	return ;
 }
 
-/* void	print_list(struct Stacks *head)
+void	print_list(struct Stacks *head)
 {
 	struct Stacks	*temp;
 	int				i;
@@ -41,7 +41,7 @@ void	index_num(struct Stacks **head)
 		temp = temp -> next;
 	}
 	printf("\n");
-} */
+}
 
 struct Stacks	*last_node(struct Stacks *head)
 {
@@ -55,10 +55,10 @@ struct Stacks	*last_node(struct Stacks *head)
 	return (temp);
 }
 
-void	error(struct Stacks *head, char **matrix, char *str)
+void	error_all(struct Stacks *head, char **matrix)
 {
-	if (head && matrix && str)
-		free_lst (head, matrix, str);
+	if (head && matrix)
+		free_all (head, matrix);
 	exit(1);
 }
 

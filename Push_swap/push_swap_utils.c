@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 17:56:40 by ernda-si         ###   ########.fr       */
+/*   Updated: 2024/12/12 19:58:56 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int	str_checker(char *str)
 
 	len = ft_strlen(str);
 	i = 0;
-	if (!str || !*str)
+	if (!str || !str[i] || !check_num(str))
 		return (write(2, "Error\n", 6));
 	if (str[i] != '-' && len > 10)
 		return (write(2, "Error\n", 6));
 	if (str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9')
 		i++;
+	else if (str[i] == '-' && str[i + 1] <= '0' && str[i + 1] >= '9')
+		return(write(2, "Error\n", 6));
 	while (str[i] >= '0' && str[i] <= '9' && str[i])
 		i++;
 	if (str[i] < '0' && str[i] > '9' && str[i])
@@ -90,4 +92,18 @@ struct Stacks	*lstadd(int new_data, struct Stacks *start)
 		end = end -> next;
 	end -> next = node;
 	return (start);
+}
+
+int	check_num(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !str[i])
+		return (0);
+	while(str[i] && (str[i] < '0' || str[i] > '9'))
+	i++;
+	if (str[i] && str[i] >= '0' && str[i] <= '9')
+		return (1);
+	return(0);
 }
