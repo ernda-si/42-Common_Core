@@ -3,45 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kali <kali@student.42.fr>                  +#+  +:+       +#+         #
+#    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/12 23:47:16 by kali              #+#    #+#              #
-#    Updated: 2024/12/13 01:23:36 by kali             ###   ########.fr        #
+#    Updated: 2024/12/13 15:23:11 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-# Project sources
-SRC = 
+SRC = test.c
 
-# Object conversion
 OBJ = $(SRC:.c=.o)
 
-# Compiler
 CC = cc
 
-# Flags
 CFLAGS = -Wall -Wextra -Werror
 
-# Name of the program
-NAME = 
-
-# Contains the X11 and MLX header files
-INCLUDES = -I/usr/include -Imlx
-
-.c.o:
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
-
-# Link X11 and MLX
-MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+NAME = so_long
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)
+	$(CC) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+
+%.o: %.c
+	$(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

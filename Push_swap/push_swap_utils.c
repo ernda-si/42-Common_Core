@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/12 20:33:16 by kali             ###   ########.fr       */
+/*   Updated: 2024/12/13 13:05:49 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	str_checker(char *str)
 		return (write(2, "Error\n", 6));
 	if (str[i] != '-' && len > 10)
 		return (write(2, "Error\n", 6));
-	if (str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9')
+	if ((str[i] == '-' || str[i] == '+')
+		&& str[i + 1] >= '0' && str[i + 1] <= '9')
 		i++;
 	else if (str[i] == '-' && str[i + 1] <= '0' && str[i + 1] >= '9')
 		return(write(2, "Error\n", 6));
