@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:37:36 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/12 18:39:18 by kali             ###   ########.fr       */
+/*   Updated: 2024/12/12 23:11:30 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	index_num(struct Stacks **head)
 	int				min;
 
 	min = min_n(*head) * -1;
-	printf("min number: %d\n", min);
 	node = (*head);
 	while (node)
 	{
@@ -59,6 +58,7 @@ void	error_all(struct Stacks *head, char **matrix)
 {
 	if (head && matrix)
 		free_all (head, matrix);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 

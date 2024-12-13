@@ -6,7 +6,7 @@
 /*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:27:24 by kali              #+#    #+#             */
-/*   Updated: 2024/12/12 19:42:06 by kali             ###   ########.fr       */
+/*   Updated: 2024/12/12 23:20:23 by kali             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	str_parse(int ac, char *arr[])
 	int				num;
 
 	if (ac < 2 || !arr[1][0] || !check_num(arr[1]))
-		return ((void)write(1, "Error\n", 6));
+		return ((void)write(2, "Error\n", 6));
 	num = 0;
 	head = NULL;
 	matrix = ft_split(arr[1], ' ');
@@ -44,7 +44,7 @@ void	args_parse(int ac, char *arr[])
 	int				arg;
 
 	if (ac < 2 || !check_num(arr[1]))
-		return ((void)write(1, "Error\n", 6));
+		return ((void)write(2, "Error\n", 6));
 	arg = 1;
 	head = NULL;
 	while (arr[arg])
@@ -64,6 +64,7 @@ void    error(struct Stacks *head)
 {
     if (head)
 		free_lst (head);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
