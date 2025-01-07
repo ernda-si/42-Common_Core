@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:55:03 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/05 16:34:55 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:34:22 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 // ra (rotate a): Shift up all elements of stack a by 1.
 // The first element becomes the last one.
-void	rotate_a(struct Stacks **head)
+void	rotate_a(t_stacks **head)
 {
-	struct Stacks	*end;
-	struct Stacks	*end_node;
-	struct Stacks	*temp;
+	t_stacks	*end;
+	t_stacks	*end_node;
+	t_stacks	*temp;
 
 	if (!*head || !(*head)-> next)
 		return ;
@@ -35,11 +35,11 @@ void	rotate_a(struct Stacks **head)
 
 // rb (rotate b): Shift up all elements of stack b by 1.
 // The first element becomes the last one.
-void	rotate_b(struct Stacks **head_b)
+void	rotate_b(t_stacks **head_b)
 {
-	struct Stacks	*end;
-	struct Stacks	*end_node;
-	struct Stacks	*temp;
+	t_stacks	*end;
+	t_stacks	*end_node;
+	t_stacks	*temp;
 
 	if (!*head_b || !(*head_b)-> next)
 		return ;
@@ -55,11 +55,11 @@ void	rotate_b(struct Stacks **head_b)
 }
 
 // rr : ra and rb at the same time.
-void	rotate_ab(struct Stacks **head, struct Stacks **head_b)
+void	rotate_ab(t_stacks **head, t_stacks **head_b)
 {
-	struct Stacks	*end;
-	struct Stacks	*end_node;
-	struct Stacks	*temp;
+	t_stacks	*end;
+	t_stacks	*end_node;
+	t_stacks	*temp;
 
 	if (!*head_b || !*head || !(*head_b)-> next || !(*head)-> next)
 		exit(0);

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:25:26 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 17:59:17 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:34:01 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	printf_bin(unsigned int num)
 	write (1, &"0123456789"[num % 2], 1);
 }
 
-int	bin_left(struct Stacks *head, int exp)
+int	bin_left(t_stacks *head, int exp)
 {
-	struct Stacks	*temp;
+	t_stacks	*temp;
 
 	temp = head;
 	while (temp)
@@ -53,12 +53,12 @@ int	ft_strlen(const char *str)
 	return (ft_strlen ((str + 1)) + 1);
 }
 
-void	sort_handler(struct Stacks **head, struct Stacks **head_b)
+void	sort_handler(t_stacks **head, t_stacks **head_b)
 {
 	int	size;
 
 	size = lst_size(*head);
-	if (lst_size(*head) == 1|| verify(*head))
+	if (lst_size(*head) == 1 || verify(*head))
 		return ;
 	if (size == 1)
 		return ;

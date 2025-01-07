@@ -6,13 +6,13 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/13 13:40:13 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:34:14 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	small_sort(struct Stacks **head)
+void	small_sort(t_stacks **head)
 {
 	if ((*head)-> number > (*head)-> next -> number)
 		swap_a(*head);
@@ -20,7 +20,7 @@ void	small_sort(struct Stacks **head)
 		return ;
 }
 
-void	medium_sort(struct Stacks **head)
+void	medium_sort(t_stacks **head)
 {
 	int	first;
 	int	second;
@@ -41,7 +41,7 @@ void	medium_sort(struct Stacks **head)
 		return (rotate_a(head));
 }
 
-void	sort(struct Stacks **head, struct Stacks **head_b)
+void	sort(t_stacks **head, t_stacks **head_b)
 {
 	int	exp;
 	int	temp;
@@ -79,5 +79,5 @@ int	main(int ac, char *av[])
 		args_parse(ac, av);
 	else if (ac == 2)
 		str_parse(ac, av);
-	return (1);
+	return (0);
 }

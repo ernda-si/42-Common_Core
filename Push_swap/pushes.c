@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:54:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/11 12:09:02 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:34:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 // pa (push a): Take the first element at the top of b
 //and put it at the top of a.
 // Do nothing if b is empty.
-void	push_a(struct Stacks **head, struct Stacks **head_b)
+void	push_a(t_stacks **head, t_stacks **head_b)
 {
-	struct Stacks	*temp;
+	t_stacks	*temp;
 
 	if (!head_b || !*head_b)
 		return ;
@@ -36,9 +36,9 @@ void	push_a(struct Stacks **head, struct Stacks **head_b)
 // pb (push b): Take the first element at the top of a
 //and put it at the top of b.
 // Do nothing if a is empty.
-void	push_b(struct Stacks **head_b, struct Stacks **head)
+void	push_b(t_stacks **head_b, t_stacks **head)
 {
-	struct Stacks	*temp;
+	t_stacks	*temp;
 
 	if (!head || !*head)
 		return ;

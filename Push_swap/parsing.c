@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 18:27:24 by kali              #+#    #+#             */
-/*   Updated: 2024/12/13 13:03:49 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:06:55 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	str_parse(int ac, char *arr[])
 {
-	struct Stacks	*head;
-	struct Stacks	*head_b;
-	char			**matrix;
-	int				num;
+	t_stacks	*head;
+	t_stacks	*head_b;
+	char		**matrix;
+	int			num;
 
 	if (ac < 2 || !arr[1][0] || !check_num(arr[1]))
 		return ((void)write(2, "Error\n", 6));
@@ -26,9 +26,10 @@ void	str_parse(int ac, char *arr[])
 	matrix = ft_split(arr[1], ' ');
 	while (matrix[num])
 	{
-		if (str_checker (matrix[num])
+		if (!num_valid (matrix[num])
+			|| str_checker (matrix[num])
 			|| (head && has_num(head, ft_atoi (matrix[num]))))
-			return(error_all(head, matrix));
+			return (error_all(head, matrix));
 		head = lstadd (ft_atoi (matrix[num]), head);
 		num++;
 	}
@@ -39,9 +40,9 @@ void	str_parse(int ac, char *arr[])
 
 void	args_parse(int ac, char *arr[])
 {
-	struct Stacks	*head;
-	struct Stacks	*head_b;
-	int				arg;
+	t_stacks	*head;
+	t_stacks	*head_b;
+	int			arg;
 
 	if (ac < 2 || !check_num(arr[1]))
 		return ((void)write(2, "Error\n", 6));
@@ -49,9 +50,10 @@ void	args_parse(int ac, char *arr[])
 	head = NULL;
 	while (arr[arg])
 	{
-		if (str_checker (arr[arg])
+		if (!num_valid (arr[arg])
+			|| str_checker (arr[arg])
 			|| (head && has_num(head, ft_atoi (arr[arg]))))
-			return(error(head));
+			return (error(head));
 		head = lstadd (ft_atoi (arr[arg]), head);
 		arg++;
 	}
@@ -60,22 +62,22 @@ void	args_parse(int ac, char *arr[])
 	return (free_lst(head));
 }
 
-void    error(struct Stacks *head)
+void	error(t_stacks *head)
 {
-    if (head)
+	if (head)
 		free_lst (head);
-	write(2, "Error\n", 6);
-	exit(1);
+	write (2, "Error\n", 6);
+	exit (1);
 }
 
-void    free_lst(struct Stacks *head)
+void	free_lst(t_stacks *head)
 {
-    struct Stacks *temp;
+	t_stacks	*temp;
 
-    while (head)
+	while (head)
 	{
 		temp = head;
 		head = head -> next;
-		free(temp);
+		free (temp);
 	}
 }

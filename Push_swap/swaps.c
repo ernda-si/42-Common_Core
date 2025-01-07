@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:53:37 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/11/07 16:34:46 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 17:34:31 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 // sa (swap a): Swap the first 2 elements at the top of stack a.
 // Do nothing if there is only one or no elements.
-void	swap_a(struct Stacks *head)
+void	swap_a(t_stacks *head)
 {
-	struct Stacks	temp;
+	t_stacks	temp;
 
 	if (!head || !head -> next)
 		exit(0);
@@ -28,9 +28,9 @@ void	swap_a(struct Stacks *head)
 
 // sa (swap b): Swap the first 2 elements at the top of stack b.
 // Do nothing if there is only one or no elements.
-void	swap_b(struct Stacks *head_b)
+void	swap_b(t_stacks *head_b)
 {
-	struct Stacks	temp_b;
+	t_stacks	temp_b;
 
 	if (!head_b || !head_b -> next)
 		return ;
@@ -41,9 +41,9 @@ void	swap_b(struct Stacks *head_b)
 }
 
 // ss : sa and sb at the same time.
-void	swap_swap(struct Stacks *head, struct Stacks *head_b)
+void	swap_swap(t_stacks *head, t_stacks *head_b)
 {
-	struct Stacks	temp;
+	t_stacks	temp;
 
 	if (!head || !head_b || !head -> next || !head_b -> next)
 		exit(0);

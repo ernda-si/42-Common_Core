@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:19:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/12 18:39:02 by kali             ###   ########.fr       */
+/*   Updated: 2025/01/07 17:37:52 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_n(struct Stacks *head)
+int	max_n(t_stacks *head)
 {
-	struct Stacks	*big_num;
-	struct Stacks	*temp;
-	int				max;
+	t_stacks	*big_num;
+	t_stacks	*temp;
+	int			max;
 
 	big_num = head;
 	temp = create_node(head->number);
@@ -32,11 +32,11 @@ int	max_n(struct Stacks *head)
 	return (max);
 }
 
-int	min_n(struct Stacks *head)
+int	min_n(t_stacks *head)
 {
-	struct Stacks	*small_num;
-	struct Stacks	*temp;
-	int				min;
+	t_stacks	*small_num;
+	t_stacks	*temp;
+	int			min;
 
 	small_num = head;
 	temp = create_node(head->number);
@@ -52,7 +52,7 @@ int	min_n(struct Stacks *head)
 	return (min);
 }
 
-int	lst_size(struct Stacks *head)
+int	lst_size(t_stacks *head)
 {
 	int	size;
 
@@ -65,9 +65,9 @@ int	lst_size(struct Stacks *head)
 	return (size);
 }
 
-int	has_num(struct Stacks *head, int num)
+int	has_num(t_stacks *head, int num)
 {
-	struct Stacks	*check;
+	t_stacks	*check;
 
 	check = head;
 	while (check)
@@ -79,10 +79,10 @@ int	has_num(struct Stacks *head, int num)
 	return (0);
 }
 
-void	free_all(struct Stacks *head, char **matrix)
+void	free_all(t_stacks *head, char **matrix)
 {
-	struct Stacks	*temp;
-	int				i;
+	t_stacks	*temp;
+	int			i;
 
 	i = -1;
 	while (head)

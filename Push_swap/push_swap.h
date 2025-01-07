@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2024/12/12 19:16:09 by kali             ###   ########.fr       */
+/*   Updated: 2025/01/07 17:36:44 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,57 +17,57 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct Stacks
+typedef struct stacks
 {
 	int				number;
 	int				index;
 	int				flag;
-	struct Stacks	*next;
-}	t_Stacks;
+	struct stacks	*next;
+}	t_stacks;
 
-	// struct Stacks	*head = NULL;
-	// struct Stacks	*head_b = NULL;
+	// t_stacks	*head = NULL;
+	// t_stacks	*head_b = NULL;
 
-struct Stacks	*lstadd(int new_data, struct Stacks *start);
-struct Stacks	*last_node(struct Stacks *head);
-struct Stacks	*create_node(int new_data);
-void			sort_handler(struct Stacks **head, struct Stacks **head_b);
-void			rrotate_ab(struct Stacks **head, struct Stacks **head_b);
-void			rotate_ab(struct Stacks **head, struct Stacks **head_b);
-void			big_sort(struct Stacks **head, struct Stacks **head_b);
-void			swap_swap(struct Stacks *head, struct Stacks *head_b);
-void			push_b(struct Stacks **head_b, struct Stacks **head);
-void			push_a(struct Stacks **head, struct Stacks **head_b);
-void			sort(struct Stacks **head, struct Stacks **head_b);
-void			medium_sort(struct Stacks **head);
-void			rrotate_b(struct Stacks **head_b);
-void			rotate_b(struct Stacks **head_b);
-void			small_sort(struct Stacks **head);
-void			rrotate_a(struct Stacks **head);
-void			index_num(struct Stacks **head);
-void			print_list(struct Stacks *head);
-void			rotate_a(struct Stacks **head);
-void			swap_b(struct Stacks *head_b);
-void			free_all(struct Stacks *head, char **matrix);
-void			printf_bin(unsigned int num);
-void			swap_a(struct Stacks *head);
-int				bin_left(struct Stacks *head, int exp);
-int				has_num(struct Stacks *head, int num);
-int				lst_size(struct Stacks *head);
-int				verify(struct Stacks *head);
-int				min_n(struct Stacks *head);
-int				max_n(struct Stacks *head);
-int				ft_strlen(const char *str);
-int				ft_atoi(char const *str);
-int				str_checker(char *str);
-int				bin_count(int num);
-void			error_all(struct Stacks *head, char **matrix);
-char			*ft_strjoin(char const *s1, char *s2);
-char			**ft_split(char const *s, char c);
-void			args_parse(int ac, char *arr[]);
-void			str_parse(int ac, char *arr[]);
-void			error(struct Stacks *head);
-void			free_lst(struct Stacks *head);
-int				check_num(char *str);
+t_stacks	*lstadd(int new_data, t_stacks *start);
+t_stacks	*last_node(t_stacks *head);
+t_stacks	*create_node(int new_data);
+void		sort_handler(t_stacks **head, t_stacks **head_b);
+void		rrotate_ab(t_stacks **head, t_stacks **head_b);
+void		rotate_ab(t_stacks **head, t_stacks **head_b);
+void		big_sort(t_stacks **head, t_stacks **head_b);
+void		swap_swap(t_stacks *head, t_stacks *head_b);
+void		push_b(t_stacks **head_b, t_stacks **head);
+void		push_a(t_stacks **head, t_stacks **head_b);
+void		sort(t_stacks **head, t_stacks **head_b);
+void		free_all(t_stacks *head, char **matrix);
+void		medium_sort(t_stacks **head);
+void		rrotate_b(t_stacks **head_b);
+void		rotate_b(t_stacks **head_b);
+void		small_sort(t_stacks **head);
+void		rrotate_a(t_stacks **head);
+void		index_num(t_stacks **head);
+void		rotate_a(t_stacks **head);
+void		swap_b(t_stacks *head_b);
+void		printf_bin(unsigned int num);
+void		swap_a(t_stacks *head);
+int			bin_left(t_stacks *head, int exp);
+int			has_num(t_stacks *head, int num);
+int			lst_size(t_stacks *head);
+int			verify(t_stacks *head);
+int			min_n(t_stacks *head);
+int			max_n(t_stacks *head);
+int			ft_strlen(const char *str);
+int			str_checker(char *str);
+int			bin_count(int num);
+void		error_all(t_stacks *head, char **matrix);
+char		*ft_strjoin(char const *s1, char *s2);
+char		**ft_split(char const *s, char c);
+void		args_parse(int ac, char *arr[]);
+void		str_parse(int ac, char *arr[]);
+void		error(t_stacks *head);
+void		free_lst(t_stacks *head);
+int			check_num(char *str);
+int			ft_atoi(char const *str);
+int			num_valid(char const *str);
 
 #endif

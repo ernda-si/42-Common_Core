@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2024/12/13 13:05:49 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/01/07 18:07:04 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,19 @@ int	str_checker(char *str)
 	len = ft_strlen(str);
 	i = 0;
 	if (!str || !str[i] || !check_num(str))
-		return (write(2, "Error\n", 6));
-	if (str[i] != '-' && len > 10)
-		return (write(2, "Error\n", 6));
+		return (1);
 	if ((str[i] == '-' || str[i] == '+')
 		&& str[i + 1] >= '0' && str[i + 1] <= '9')
 		i++;
 	else if (str[i] == '-' && str[i + 1] <= '0' && str[i + 1] >= '9')
-		return(write(2, "Error\n", 6));
+		return (1);
 	while (str[i] >= '0' && str[i] <= '9' && str[i])
 		i++;
 	if (str[i] < '0' && str[i] > '9' && str[i])
-		return (write(2, "Error\n", 6));
+		return (1);
 	if (!str[i])
 		return (0);
-	return (write(2, "Error\n", 6));
+	return (1);
 }
 
 int	ft_atoi(char const *str)
@@ -61,15 +59,14 @@ int	ft_atoi(char const *str)
 	}
 	if (num * signal >= -2147483648 && num * signal <= 2147483647)
 		return (signal * num);
-	write(2, "Error\n", 6);
-	exit(0);
+	return (0);
 }
 
-struct Stacks	*create_node(int new_data)
+t_stacks	*create_node(int new_data)
 {
-	struct Stacks	*new_node;
+	t_stacks	*new_node;
 
-	new_node = (struct Stacks *)malloc (sizeof(struct Stacks));
+	new_node = (t_stacks *)malloc (sizeof(t_stacks));
 	if (!new_node)
 		exit(0);
 	new_node -> number = new_data;
@@ -77,10 +74,10 @@ struct Stacks	*create_node(int new_data)
 	return (new_node);
 }
 
-struct Stacks	*lstadd(int new_data, struct Stacks *start)
+t_stacks	*lstadd(int new_data, t_stacks *start)
 {
-	struct Stacks	*end;
-	struct Stacks	*node;
+	t_stacks	*end;
+	t_stacks	*node;
 
 	node = create_node(new_data);
 	if (!start)
@@ -102,9 +99,9 @@ int	check_num(char *str)
 	i = 0;
 	if (!str || !str[i])
 		return (0);
-	while(str[i] && (str[i] < '0' || str[i] > '9'))
-	i++;
+	while (str[i] && (str[i] < '0' || str[i] > '9'))
+		i++;
 	if (str[i] && str[i] >= '0' && str[i] <= '9')
 		return (1);
-	return(0);
+	return (0);
 }
