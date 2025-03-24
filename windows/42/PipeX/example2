@@ -1,0 +1,9 @@
+total 180
+-rwxr-xr-x 1 ernda-si 2024_lisboa 16128 mar 24 14:54 a.out
+-rw-r--r-- 1 ernda-si 2024_lisboa   375 mar 24 12:25 example
+-rw-r--r-- 1 ernda-si 2024_lisboa   496 mar 24 15:01 example2
+-rw-r--r-- 1 ernda-si 2024_lisboa  1213 mar 24 14:54 forks.c
+-rw-r--r-- 1 ernda-si 2024_lisboa  1110 mar 24 12:42 Makefile
+-rwxr-xr-x 1 ernda-si 2024_lisboa 16224 mar 24 15:01 pipex
+-rw-r--r-- 1 ernda-si 2024_lisboa  1712 mar 24 15:01 pipeX.c
+-rw-r--r-- 1 ernda-si 2024_lisboa   932 mar 24 11:50 pipeX.h

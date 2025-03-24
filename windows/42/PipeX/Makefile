@@ -5,30 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/12 23:47:16 by kali              #+#    #+#              #
-#    Updated: 2025/03/24 10:42:41 by ernda-si         ###   ########.fr        #
+#    Created: 2024/05/31 16:24:54 by ernda-si          #+#    #+#              #
+#    Updated: 2025/03/24 12:42:34 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-SRC = 	so_long.c map_checker.c GNL/get_next_line.c \
-		GNL/get_next_line_utils.c \
+SRC = pipeX.c
 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 
-NAME = so_long
+NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
-
-%.o: %.c
-	$(CC) -g -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	ar rcs $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
