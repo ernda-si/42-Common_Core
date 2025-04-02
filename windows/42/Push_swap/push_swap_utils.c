@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 15:39:28 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 18:07:04 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:06:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	str_checker(char *str)
 {
 	int	i;
-	// int	len;
 
-	// len = ft_strlen(str);
 	i = 0;
 	if (!str || !str[i] || !check_num(str))
 		return (1);

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:54:33 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 17:34:18 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:31:31 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,12 @@ void	push_a(t_stacks **head, t_stacks **head_b)
 {
 	t_stacks	*temp;
 
-	if (!head_b || !*head_b)
+	if (!head_b)
 		return ;
 	temp = *head_b;
 	*head_b = (*head_b)-> next;
-	if (!head)
-		*head = temp;
-	else
-	{
-		temp -> next = *head;
-		*head = temp;
-	}
+	temp -> next = *head;
+	*head = temp;
 	write (1, "pa\n", 3);
 }
 
@@ -40,16 +35,11 @@ void	push_b(t_stacks **head_b, t_stacks **head)
 {
 	t_stacks	*temp;
 
-	if (!head || !*head)
+	if (!head)
 		return ;
 	temp = *head;
 	*head = (*head)-> next;
-	if (!head_b)
-		*head_b = temp;
-	else
-	{
-		temp -> next = *head_b;
-		*head_b = temp;
-	}
+	temp -> next = *head_b;
+	*head_b = temp;
 	write (1, "pb\n", 3);
 }

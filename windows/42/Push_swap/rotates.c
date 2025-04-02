@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 16:55:03 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 17:34:22 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:56:20 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@
 // The first element becomes the last one.
 void	rotate_a(t_stacks **head)
 {
+	t_stacks	*start;
 	t_stacks	*end;
-	t_stacks	*end_node;
-	t_stacks	*temp;
 
-	if (!*head || !(*head)-> next)
+	if (!*head)
 		return ;
-	end_node = create_node((*head)-> number);
+	start = *head;
+	*head = (*head)-> next;
+	start -> next = NULL;
 	end = *head;
 	while (end -> next)
 		end = end -> next;
-	end -> next = end_node;
-	temp = *head;
-	*head = (*head)-> next;
-	free(temp);
+	end -> next = start;
 	write (1, "ra\n", 3);
 }
 
@@ -37,21 +35,19 @@ void	rotate_a(t_stacks **head)
 // The first element becomes the last one.
 void	rotate_b(t_stacks **head_b)
 {
+	t_stacks	*start;
 	t_stacks	*end;
-	t_stacks	*end_node;
-	t_stacks	*temp;
 
-	if (!*head_b || !(*head_b)-> next)
+	if (!*head_b)
 		return ;
-	end_node = create_node((*head_b)-> number);
+	start = *head_b;
+	*head_b = (*head_b)-> next;
+	start -> next = NULL;
 	end = *head_b;
 	while (end -> next)
 		end = end -> next;
-	end -> next = end_node;
-	temp = *head_b;
-	*head_b = (*head_b)-> next;
-	free(temp);
-	write (1, "rb\n", 3);
+	end -> next = start;
+	write (1, "ra\n", 3);
 }
 
 // rr : ra and rb at the same time.

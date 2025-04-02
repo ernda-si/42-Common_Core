@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 14:43:21 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 17:34:14 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:55:28 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,14 @@ void	sort(t_stacks **head, t_stacks **head_b)
 	int	size;
 
 	temp = 0;
-	if (min_n(*head) < 0)
-		index_num(head);
+	index_nums(*head);
 	exp = bin_count(max_n(*head));
 	while (temp != exp)
 	{
 		size = lst_size(*head);
 		while (size)
 		{
-			if (((*head)-> number >> temp & 1) == 0)
+			if (((*head)-> index >> temp & 1) == 0)
 				push_b(head_b, head);
 			else
 				rotate_a(head);

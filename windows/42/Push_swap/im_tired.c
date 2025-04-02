@@ -6,25 +6,33 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:37:36 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 18:11:11 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:59:37 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	index_num(t_stacks **head)
+void	index_nums(t_stacks *head)
 {
-	t_stacks	*node;
-	int			min;
+	t_stacks	*temp;
+	t_stacks	*temp2;
+	int			index;
 
-	min = min_n(*head) * -1;
-	node = (*head);
-	while (node)
+	temp = head;
+	while (temp)
 	{
-		node -> number += min;
-		node = node -> next;
+		index = 0;
+		temp2 = head;
+		while (temp2)
+		{
+			if (temp2 -> number < temp -> number)
+				index++;
+			temp2 = temp2 -> next;
+		}
+		temp -> index = index;
+		temp -> flag = 1;
+		temp = temp -> next;
 	}
-	return ;
 }
 
 t_stacks	*last_node(t_stacks *head)
