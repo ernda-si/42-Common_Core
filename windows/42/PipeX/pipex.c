@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/07 18:36:02 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/07 19:04:26 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,10 @@
 
 void	ft_close_all(t_pipex p)
 {
-	if (p.files[0] && p.files[1])
-	{
-		close(p.files[0]);
-		close(p.files[1]);
-	}
-	else if (p.fds[0] && p.fds[1])
-	{
-		close(p.fds[0]);
-		close(p.fds[1]);
-	}
+	close(p.files[0]);
+	close(p.files[1]);
+	close(p.fds[0]);
+	close(p.fds[1]);
 }
 
 void	ft_first_child(t_pipex p)
