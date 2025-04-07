@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/02 18:55:04 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:36:02 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,16 @@
 
 void	ft_close_all(t_pipex p)
 {
-	close(p.files[0]);
-	close(p.files[1]);
-	close(p.fds[0]);
-	close(p.fds[1]);
-}
-
-int	ft_check_infile(char **av)
-{
-/* 	if (access(av[1], F_OK) == -1)
-		perror ("PipeX: file %s does not exist!\n", av[1]);
-	else if (access (av[1], R_OK) == -1)
-		perror ("PipeX: read permission denied: %s\n", av[1]); */
-	return (open(av[1], O_RDONLY));
-}
-
-int	ft_check_outfile(char **av)
-{
-	return (open(av[4], O_CREAT | O_WRONLY | O_TRUNC, 0666));
+	if (p.files[0] && p.files[1])
+	{
+		close(p.files[0]);
+		close(p.files[1]);
+	}
+	else if (p.fds[0] && p.fds[1])
+	{
+		close(p.fds[0]);
+		close(p.fds[1]);
+	}
 }
 
 void	ft_first_child(t_pipex p)
@@ -63,7 +55,7 @@ void	ft_first_child(t_pipex p)
 	perror ("execution failed!\n");
 	exit (1);
 }
-	
+
 void	ft_second_child(t_pipex p)
 {
 	if (access(p.av[4], F_OK | W_OK) == -1)
@@ -81,7 +73,10 @@ void	ft_second_child(t_pipex p)
 
 void	ft_init_pipex(t_pipex p)
 {
-	if (pipe (p.fds) == -1)
+	int	status1;
+	int	status2;
+
+	if (pipe (p.fds) < 0)
 	{
 		perror ("pipe");
 		exit (1);
@@ -89,7 +84,7 @@ void	ft_init_pipex(t_pipex p)
 	p.cmd = fork ();
 	if (p.cmd < 0)
 	{
-		printf ("fork error!\n");
+		perror ("fork");
 		exit (1);
 	}
 	else if (p.cmd == 0)
@@ -97,14 +92,18 @@ void	ft_init_pipex(t_pipex p)
 	p.cmd2 = fork ();
 	if (p.cmd2 < 0)
 	{
-		printf ("fork error!\n");
+		perror ("fork");
 		exit (1);
 	}
 	else if (p.cmd2 == 0)
 		ft_second_child(p);
 	ft_close_all(p);
-	waitpid(p.cmd, NULL, 0);
-	waitpid(p.cmd2, NULL, 0);
+	waitpid(p.cmd, &status1, 0);
+	waitpid(p.cmd2, &status2, 0);
+	if (WIFEXITED (status2))
+		exit (WEXITSTATUS (status2));
+	else
+		exit (1);
 }
 
 int	main(int ac, char **av, char **envp)
@@ -119,7 +118,7 @@ int	main(int ac, char **av, char **envp)
 		write(1, "/pipex [in_file] '[cmd1]' '[cmd2]' [out_file]\n", 47);
 		exit(1);
 	}
-	p.files[0] = ft_check_infile(p.av);
-	p.files[1] = ft_check_outfile(p.av);
+	p.files[0] = open(av[1], O_RDONLY);
+	p.files[1] = open(av[4], O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	ft_init_pipex(p);
 }
