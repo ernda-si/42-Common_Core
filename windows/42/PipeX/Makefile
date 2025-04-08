@@ -6,17 +6,17 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 16:24:54 by ernda-si          #+#    #+#              #
-#    Updated: 2025/04/08 14:22:17 by ernda-si         ###   ########.fr        #
+#    Updated: 2025/04/08 16:37:49 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = pipex.c ft_substr.c ft_split.c ft_strlen.c ft_strjoin.c
+SRC = pipex.c ft_substr.c ft_split.c ft_strlen.c ft_strjoin.c ft_strnstr.c
 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 NAME = pipex
 

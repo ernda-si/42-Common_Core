@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/08 15:17:35 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/08 16:57:56 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,160 +20,166 @@
 // por o resultado final na outfile com pipe[0];
 // criar handler de erros;
 
-void	ft_close_all(t_pipex p)
+void	ft_close_all(t_pipex *p)
 {
-	close(p.files[0]);
-	close(p.files[1]);
-	close(p.fds[0]);
-	close(p.fds[1]);
+	close(p->files[0]);
+	close(p->files[1]);
+	close(p->fds[0]);
+	close(p->fds[1]);
 }
 
-/* void	ft_first_child(t_pipex p)
+void	free_matrix(char **matrix)
 {
-	if (access(p.av[1], F_OK | R_OK) == -1)
-	{
-		perror ("Error");
-		exit (1);
-	}
-	dup2 (p.files[0], 0);
-	dup2 (p.fds[1], 1);
-	ft_close_all (p);
-	execve ("/bin/bash", (char *[]){"bash", "-c", p.av[2], NULL}, p.envp);
-	perror ("execution failed!\n");
-	exit (1);
+	int	i;
+
+	i = -1;
+	while (matrix && matrix[++i])
+		free(matrix[i]);
+	free(matrix);
 }
 
-void	ft_second_child(t_pipex p)
-{
-	if (access(p.av[4], F_OK | W_OK) == -1)
-	{
-		perror ("Error");
-		exit (1);
-	}
-	dup2 (p.fds[0], 0);
-	dup2 (p.files[1], 1);
-	ft_close_all (p);
-	execve ("/bin/bash", (char *[]){"bash", "-c", p.av[3], NULL}, p.envp);
-	perror ("execution failed!\n");
-	exit (1);
-} */
-
-void	get_paths(t_pipex p)
+void	get_paths(t_pipex *p)
 {
 	char	*path_parse;
 	char	**paths;
+	char	*tmp;
 	int		i;
 
-	i = -1;
-	while (*p.envp[0] != 'P' && *p.envp++)
-		path_parse = *p.envp;
+	i = 0;
+	while (p->envp[i])
+	{
+		if (ft_strnstr(p->envp[i], "PATH", 5))
+			path_parse = p->envp[i];
+		i++;
+	}
 	path_parse = ft_substr (path_parse, 5, ft_strlen(path_parse));
 	paths = ft_split (path_parse, ':');
-	while (paths && paths[++i])
+	i = -1;
+	while (paths[++i])
+	{
+		tmp = paths[i];
+		free (paths[i]);
 		paths[i] = ft_strjoin (paths[i], "/");
-	p.paths = paths;
+		// free (tmp);
+	}
+	p->paths = paths;
+	free(path_parse);
+	free_matrix(paths);
 }
 
-void	ft_first_child(t_pipex p)
+void	ft_first_child(t_pipex *p)
 {
 	char	*cmd;
 	char	**mycmd;
 	int		i;
 
 	i = -1;
-	if (access(p.av[1], F_OK | R_OK) == -1)
+	if (access(p->av[1], F_OK | R_OK) == -1)
 	{
 		perror ("Error");
 		exit (1);
 	}
-	dup2 (p.files[0], 0);
-	dup2 (p.fds[1], 1);
+	dup2 (p->files[0], 0);
+	dup2 (p->fds[1], 1);
 	ft_close_all (p);
-	mycmd = ft_split(p.av[2], ' ');
-	while (p.paths[++i])
+	mycmd = ft_split(p->av[2], ' ');
+	while (p->paths[++i])
 	{
-		cmd = ft_strjoin(p.paths[i], p.av[2]);
-		execve (cmd, mycmd, p.envp);
+		cmd = ft_strjoin(p->paths[i], mycmd[0]);
+		if (access (cmd, X_OK) == 0)
+			execve (cmd, mycmd, p->envp);
 		free(cmd);
 	}
+	free_matrix(mycmd);
 	perror ("execution failed!\n");
 	exit (1);
 }
 
-void	ft_second_child(t_pipex p)
+void	ft_second_child(t_pipex *p)
 {
 	char	*cmd;
 	char	**mycmd;
 	int		i;
 
 	i = -1;
-	if (access(p.av[4], F_OK | W_OK) == -1)
+	if (access(p->av[4], F_OK | W_OK) == -1)
 	{
 		perror ("Error");
 		exit (1);
 	}
-	dup2 (p.fds[0], 0);
-	dup2 (p.files[1], 1);
+	dup2 (p->fds[0], 0);
+	dup2 (p->files[1], 1);
 	ft_close_all (p);
-	mycmd = ft_split(p.av[3], ' ');
-	while (p.paths[++i])
+	mycmd = ft_split(p->av[3], ' ');
+	while (p->paths[++i])
 	{
-		cmd = ft_strjoin(p.paths[i], p.av[3]);
-		execve (cmd, mycmd, p.envp);
+		cmd = ft_strjoin(p->paths[i], mycmd[0]);
+		if (access (cmd, X_OK) == 0)
+			execve (cmd, mycmd, p->envp);
 		free(cmd);
 	}
+	free_matrix(mycmd);
 	perror ("execution failed!\n");
 	exit (1);
 }
 
-void	ft_init_pipex(t_pipex p)
+void	ft_init_pipex(t_pipex *p)
 {
 	int	status;
 
-	if (pipe (p.fds) < 0)
+	if (pipe (p->fds) < 0)
 	{
 		perror ("pipe");
 		exit (1);
 	}
-	p.cmd = fork ();
-	if (p.cmd < 0)
+	p->cmd = fork ();
+	if (p->cmd < 0)
 	{
 		perror ("fork");
 		exit (1);
 	}
-	else if (p.cmd == 0)
+	else if (p->cmd == 0)
 		ft_first_child(p);
-	p.cmd2 = fork ();
-	if (p.cmd2 < 0)
+	p->cmd2 = fork ();
+	if (p->cmd2 < 0)
 	{
 		perror ("fork");
 		exit (1);
 	}
-	else if (p.cmd2 == 0)
+	else if (p->cmd2 == 0)
 		ft_second_child(p);
 	ft_close_all(p);
-	waitpid(p.cmd, &status, 0);
-	waitpid(p.cmd2, &status, 0);
+	waitpid(p->cmd, &status, 0);
+	waitpid(p->cmd2, &status, 0);
 	if (WIFEXITED (status))
+	{
+		free(p->paths);
+		free(p);
 		exit (WEXITSTATUS (status));
+	}
 	else
+	{
+		free(p->paths);
+		free(p);
 		exit (1);
+	}
 }
 
 int	main(int ac, char **av, char **envp)
 {
-	t_pipex	p;
+	t_pipex	*p;
 
-	p.av = av;
-	p.envp = envp;
-	p.ac = ac;
+	p = (t_pipex *) malloc(sizeof(t_pipex));
+	p->av = av;
+	p->envp = envp;
+	p->ac = ac;
 	if (ac != 5)
 	{
 		write(1, "/pipex [in_file] '[cmd1]' '[cmd2]' [out_file]\n", 47);
 		exit(1);
 	}
 	get_paths(p);
-	p.files[0] = open(av[1], O_RDONLY);
-	p.files[1] = open(av[4], O_CREAT | O_WRONLY | O_TRUNC, 0666);
+	p->files[0] = open(av[1], O_RDONLY);
+	p->files[1] = open(av[4], O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	ft_init_pipex(p);
 }
