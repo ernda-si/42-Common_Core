@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/08 16:57:56 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/08 17:10:01 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,17 @@ void	ft_close_all(t_pipex *p)
 void	free_matrix(char **matrix)
 {
 	int	i;
-
+	
 	i = -1;
 	while (matrix && matrix[++i])
 		free(matrix[i]);
 	free(matrix);
+}
+
+void	clean(t_pipex *p)
+{
+	free_matrix(p->paths);
+	free(p);
 }
 
 void	get_paths(t_pipex *p)
@@ -58,13 +64,11 @@ void	get_paths(t_pipex *p)
 	while (paths[++i])
 	{
 		tmp = paths[i];
-		free (paths[i]);
-		paths[i] = ft_strjoin (paths[i], "/");
-		// free (tmp);
+		paths[i] = ft_strjoin (tmp, "/");
+		free (tmp);
 	}
 	p->paths = paths;
 	free(path_parse);
-	free_matrix(paths);
 }
 
 void	ft_first_child(t_pipex *p)
@@ -91,6 +95,7 @@ void	ft_first_child(t_pipex *p)
 		free(cmd);
 	}
 	free_matrix(mycmd);
+	clean(p);
 	perror ("execution failed!\n");
 	exit (1);
 }
@@ -119,6 +124,7 @@ void	ft_second_child(t_pipex *p)
 		free(cmd);
 	}
 	free_matrix(mycmd);
+	clean(p);
 	perror ("execution failed!\n");
 	exit (1);
 }
@@ -153,13 +159,13 @@ void	ft_init_pipex(t_pipex *p)
 	waitpid(p->cmd2, &status, 0);
 	if (WIFEXITED (status))
 	{
-		free(p->paths);
+		free_matrix(p->paths);
 		free(p);
 		exit (WEXITSTATUS (status));
 	}
 	else
 	{
-		free(p->paths);
+		free_matrix(p->paths);
 		free(p);
 		exit (1);
 	}
