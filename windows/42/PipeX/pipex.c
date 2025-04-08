@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/08 17:10:01 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/08 18:01:55 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 
 void	ft_close_all(t_pipex *p)
 {
-	close(p->files[0]);
+	if(p->files[0] > -1)
+		close(p->files[0]);
 	close(p->files[1]);
 	close(p->fds[0]);
 	close(p->fds[1]);
@@ -80,6 +81,11 @@ void	ft_first_child(t_pipex *p)
 	i = -1;
 	if (access(p->av[1], F_OK | R_OK) == -1)
 	{
+		close (p->fds[0]);
+		close (p->fds[1]);
+		// close (p->files[0]);
+		close (p->files[1]);
+		clean (p);
 		perror ("Error");
 		exit (1);
 	}
@@ -89,7 +95,10 @@ void	ft_first_child(t_pipex *p)
 	mycmd = ft_split(p->av[2], ' ');
 	while (p->paths[++i])
 	{
-		cmd = ft_strjoin(p->paths[i], mycmd[0]);
+		if (access (p->av[2], F_OK) == -1)
+			cmd = ft_strjoin(p->paths[i], mycmd[0]);
+		else
+			cmd = ft_strdup(p->av[2]);
 		if (access (cmd, X_OK) == 0)
 			execve (cmd, mycmd, p->envp);
 		free(cmd);
@@ -118,7 +127,10 @@ void	ft_second_child(t_pipex *p)
 	mycmd = ft_split(p->av[3], ' ');
 	while (p->paths[++i])
 	{
-		cmd = ft_strjoin(p->paths[i], mycmd[0]);
+		if (access (p->av[3], F_OK) == -1)
+			cmd = ft_strjoin(p->paths[i], mycmd[0]);
+		else
+			cmd = ft_strdup(p->av[3]);
 		if (access (cmd, X_OK) == 0)
 			execve (cmd, mycmd, p->envp);
 		free(cmd);
