@@ -6,48 +6,11 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/10 15:42:58 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:15:58 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-
-// verificar se a infile is valid -> existencia / leitura;
-// verificar se a outfile is valid -> existencia / leitura / truncation;
-// executar primeiro comando na infile;
-// utilizar pipe para guardar o resultado do primeiro comando pipe[1];
-// pegar primeiro resultado e executar segundo comando;
-// por o resultado final na outfile com pipe[0];
-// criar handler de erros;
-
-void	ft_close_all(t_pipex *p)
-{
-	if(p->files[0] > -1)
-		close(p->files[0]);
-	if(p->files[1] > -1)
-		close(p->files[1]);
-	close(p->fds[0]);
-	close(p->fds[1]);
-}
-
-void	free_matrix(char **matrix)
-{
-	int	i;
-	
-	i = -1;
-	while (matrix && matrix[++i])
-		free(matrix[i]);
-	free(matrix);
-}
-
-void	clean(t_pipex *p)
-{
-	if (p->paths)
-		free_matrix(p->paths);
-	if (!p->cmd)
-		p->cmd = 0;	
-	free(p);
-}
 
 void	get_paths(t_pipex *p)
 {
@@ -64,7 +27,7 @@ void	get_paths(t_pipex *p)
 		i++;
 	}
 	path_parse = ft_substr (path_parse, 5, ft_strlen(path_parse));
-		paths = ft_split (path_parse, ':');
+	paths = ft_split (path_parse, ':');
 	i = -1;
 	while (paths[++i])
 	{
@@ -75,83 +38,6 @@ void	get_paths(t_pipex *p)
 	}
 	p->paths = paths;
 	free(path_parse);
-}
-
-void	ft_first_child(t_pipex *p)
-{
-	char	*cmd;
-	char	**mycmd;
-	int		i;
-
-	i = -1;
-	if (access(p->av[1], F_OK | R_OK) == -1)
-	{
-		
-		ft_close_all(p);
-		clean (p);
-		perror ("Infile");
-		exit (1);
-	}
-	dup2 (p->files[0], 0);
-	dup2 (p->fds[1], 1);
-	ft_close_all (p);
-	mycmd = ft_split(p->av[2], ' ');
-	while (p->paths[++i])
-	{
-		if (access (p->av[2], F_OK) == -1)
-			cmd = ft_strjoin(p->paths[i], mycmd[0]);
-		else
-			cmd = ft_strdup(p->av[2]);
-		if (access (cmd, X_OK) == 0)
-			execve (cmd, mycmd, p->envp);
-		if (cmd)
-			free(cmd);
-	}
-	if (mycmd)
-		free_matrix(mycmd);
-	perror ("execution failed!");
-	clean(p);
-	exit (1);
-}
-
-void	pexit(int status, char *error)
-{
-	perror(error);
-	exit(status);
-}
-
-void	ft_second_child(t_pipex *p)
-{
-	char	*cmd;
-	char	**mycmd;
-	int		i;
-
-	i = -1;
-	if (access(p->av[4], F_OK | W_OK) == -1)
-	{
-		perror ("Outfile");
-		free_matrix(p->paths);
-		free(p);
-		exit (1);
-	}
-	dup2 (p->fds[0], 0);
-	dup2 (p->files[1], 1);
-	ft_close_all (p);
-	mycmd = ft_split(p->av[3], ' ');
-	while (p->paths[++i])
-	{
-		if (access (p->av[3], F_OK) == -1)
-			cmd = ft_strjoin(p->paths[i], mycmd[0]);
-		else
-			cmd = ft_strdup(p->av[i]);
-		if (access (cmd, X_OK) == 0)
-			execve (cmd, mycmd, p->envp);
-		if (cmd)
-			free(cmd);
-	}
-	free_matrix(mycmd);
-	clean(p);
-	pexit(1, "execution");
 }
 
 void	docmds(t_pipex *p)

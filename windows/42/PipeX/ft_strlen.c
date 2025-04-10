@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:09:30 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/08 14:04:30 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/10 16:05:23 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,3 @@ size_t	ft_strlen(const char *str)
 		i++;
 	return (i);
 }
-
-// int	main(void)
-// {
-// printf("%d\n", ft_strlen("Teste"));
-// }

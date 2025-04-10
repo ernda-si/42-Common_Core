@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"*.tcc": "c",
-		"pipex.h": "c"
+		"pipex.h": "c",
+		"types.h": "c",
+		"unistd.h": "c"
 	}
 }
