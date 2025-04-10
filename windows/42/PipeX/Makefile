@@ -6,7 +6,7 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/31 16:24:54 by ernda-si          #+#    #+#              #
-#    Updated: 2025/04/08 18:02:40 by ernda-si         ###   ########.fr        #
+#    Updated: 2025/04/10 15:38:50 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ OBJ = $(SRC:.c=.o)
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 NAME = pipex
 

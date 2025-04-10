@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:43:16 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/08 18:01:55 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/10 15:42:58 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	ft_close_all(t_pipex *p)
 {
 	if(p->files[0] > -1)
 		close(p->files[0]);
-	close(p->files[1]);
+	if(p->files[1] > -1)
+		close(p->files[1]);
 	close(p->fds[0]);
 	close(p->fds[1]);
 }
@@ -41,7 +42,10 @@ void	free_matrix(char **matrix)
 
 void	clean(t_pipex *p)
 {
-	free_matrix(p->paths);
+	if (p->paths)
+		free_matrix(p->paths);
+	if (!p->cmd)
+		p->cmd = 0;	
 	free(p);
 }
 
@@ -60,13 +64,14 @@ void	get_paths(t_pipex *p)
 		i++;
 	}
 	path_parse = ft_substr (path_parse, 5, ft_strlen(path_parse));
-	paths = ft_split (path_parse, ':');
+		paths = ft_split (path_parse, ':');
 	i = -1;
 	while (paths[++i])
 	{
 		tmp = paths[i];
 		paths[i] = ft_strjoin (tmp, "/");
-		free (tmp);
+		if (tmp)
+			free (tmp);
 	}
 	p->paths = paths;
 	free(path_parse);
@@ -81,12 +86,10 @@ void	ft_first_child(t_pipex *p)
 	i = -1;
 	if (access(p->av[1], F_OK | R_OK) == -1)
 	{
-		close (p->fds[0]);
-		close (p->fds[1]);
-		// close (p->files[0]);
-		close (p->files[1]);
+		
+		ft_close_all(p);
 		clean (p);
-		perror ("Error");
+		perror ("Infile");
 		exit (1);
 	}
 	dup2 (p->files[0], 0);
@@ -101,12 +104,20 @@ void	ft_first_child(t_pipex *p)
 			cmd = ft_strdup(p->av[2]);
 		if (access (cmd, X_OK) == 0)
 			execve (cmd, mycmd, p->envp);
-		free(cmd);
+		if (cmd)
+			free(cmd);
 	}
-	free_matrix(mycmd);
+	if (mycmd)
+		free_matrix(mycmd);
+	perror ("execution failed!");
 	clean(p);
-	perror ("execution failed!\n");
 	exit (1);
+}
+
+void	pexit(int status, char *error)
+{
+	perror(error);
+	exit(status);
 }
 
 void	ft_second_child(t_pipex *p)
@@ -118,7 +129,9 @@ void	ft_second_child(t_pipex *p)
 	i = -1;
 	if (access(p->av[4], F_OK | W_OK) == -1)
 	{
-		perror ("Error");
+		perror ("Outfile");
+		free_matrix(p->paths);
+		free(p);
 		exit (1);
 	}
 	dup2 (p->fds[0], 0);
@@ -130,15 +143,29 @@ void	ft_second_child(t_pipex *p)
 		if (access (p->av[3], F_OK) == -1)
 			cmd = ft_strjoin(p->paths[i], mycmd[0]);
 		else
-			cmd = ft_strdup(p->av[3]);
+			cmd = ft_strdup(p->av[i]);
 		if (access (cmd, X_OK) == 0)
 			execve (cmd, mycmd, p->envp);
-		free(cmd);
+		if (cmd)
+			free(cmd);
 	}
 	free_matrix(mycmd);
 	clean(p);
-	perror ("execution failed!\n");
-	exit (1);
+	pexit(1, "execution");
+}
+
+void	docmds(t_pipex *p)
+{
+	p->cmd = fork ();
+	if (p->cmd < 0)
+		pexit (1, "fork");
+	else if (p->cmd == 0)
+		ft_first_child(p);
+	p->cmd2 = fork ();
+	if (p->cmd2 < 0)
+		pexit (1, "fork");
+	else if (p->cmd2 == 0)
+		ft_second_child(p);
 }
 
 void	ft_init_pipex(t_pipex *p)
@@ -147,38 +174,21 @@ void	ft_init_pipex(t_pipex *p)
 
 	if (pipe (p->fds) < 0)
 	{
-		perror ("pipe");
-		exit (1);
+		clean(p);
+		pexit (1, "pipe");
 	}
-	p->cmd = fork ();
-	if (p->cmd < 0)
-	{
-		perror ("fork");
-		exit (1);
-	}
-	else if (p->cmd == 0)
-		ft_first_child(p);
-	p->cmd2 = fork ();
-	if (p->cmd2 < 0)
-	{
-		perror ("fork");
-		exit (1);
-	}
-	else if (p->cmd2 == 0)
-		ft_second_child(p);
+	docmds(p);
 	ft_close_all(p);
 	waitpid(p->cmd, &status, 0);
 	waitpid(p->cmd2, &status, 0);
 	if (WIFEXITED (status))
 	{
-		free_matrix(p->paths);
-		free(p);
+		clean(p);
 		exit (WEXITSTATUS (status));
 	}
 	else
 	{
-		free_matrix(p->paths);
-		free(p);
+		clean(p);
 		exit (1);
 	}
 }
@@ -187,17 +197,21 @@ int	main(int ac, char **av, char **envp)
 {
 	t_pipex	*p;
 
-	p = (t_pipex *) malloc(sizeof(t_pipex));
-	p->av = av;
-	p->envp = envp;
-	p->ac = ac;
 	if (ac != 5)
 	{
 		write(1, "/pipex [in_file] '[cmd1]' '[cmd2]' [out_file]\n", 47);
 		exit(1);
 	}
+	else if (av[1][0] == '\0' || av[4][0] == '\0')
+		exit(1);
+	p = (t_pipex *) malloc(sizeof(t_pipex));
+	p->av = av;
+	p->envp = envp;
+	p->ac = ac;
 	get_paths(p);
 	p->files[0] = open(av[1], O_RDONLY);
+	if (access(p->av[4], F_OK) == -1)
+		unlink(av[4]);
 	p->files[1] = open(av[4], O_CREAT | O_WRONLY | O_TRUNC, 0666);
 	ft_init_pipex(p);
 }
