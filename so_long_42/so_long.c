@@ -36,7 +36,7 @@ int	find_px(char **map)
 	return (0);
 }
 
-int	flood_fill(char **map, int x, int y)
+/* int	flood_fill(char **map, int x, int y)
 {
 	if (map[y][x] == '1' || map[y][x] == 'F')
 		return 0;
@@ -48,7 +48,7 @@ int	flood_fill(char **map, int x, int y)
 	flood_fill(map[y + 1][x]);
 	flood_fill(map[y - 1][x]);
 	return ;
-}
+} */
 
 int	main(int ac, char **av)
 {
@@ -64,7 +64,7 @@ int	main(int ac, char **av)
 			free_matrix(game.map);
 		pexit("map invalid", 1);
 	}
-	floodfill(game.map, find_px(game.map), find_py(game.map));
+	// floodfill(game.map, find_px(game.map), find_py(game.map));
 	init_solong(&game);
 	move_handler(&game);
 	mlx_loop(game.mlx);
