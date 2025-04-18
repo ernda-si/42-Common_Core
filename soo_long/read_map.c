@@ -22,9 +22,11 @@ static void	free_close(char *map, char *map_temp, int fd)
 static void	is_empty(int fd, char *map)
 {
 	char	first[1];
+	int		rd;
 
+	rd = 0;
 	first[0] = '\0';
-	read(fd, first, 1);
+	rd += read(fd, first, 1);
 	if (!first[0])
 	{
 		free(map);

@@ -38,6 +38,7 @@ void	move_up(t_game *game)
 				game->map[game->p_y][game->p_x] = 'P';
 				game->map[game->p_y + 1][game->p_x] = '0';
 				game->map[game->exit_y][game->exit_x] = 'E';
+				game->move_counter++;
 				generate_map(game);
 				return ;
 			}
@@ -67,6 +68,7 @@ void	move_left(t_game *game)
 				game->map[game->p_y][game->p_x] = 'P';
 				game->map[game->p_y][game->p_x + 1] = '0';
 				game->map[game->exit_y][game->exit_x] = 'E';
+				game->move_counter++;
 				generate_map(game);
 				return ;
 			}
@@ -96,6 +98,7 @@ void	move_down(t_game *game)
 				game->map[game->p_y][game->p_x] = 'P';
 				game->map[game->p_y - 1][game->p_x] = '0';
 				game->map[game->exit_y][game->exit_x] = 'E';
+				game->move_counter++;
 				generate_map(game);
 				return ;
 			}
@@ -125,6 +128,7 @@ void	move_right(t_game *game)
 				game->map[game->p_y][game->p_x] = 'P';
 				game->map[game->p_y][game->p_x -1] = '0';
 				game->map[game->exit_y][game->exit_x] = 'E';
+				game->move_counter++;
 				generate_map(game);
 				return ;
 			}

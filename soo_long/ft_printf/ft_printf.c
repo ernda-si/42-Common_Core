@@ -14,14 +14,19 @@
 
 static int	ft_putchar(char c)
 {
-	write (1, &c, 1);
+	int	w;
+
+	w = 0;
+	w += write (1, &c, 1);
 	return (1);
 }
 
 static int	ft_putstr(char *str)
 {
 	int	i;
+	int	w;
 
+	w = 0;
 	i = 0;
 	if (!str)
 	{
@@ -30,7 +35,7 @@ static int	ft_putstr(char *str)
 	}
 	while (str[i] != '\0')
 	{
-		write (1, &str[i], 1);
+		w += write (1, &str[i], 1);
 		i++;
 	}
 	return (i);
