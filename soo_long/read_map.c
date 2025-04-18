@@ -26,6 +26,11 @@ static void	is_empty(int fd, char *map)
 
 	rd = 0;
 	first[0] = '\0';
+	if (fd < 0)
+	{
+		free(map);
+		pexit("File does not exist!\n", 1);
+	}
 	rd += read(fd, first, 1);
 	if (!first[0])
 	{
