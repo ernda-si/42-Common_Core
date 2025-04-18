@@ -17,23 +17,23 @@ static void	img_init(t_game *game)
 	game->player = mlx_xpm_file_to_image
 		(game->mlx, "assets/player.xpm", &game->row, &game->collum);
 	if (!game->player)
-		pexit("player xpm modified!\n", 1);
+		free_images(game, "Player xpm error!\n");
 	game->floor = mlx_xpm_file_to_image
 		(game->mlx, "assets/floor.xpm", &game->row, &game->collum);
 	if (!game->floor)
-		pexit("floor xpm modified!\n", 1);
+		free_images(game, "Floor xpm error!\n");
 	game->wall = mlx_xpm_file_to_image
 		(game->mlx, "assets/wall.xpm", &game->row, &game->collum);
 	if (!game->wall)
-		pexit("wall xpm modified!\n", 1);
+		free_images(game, "Wall xpm error!\n");
 	game->coin = mlx_xpm_file_to_image
 		(game->mlx, "assets/coin.xpm", &game->row, &game->collum);
 	if (!game->coin)
-		pexit("coin xpm modified!\n", 1);
+		free_images(game, "Coin xpm error!\n");
 	game->exit = mlx_xpm_file_to_image
 		(game->mlx, "assets/exit.xpm", &game->row, &game->collum);
 	if (!game->exit)
-		pexit("exit xpm modified!\n", 1);
+		free_images(game, "Exit xpm error!\n");
 }
 
 static void	get_window_size(t_game *game)

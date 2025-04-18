@@ -26,6 +26,30 @@ void	free_matrix(char **matrix)
 		free(matrix);
 }
 
+void	free_images(t_game *game, char *str)
+{
+	if (game->map)
+		free_matrix(game->map);
+	if (game->player)
+		mlx_destroy_image(game->mlx, game->player);
+	if (game->floor)
+		mlx_destroy_image(game->mlx, game->floor);
+	if (game->wall)
+		mlx_destroy_image(game->mlx, game->wall);
+	if (game->coin)
+		mlx_destroy_image(game->mlx, game->coin);
+	if (game->exit)
+		mlx_destroy_image(game->mlx, game->exit);
+	if (game->win)
+		mlx_destroy_window(game->mlx, game->win);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
+	pexit(str, 1);
+}
+
 int	exit_game(t_game *game)
 {
 	int	w;
@@ -50,6 +74,8 @@ int	end_game(t_game *game)
 	int	w;
 
 	w = 0;
+	game->move_counter++;
+	ft_printf("moves: %d\n", game->move_counter);
 	free_matrix(game->map);
 	mlx_destroy_image(game->mlx, game->floor);
 	mlx_destroy_image(game->mlx, game->wall);
@@ -60,6 +86,6 @@ int	end_game(t_game *game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	w += write(1, "You won!\n", 10);
-	exit(1);
+	exit(0);
 	return (0);
 }
