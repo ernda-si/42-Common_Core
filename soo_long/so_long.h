@@ -92,5 +92,6 @@ int		check_path(char **map);
 void	free_error(t_game *game);
 void	put_exit(t_game *game, int x, int y);
 void	free_images(t_game *game, char *str);
+void	ft_bzero(void *s, size_t n);
 
 #endif

@@ -57,3 +57,14 @@ void	init_solong(t_game *game)
 	img_init(game);
 	generate_map(game);
 }
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*vs;
+
+	if (!s)
+		return ;
+	vs = s;
+	while (n--)
+		*vs++ = '\0';
+}
