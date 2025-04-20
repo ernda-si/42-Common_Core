@@ -49,6 +49,13 @@ static void	get_window_size(t_game *game)
 
 void	init_solong(t_game *game)
 {
+	game->mlx = NULL;
+	game->win = NULL;
+	game->player = NULL;
+	game->wall = NULL;
+	game->floor = NULL;
+	game->coin = NULL;
+	game->exit = NULL;
 	game->mlx = mlx_init();
 	get_window_size(game);
 	game->win = mlx_new_window(game->mlx, game->win_w, game->win_h, "so_long");

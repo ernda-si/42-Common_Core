@@ -73,13 +73,6 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	ft_bzero(&game, sizeof(t_game));
-	game.mlx = NULL;
-	game.win = NULL;
-	game.player = NULL;
-	game.wall = NULL;
-	game.floor = NULL;
-	game.coin = NULL;
-	game.exit = NULL;
 	if (ac != 2)
 		pexit("arg error", 1);
 	name_checker(av[1]);

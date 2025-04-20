@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <fcntl.h>
 
 static void	free_close(char *map, char *map_temp, int fd)
 {
@@ -69,6 +70,44 @@ static void	is_newlines(int fd, char *map)
 	pexit("Map is empty!\n", 1);
 }
 
+static void	nl_check(int fd, char *map)
+{
+	char	*line;
+	int		line_len;
+	char	*next;
+
+	line = get_next_line(fd);
+	while (line)
+	{
+		line_len = ft_strlen(line);
+		if (line_len == 1 && line[0] == '\n')
+		{
+			free(line);
+			close(fd);
+			free(map);
+			pexit("Invalid blank line in map!\n", 1);
+		}
+		if (line[line_len - 1] != '\n')
+		{
+			next = get_next_line(fd);
+			if (next != NULL)
+			{
+				free(next);
+				free(line);
+				close(fd);
+				free(map);
+				pexit("Map line missing newline before EOF!\n", 1);
+			}
+			free(next);
+			break;
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	free(line);
+}
+
 char	**file_reader(char *map)
 {
 	char	**matrix_map;
@@ -80,6 +119,7 @@ char	**file_reader(char *map)
 	map = ft_strjoin("maps/", map);
 	is_empty(open(map, O_RDONLY), map);
 	is_newlines(open(map, O_RDONLY), map);
+	nl_check(open(map, O_RDONLY), map);
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (NULL);
