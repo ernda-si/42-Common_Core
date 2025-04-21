@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 17:28:57 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/17 15:56:31 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/21 13:26:21 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ void	free_error(t_game *game);
 void	put_exit(t_game *game, int x, int y);
 void	free_images(t_game *game, char *str);
 void	ft_bzero(void *s, size_t n);
+void	free_stuff(int fd, char *line, char *msg);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 12:34:39 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/04/16 19:45:04 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/21 13:31:33 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,14 @@ void	ft_bzero(void *s, size_t n)
 	vs = s;
 	while (n--)
 		*vs++ = '\0';
+}
+
+void	free_stuff(int fd, char *line, char *msg)
+{
+	if (line)
+		free(line);
+	if (fd)
+		close(fd);
+	if (msg)
+		pexit(msg, 1);
 }
