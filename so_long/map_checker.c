@@ -3,59 +3,112 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kali <kali@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 15:00:51 by kali              #+#    #+#             */
-/*   Updated: 2025/02/07 15:09:01 by kali             ###   ########.fr       */
+/*   Created: 2025/04/16 12:34:43 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/04/16 17:35:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int check_walls(char *line)
+static int	check_shape(char **map)
 {
-	int i;
+	int	i;
 
-	i = 0;
-	while (line[i] == ' ')
-		i++;
-	if (line[i] != '1')
+	i = 1;
+	if (!map)
 		return (0);
-	while (line[i] && line[i] != '\n')
+	while (map[i])
 	{
-		if (line[i] != '1' && line[i] != ' ')
+		if (ft_strlen(map[i]) != ft_strlen(map[0]))
 			return (0);
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
-int map_checker(void)
+static int	check_walls(char **map)
 {
-	int		fd;
-	char	*line;
-	int		flag;
+	int	i;
+	int	j;
+	int	len;
 
-	flag = 0;
-	fd = open("map.ber", O_RDWR);
-	line = "\0";
-	if (!line)
-		return(0);
-	while (1)
+	j = 0;
+	i = 0;
+	while (map[i])
+		i++;
+	while (map[0][j] != '\0' && map[i - 1][j] != '\0')
 	{
-		line = get_next_line(fd);
-		printf("%s", line);
-		if (flag == 0 && check_walls(line))
-		{
-			printf("wall check: %d\n", check_walls(line));
-			flag++;
-		}
-		if (flag)
-			flag++;
-		if (!line)
-			break;
+		if (map[0][j] != '1' || map[i - 1][j] != '1')
+			return (0);
+		j++;
 	}
-	printf("flag: %d\n", flag);
-	close(fd);
+	i = 1;
+	len = ft_strlen(map[i]);
+	while (map[i])
+	{
+		if (map[i][0] != '1' || map[i][len - 1] != '1')
+			return (0);
+		i++;
+	}
 	return (1);
+}
+
+static int	check_elements(t_game *game)
+{
+	int	i;
+	int	j;
+
+	game->has_coin = 0;
+	game->has_player = 0;
+	game->has_exit = 0;
+	i = 0;
+	while (game->map[i])
+	{
+		j = 0;
+		while (game->map[i][j] != '\0')
+		{
+			if (game->map[i][j] == 'P')
+				game->has_player++;
+			else if (game->map[i][j] == 'C')
+				game->has_coin++;
+			else if (game->map[i][j] == 'E')
+				game->has_exit++;
+			j++;
+		}
+		i++;
+	}
+	if (game->has_player != 1 || game->has_exit != 1 || game->has_coin <= 0)
+		return (0);
+	return (1);
+}
+
+static int	map_validation(char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j] != '\0')
+		{
+			if (map[i][j] != 'P' && map[i][j] != 'E' && map[i][j] != 'C'
+				&& map[i][j] != '0' && map[i][j] != '1')
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	map_checker(t_game *game)
+{
+	if (check_elements(game) && check_shape(game->map)
+		&& check_walls(game->map) && map_validation(game->map))
+		return (1);
+	return (0);
 }

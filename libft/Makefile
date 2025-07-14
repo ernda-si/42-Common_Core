@@ -5,15 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/12/12 23:47:16 by kali              #+#    #+#              #
-#    Updated: 2025/04/16 18:24:51 by ernda-si         ###   ########.fr        #
+#    Created: 2024/04/15 12:26:48 by ernda-si          #+#    #+#              #
+#    Updated: 2025/07/14 13:20:45 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-SRC =	so_long.c map_checker.c player_update.c read_map.c init.c \
-		movements.c end_game.c put_images.c aux_functions.c ft_split.c \
-		get_next_line.c flood_fill.c ft_printf/ft_auxfuncs.c ft_printf/ft_printf.c \
+SRC = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c \
+	ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c \
+	ft_memcmp.c ft_memset.c ft_strchr.c ft_strlcat.c \
+	ft_strlen.c ft_strncmp.c ft_strnstr.c ft_strrchr.c \
+	ft_tolower.c ft_toupper.c ft_calloc.c ft_memcpy.c \
+	ft_strjoin.c ft_strlcpy.c ft_strdup.c ft_substr.c \
+	ft_memmove.c ft_strtrim.c ft_putchar_fd.c ft_putstr_fd.c \
+	ft_putendl_fd.c ft_putnbr_fd.c ft_itoa.c ft_strmapi.c \
+	ft_striteri.c ft_split.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -21,15 +26,12 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = so_long
+NAME = libft.a
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -L./minilibx-linux -lmlx -L/usr/lib -I./minilibx-linux -lXext -lX11 -lm -lz -o $(NAME)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
