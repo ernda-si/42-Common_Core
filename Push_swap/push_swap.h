@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:23:35 by kali              #+#    #+#             */
-/*   Updated: 2025/01/07 17:36:44 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 12:54:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void		free_all(t_stacks *head, char **matrix);
 void		medium_sort(t_stacks **head);
 void		rrotate_b(t_stacks **head_b);
 void		rotate_b(t_stacks **head_b);
+void		index_nums(t_stacks *head);
 void		small_sort(t_stacks **head);
 void		rrotate_a(t_stacks **head);
-void		index_num(t_stacks **head);
 void		rotate_a(t_stacks **head);
 void		swap_b(t_stacks *head_b);
 void		printf_bin(unsigned int num);

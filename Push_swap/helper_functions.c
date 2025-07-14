@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:19:59 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/01/07 17:37:52 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/04/02 13:02:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	max_n(t_stacks *head)
 	int			max;
 
 	big_num = head;
-	temp = create_node(head->number);
+	temp = create_node(head->index);
 	temp->next = head->next;
 	while (big_num)
 	{
-		if ((temp -> number) < (big_num -> number) && big_num)
-			temp -> number = big_num -> number;
+		if ((temp -> index) < (big_num -> index) && big_num)
+			temp -> index = big_num -> index;
 		big_num = big_num -> next;
 	}
-	max = temp->number;
+	max = temp->index;
 	free(temp);
 	return (max);
 }
