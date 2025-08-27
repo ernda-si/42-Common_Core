@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 21:52:08 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 03:35:52 by eve              ###   ########.fr       */
+/*   Updated: 2025/08/27 13:54:04 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 	t_program		program;
 
 	if (ac != 5 && ac != 6)
-		return (write(2, "Wrong argument count\n", 22), -1);
+		return (write(2, "Invalid amount of arguments\n", 29), -1);
 	if (check_valid(av) == -1)
 		return (-1);
 	init_program(av, &program, philos);

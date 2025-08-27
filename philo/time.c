@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/27 02:39:51 by eve               #+#    #+#             */
-/*   Updated: 2025/08/27 02:40:06 by eve              ###   ########.fr       */
+/*   Updated: 2025/08/27 13:34:34 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 size_t	get_current_time(void)
 {
-	struct timeval	time;
-	size_t			result;
 	int				return_value;
+	size_t			result;
+	struct timeval	time;
 
 	if (gettimeofday(&time, NULL) == -1)
 	{
@@ -27,7 +27,7 @@ size_t	get_current_time(void)
 	return (result);
 }
 
-int	upgraded_usleep(size_t ms)
+int	improved_usleep(size_t ms)
 {
 	size_t	start;
 

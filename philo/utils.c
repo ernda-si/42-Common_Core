@@ -6,36 +6,34 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 21:37:52 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 03:39:21 by eve              ###   ########.fr       */
+/*   Updated: 2025/08/27 14:11:01 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-void	print_msg(char *str, t_philo *philo, t_program *program, int id)
+void	print_task(char *str, t_philo *philo, t_program *program, int id)
 {
 	size_t	time;
 
 	pthread_mutex_lock(philo->write_lock);
 	time = get_current_time() - program->t_start;
 	if (0 == dead_lock(philo))
-		printf("%zu %d %s\n", time, id, str);
+	{
+		printf(BOLD"%zu "RESET, time);
+		printf(BOLD"%d "RESET, id);
+		printf("%s\n", str);
+	}
 	pthread_mutex_unlock(philo->write_lock);
 }
 
 void	kill_all(char *str, t_program *program, pthread_mutex_t *forks)
 {
 	int	i;
-	int	ret;
 
 	i = -1;
 	if (str)
-	{
-		ret = write(2, str, ft_strlen(str));
-		(void)ret;
-		ret = write(2, "\n", 1);
-		(void)ret;
-	}
+		write(2, str, ft_strlen(str));
 	pthread_mutex_destroy(&program->write_lock);
 	pthread_mutex_destroy(&program->meal_lock);
 	pthread_mutex_destroy(&program->dead_lock);
@@ -45,13 +43,13 @@ void	kill_all(char *str, t_program *program, pthread_mutex_t *forks)
 
 int	ft_atoi(const char *str)
 {
-	int		i;
 	int		signal;
 	long	num;
+	int		i;
 
-	i = 0;
 	signal = 1;
 	num = 0;
+	i = 0;
 	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
 			i++;
 	if (str[i] == '+' || str[i] == '-')

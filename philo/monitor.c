@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/06 15:47:08 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 03:44:25 by eve              ###   ########.fr       */
+/*   Updated: 2025/08/27 17:28:36 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	dead_check(t_monitor_program *monitorer)
 	{
 		if (1 == dead(&monitorer->philos[i], monitorer->philos[i].t_die))
 		{
-			print_msg("died", &monitorer->philos[i], monitorer->shared,
+			print_task(RED"died"RESET, &monitorer->philos[i], monitorer->shared,
 				monitorer->philos[i].id);
 			pthread_mutex_lock(&(monitorer->shared->dead_lock));
 			*monitorer->philos[i].dead = 1;
@@ -67,7 +67,7 @@ static int	done_eating(t_monitor_program *monitorer)
 	return (0);
 }
 
-static int	did_all_eat(t_monitor_program *monitorer)
+static int	eat_check(t_monitor_program *monitorer)
 {
 	if (done_eating(monitorer))
 	{
@@ -75,8 +75,7 @@ static int	did_all_eat(t_monitor_program *monitorer)
 		monitorer->shared->one_dead_flag = 1;
 		pthread_mutex_unlock(&(monitorer->shared->dead_lock));
 		pthread_mutex_lock(&(monitorer->shared->write_lock));
-		printf("\n\033[0;32m✓ SIMULATION SUCCESSFUL:");
-		printf("All philosophers ate %d times!\033[0m\n",
+		printf(GREEN"All philosophers ate %d times!"RESET, \
 			monitorer->shared->n_still_eat);
 		pthread_mutex_unlock(&(monitorer->shared->write_lock));
 		return (1);
@@ -90,7 +89,7 @@ void	*monitor(void *arg)
 
 	monitorer = (t_monitor_program *)arg;
 	while (1)
-		if (dead_check(monitorer) == 1 || did_all_eat(monitorer) == 1)
+		if (dead_check(monitorer) == 1 || eat_check(monitorer) == 1)
 			break ;
 	return (arg);
 }
