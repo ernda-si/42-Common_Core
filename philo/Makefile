@@ -1,15 +1,10 @@
-NAME 	= philo
+NAME 	= philosophers
 
 CC		= cc
 CFLAGS	= -Wall -Wextra -Werror -O3 -pthread
 
-SRC		= main.c \
-		  initiators.c \
-		  creating_threads.c \
-		  monitor.c \
-		  philo_routine.c \
-		  libft_utils.c \
-		  utils.c
+SRC		= main.c initializers.c monitor.c helpers.c utils.c \
+			threads.c routine.c time.c tasks.c parsing.c
 
 OBJDIR	= obj
 OBJ		= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))

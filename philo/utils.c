@@ -3,52 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: suroh <suroh@student.42lisboa.com>         +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 21:37:52 by suroh             #+#    #+#             */
-/*   Updated: 2025/04/06 18:13:52 by suroh            ###   ########.fr       */
+/*   Updated: 2025/08/27 03:39:21 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philosophers.h"
 
-void	print_msg(char *str, t_philo *philo, t_shared_data *data, int id)
+void	print_msg(char *str, t_philo *philo, t_program *program, int id)
 {
 	size_t	time;
 
 	pthread_mutex_lock(philo->write_lock);
-	time = get_current_time() - data->starting_time;
-	if (0 == yes_i_am_not_dead(philo))
+	time = get_current_time() - program->t_start;
+	if (0 == dead_lock(philo))
 		printf("%zu %d %s\n", time, id, str);
 	pthread_mutex_unlock(philo->write_lock);
 }
 
-int	upgraded_usleep(size_t ms)
-{
-	size_t	start;
-
-	start = get_current_time();
-	while ((get_current_time() - start) < ms)
-		usleep(500);
-	return (0);
-}
-
-size_t	get_current_time(void)
-{
-	struct timeval	time;
-	size_t			result;
-	int				return_value;
-
-	if (gettimeofday(&time, NULL) == -1)
-	{
-		return_value = write(2, "gettimeofday() function error\n", 30);
-		(void)return_value;
-	}
-	result = (time.tv_sec * 1000) + (time.tv_usec / 1000);
-	return (result);
-}
-
-void	destroy_all(char *str, t_shared_data *data, pthread_mutex_t *forks)
+void	kill_all(char *str, t_program *program, pthread_mutex_t *forks)
 {
 	int	i;
 	int	ret;
@@ -61,9 +36,36 @@ void	destroy_all(char *str, t_shared_data *data, pthread_mutex_t *forks)
 		ret = write(2, "\n", 1);
 		(void)ret;
 	}
-	pthread_mutex_destroy(&data->write_lock);
-	pthread_mutex_destroy(&data->meal_lock);
-	pthread_mutex_destroy(&data->dead_lock);
-	while (++i < data->number_of_philosophers)
+	pthread_mutex_destroy(&program->write_lock);
+	pthread_mutex_destroy(&program->meal_lock);
+	pthread_mutex_destroy(&program->dead_lock);
+	while (++i < program->max_philos)
 		pthread_mutex_destroy(&forks[i]);
+}
+
+int	ft_atoi(const char *str)
+{
+	int		i;
+	int		signal;
+	long	num;
+
+	i = 0;
+	signal = 1;
+	num = 0;
+	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
+			i++;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			signal *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+			num *= 10;
+			num += str[i++] - '0';
+	}
+	if (num * signal >= -2147483648 && num * signal <= 2147483647)
+			return (signal * num);
+	return (0);
 }
