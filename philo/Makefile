@@ -6,14 +6,14 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/28 14:54:35 by ernda-si          #+#    #+#              #
-#    Updated: 2025/08/28 16:26:39 by ernda-si         ###   ########.fr        #
+#    Updated: 2025/08/28 16:58:26 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	= philo
-
+# -fsanitize=thread -g
 CC		= cc
-CFLAGS	= -Wall -Wextra -Werror -fsanitize=thread -g -O3 -pthread
+CFLAGS	= -Wall -Wextra -Werror -O3 -pthread
 
 SRC		= main.c initializers.c monitor.c helpers.c utils.c \
 			threads.c routine.c time.c tasks.c parsing.c
