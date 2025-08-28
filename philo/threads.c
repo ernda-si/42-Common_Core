@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/06 15:20:21 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 14:12:44 by eve              ###   ########.fr       */
+/*   Created: 2025/04/06 15:20:21 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/08/28 14:28:36 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-static void	create_monitor_thread(t_program *program, pthread_mutex_t *forks, \
-	 t_monitor_program *monitorer, pthread_t *monitor_thread)
+static void	create_monitor_thread(t_program *program, pthread_mutex_t *forks,
+			t_monitor_program *monitorer, pthread_t *monitor_thread)
 {
 	monitorer->philos = program->philos;
 	monitorer->shared = program;
@@ -22,8 +22,8 @@ static void	create_monitor_thread(t_program *program, pthread_mutex_t *forks, \
 			program, forks);
 }
 
-static void	create_philos_threads(t_program *program, pthread_mutex_t *forks, \
-	 t_monitor_program *philo_program)
+static void	create_philos_threads(t_program *program, pthread_mutex_t *forks,
+			t_monitor_program *philo_program)
 {
 	int	i;
 
@@ -41,8 +41,8 @@ static void	create_philos_threads(t_program *program, pthread_mutex_t *forks, \
 	}
 }
 
-static void	join_all_threads(t_program *program, pthread_mutex_t *forks, \
-	 pthread_t monitor_thread)
+static void	join_all_threads(t_program *program, pthread_mutex_t *forks,
+			pthread_t monitor_thread)
 {
 	int	i;
 

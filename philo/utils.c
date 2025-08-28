@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/05 21:37:52 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 14:11:01 by eve              ###   ########.fr       */
+/*   Created: 2025/04/05 21:37:52 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/08/28 14:28:20 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_atoi(const char *str)
 	num = 0;
 	i = 0;
 	while (str[i] == ' ' || (str[i] >= 7 && str[i] <= 13))
-			i++;
+		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
@@ -60,10 +60,10 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-			num *= 10;
-			num += str[i++] - '0';
+		num *= 10;
+		num += str[i++] - '0';
 	}
 	if (num * signal >= -2147483648 && num * signal <= 2147483647)
-			return (signal * num);
+		return (signal * num);
 	return (0);
 }

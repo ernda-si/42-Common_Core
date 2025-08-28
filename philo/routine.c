@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/06 17:15:02 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 13:52:25 by eve              ###   ########.fr       */
+/*   Created: 2025/04/06 17:15:02 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/08/28 15:34:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	*routine(void *arg)
 	monitorer = (t_monitor_program *)arg;
 	current = &monitorer->philos[monitorer->philo_idx];
 	if (current->id % 2 == 0)
-		improved_usleep(1);
-	while (0 == dead_lock(current))
-		(eat(current, monitorer), to_sleep(current, monitorer), \
-		 think(current, monitorer));
+		improved_usleep(1, monitorer);
+	while (dead_lock(current) == 0)
+		(eat(current, monitorer), to_sleep(current, monitorer),
+			think(current, monitorer));
 	return (arg);
 }

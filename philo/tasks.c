@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tasks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/27 03:11:23 by eve               #+#    #+#             */
-/*   Updated: 2025/08/27 14:57:09 by eve              ###   ########.fr       */
+/*   Created: 2025/08/27 03:11:23 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/08/28 14:28:40 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	think(t_philo *philo, t_monitor_program *program)
 void	eat(t_philo *philo, t_monitor_program *monitorer)
 {
 	pthread_mutex_lock(philo->r_fork);
-	print_task(YELLOW"has taken a fork"RESET, philo, monitorer->shared, philo->id);
+	print_task(YELLOW"has taken a fork"RESET, philo, monitorer->shared,
+		philo->id);
 	if (monitorer->shared->max_philos == 1)
-		return (void)(improved_usleep(philo->t_die), \
-		 pthread_mutex_unlock(philo->r_fork));
+		return ((void)((improved_usleep(philo->t_die),
+				pthread_mutex_unlock(philo->r_fork))));
 	pthread_mutex_lock(philo->l_fork);
-	print_task(YELLOW"has taken a fork"RESET, philo, monitorer->shared, philo->id);
+	print_task(YELLOW"has taken a fork"RESET, philo, monitorer->shared,
+		philo->id);
 	philo->eating = 1;
 	print_task(MAGENTA"is eating"RESET, philo, monitorer->shared, philo->id);
 	pthread_mutex_lock(philo->meal_lock);

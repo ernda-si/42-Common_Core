@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/06 15:47:08 by suroh             #+#    #+#             */
-/*   Updated: 2025/08/27 17:28:36 by eve              ###   ########.fr       */
+/*   Created: 2025/08/28 14:22:58 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/08/28 15:35:29 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	dead(t_philo *philo, size_t t_die)
 	return (0);
 }
 
-static int	dead_check(t_monitor_program *monitorer)
+int	dead_check(t_monitor_program *monitorer)
 {
 	int	i;
 
@@ -75,7 +75,7 @@ static int	eat_check(t_monitor_program *monitorer)
 		monitorer->shared->one_dead_flag = 1;
 		pthread_mutex_unlock(&(monitorer->shared->dead_lock));
 		pthread_mutex_lock(&(monitorer->shared->write_lock));
-		printf(GREEN"All philosophers ate %d times!"RESET, \
+		printf(GREEN"All philosophers ate %d times!\n"RESET,
 			monitorer->shared->n_still_eat);
 		pthread_mutex_unlock(&(monitorer->shared->write_lock));
 		return (1);
