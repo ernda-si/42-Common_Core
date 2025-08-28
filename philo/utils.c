@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 21:37:52 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/08/28 14:28:20 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:33:26 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,21 @@ void	kill_all(char *str, t_program *program, pthread_mutex_t *forks)
 	pthread_mutex_destroy(&program->dead_lock);
 	while (++i < program->max_philos)
 		pthread_mutex_destroy(&forks[i]);
+}
+
+void	get_forks_order(t_philo *philo, pthread_mutex_t **f1,
+			pthread_mutex_t **f2)
+{
+	if (philo->l_fork < philo->r_fork)
+	{
+		*f1 = philo->l_fork;
+		*f2 = philo->r_fork;
+	}
+	else
+	{
+		*f1 = philo->r_fork;
+		*f2 = philo->l_fork;
+	}
 }
 
 int	ft_atoi(const char *str)

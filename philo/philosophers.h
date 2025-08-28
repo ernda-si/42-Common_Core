@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 20:59:18 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/08/28 15:35:32 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/08/28 16:33:48 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ void	kill_all(char *str, t_program *program, pthread_mutex_t *forks);
 void	print_task(char *str, t_philo *philo, t_program *program, int id);
 void	init_program(char **av, t_program *program, t_philo *philos);
 void	to_sleep(t_philo *philo, t_monitor_program *monitorer);
+void	get_forks_order(t_philo *philo, pthread_mutex_t **f1,
+			pthread_mutex_t **f2);
 void	init_forks(pthread_mutex_t *forks, int max_philos);
 void	eat(t_philo *philo, t_monitor_program *monitorer);
 void	think(t_philo *philo, t_monitor_program *program);
@@ -98,6 +100,6 @@ int		ft_atoi(const char *nptr);
 int		str_isdigit(char *str);
 int		check_valid(char **av);
 int		ft_isdigit(int c);
-int	dead_check(t_monitor_program *monitorer);
+int		dead_check(t_monitor_program *monitorer);
 
 #endif
