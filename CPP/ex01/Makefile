@@ -3,20 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eve <eve@student.42.fr>                    +#+  +:+       +#+         #
+#    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/08 16:44:59 by eve               #+#    #+#              #
-#    Updated: 2025/09/08 17:43:30 by eve              ###   ########.fr        #
+#    Updated: 2025/09/16 13:41:46 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = phonebook.cpp
+SRC = phonebook.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 NAME = phonebook
 

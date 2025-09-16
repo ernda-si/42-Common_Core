@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 16:51:13 by eve               #+#    #+#             */
-/*   Updated: 2025/09/08 22:50:55 by eve              ###   ########.fr       */
+/*   Updated: 2025/09/16 13:55:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,57 +70,16 @@ class Phonebook {
 
 	private:
 
-	Contact 	contact[9];
-	static int	i;
+	Contact		contact[9];
+	static int	index;
 
 	public:
 
-void add_info(void) { 
-	std::string input; 
+	void	add_info(void);
 
-	i++;
-	if (i >= 8) 
-		i = 0; 
-	std::cout << "Enter first name: "; 
-	std::cin >> input; 
-	contact[i].add_first(input); 
-	std::cout << "Enter last name: "; 
-	std::cin >> input; contact[i].add_last(input); 
-	std::cout << "Enter nickname: "; 
-	std::cin >> input; 
-	contact[i].add_nick(input); 
-	std::cout << "Enter phone_number: "; 
-	std::cin >> input; 
-	contact[i].add_phone(input); 
-	std::cout << "Enter darkest_secret: "; 
-	std::cin >> input; 
-	contact[i].add_secret(input); 
-	std::cout << "Contact saved!" << std::endl;
-}
+	void	print_contact(void) const;
 
-	void	print_contact(void) const {
-		std::string input;
-		int			nb;
-
-		std::cout << "Enter contact number: ";
-		std::cin >> input;
-		nb = ft_atoi(input);
-		if (nb > 0 && nb <= 8)
-			contact[nb].print_info();
-	}
-
-	void	search(void) const {
-		int	nb = 0;
-
-		std::cout << "     index|first name| last name|  nickname|" << std::endl;
-		while (++nb >= 0 && nb <= 8)
-		{
-			if (contact[nb].exists())
-				break;
-			print_format(std::to_string(nb));
-			contact[nb].print_info();
-		}
-	}
+	void	search(void) const;
 };
 
 #endif

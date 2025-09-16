@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/03 18:50:46 by eve               #+#    #+#             */
-/*   Updated: 2025/09/16 12:57:48 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/09/16 13:03:41 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/09/16 13:03:56 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "phonebook.hpp"
 
-static char	*ft_toupper(char *str)
+int	main(void) 
 {
-	int	i;
-
-	i = 0;
-	while (str && str[i])
+	Phonebook	phonebook;
+	std::string	input;
+	
+	while (input != "EXIT")
 	{
-		if (str[i] >= 'a' && str[i] <= 'z')
-			str[i] -= 32;
-		i++;
+		std::cout << "enter a command: ";
+		std::cin >> input;
+		if (input == "ADD")
+			phonebook.add_info();
+		else if (input == "SEARCH")
+			phonebook.search();
+		else if (input == "PRINT")
+			phonebook.print_contact();
 	}
-	return (str);
-}
-
-int	main(int ac, char *av[])
-{
-	int	i;
-
-	i = 1;
-	if (!av[i])
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	while (i < ac)
-	{
-		std::cout << ft_toupper(av[i]);
-		i++;
-	}
-	std::cout << std::endl;
+	return (0);
 }
