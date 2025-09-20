@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   newZombie.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 13:17:34 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/18 13:18:12 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/09/09 20:25:14 by eve               #+#    #+#             */
+/*   Updated: 2025/09/09 23:03:06 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "Zombie.hpp"
 
-int	Contact::print_info(void) const {
-	print_format(first_name);
-	print_format(last_name);
-	print_format(nickname);
-	std::cout << std::endl;
-	return (1);
+Zombie* Zombie::newZombie(std::string name) {
+	Zombie *zombie;
+
+	zombie = new Zombie(name); //utilizandod construtor
+	return (zombie);
 }

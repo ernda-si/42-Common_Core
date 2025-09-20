@@ -3,30 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/16 13:03:41 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/18 13:14:48 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/09/09 20:25:12 by eve               #+#    #+#             */
+/*   Updated: 2025/09/12 23:00:42 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include <iostream>
 
-int	main(void) 
+int main(void)
 {
-	Phonebook	phonebook;
-	std::string	input;
-	
-	while (input != "EXIT")
-	{
-		std::cout << "enter a command: ";
-		getline(std::cin, input);
-		if (input == "ADD")
-			phonebook.add_info();
-		else if (input == "SEARCH")
-			phonebook.search();
-		// else if (input == "PRINT")
-		// 	phonebook.print_contact();
-	}
-	return (0);
+    
 }

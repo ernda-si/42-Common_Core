@@ -3,22 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
+#    By: eve <eve@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/08 16:44:59 by eve               #+#    #+#              #
-#    Updated: 2025/09/18 13:26:01 by ernda-si         ###   ########.fr        #
+#    Created: 2025/09/09 20:16:31 by eve               #+#    #+#              #
+#    Updated: 2025/09/12 17:28:05 by eve              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = phonebook.cpp main.cpp contact.cpp aux.cpp
+SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -g -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = phonebook
+NAME = zombie
 
 all: $(NAME)
 
