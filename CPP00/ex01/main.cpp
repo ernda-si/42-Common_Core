@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   get_line.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 16:37:53 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/23 17:34:22 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/09/23 16:37:50 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/09/23 16:37:50 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "phonebook.hpp"
 
-#include "contact.hpp"
+int	main(void)
+{
+	std::string input;
+	Phonebook phonebook;
 
-class	Phonebook {
-
-private:
-
-	Contact		contacts[8];
-	int			index = 0;
-
-public:
-
-	std::string	handle_input(std::string field) const;
-
-	void	add_cmd();
-
-	void	search_cmd();
-	
-	void	display_index();
-
-};
-
-#endif
+	while (true)
+	{
+		std::cout << "Input: " << std::flush;
+		getline(std::cin, input);
+		if (input == "ADD")
+			phonebook.add_cmd();
+		else if (input == "SEARCH")
+			phonebook.search_cmd();
+		else if (input == "EXIT")
+			break;
+	}
+}

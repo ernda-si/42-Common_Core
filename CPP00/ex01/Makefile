@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/23 16:37:39 by ernda-si          #+#    #+#              #
-#    Updated: 2025/09/23 16:37:41 by ernda-si         ###   ########.fr        #
+#    Created: 2025/09/23 16:58:04 by ernda-si          #+#    #+#              #
+#    Updated: 2025/09/23 17:08:41 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = megaphone.cpp
+SRC = main.cpp contact.cpp phonebook.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
