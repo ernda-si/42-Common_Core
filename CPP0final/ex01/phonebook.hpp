@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 16:37:53 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/24 17:34:41 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:43:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ class	Phonebook {
 private:
 
 	Contact		contacts[8];
-	int			index = 0;
-	int			total = 0;
+	int			index;
+	int			total;
 
 public:
 

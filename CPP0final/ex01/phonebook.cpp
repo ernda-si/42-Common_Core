@@ -6,11 +6,17 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:04:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/24 18:22:38 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/09/26 13:57:15 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
+
+// static std::string	to_string(int i) {
+// 	std::string	str;
+
+// 	str = i
+// }
 
 void	Phonebook::search_cmd() {
 	int	i;
@@ -24,7 +30,7 @@ void	Phonebook::search_cmd() {
 	std::cout << "     index|first name| last name|  nickname|" << std::endl;
 	while (i < 8 && !(contacts[i].is_empty()))
 	{
-		contacts[i].handle_format(std::to_string(i));
+		contacts[i].handle_format(to_string(i));
 		contacts[i].print_all();
 		i++;
 	}
