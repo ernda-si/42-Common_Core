@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:03:30 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/29 16:21:25 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:10:06 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <iomanip>
+# include <stdlib.h>
 # include <sstream>
 
 class	Contact {

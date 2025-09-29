@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:04:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/29 16:20:37 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/09/29 17:10:51 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,8 @@ std::string	Phonebook::handle_input(std::string field) const {
 	std::string	input;
 	int			i = 0;
 
-	while (true) {
-		std::cout << field << ": " << std::flush;
-		getline(std::cin, input);
+	std::cout << field << ": " << std::flush;
+	while (getline(std::cin, input)) {
 		while(input[i] == ' ')
 		{
 			input.erase(i, 1);
@@ -94,7 +93,9 @@ std::string	Phonebook::handle_input(std::string field) const {
 		}
 		if (!input.empty())
 			return (input);
+		std::cout << field << ": " << std::flush;
 	}
+	exit(0);
 }
 
 Phonebook::Phonebook () {
