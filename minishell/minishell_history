@@ -1,27 +1,18 @@
 ls
-ls
-clear
-exit
-a
-ls
-exit
-clear
-exit
-./minishell -b
-exit
-clear
-env
-clear
-cd ..
-exit
-env
 l
 ls
 ls
-cd
-cd ..
+l
+a
+123
+2321421
+1d1221
+12
+cc
 clear
+l
+claer
+cat << a
+cat << a
 exit
-env
-clear
 exit
