@@ -6,17 +6,20 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:04:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/26 13:57:15 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/09/29 16:20:37 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 
-// static std::string	to_string(int i) {
-// 	std::string	str;
-
-// 	str = i
-// }
+static std::string	to_string(int nb) {
+	std::stringstream	stream;
+	std::string			value;
+	
+	stream << nb;
+	value = stream.str();
+	return (value);
+}
 
 void	Phonebook::search_cmd() {
 	int	i;
@@ -52,7 +55,7 @@ void	Phonebook::display_index() {
 			while (input[j] == ' ' || (input[i] >= 9 && input[i] <= 13))
 				input.erase(j, 1);
 			j++;
-		}	
+		}
 		if (input.size() >= 2 || input[i] < '0' || input[i] > '7')
 			std::cout << "Value must be a single digit integer where 0 <= i <= 7" << std::endl;
 		else if (input[i] - '0' >= this->total)
@@ -92,4 +95,9 @@ std::string	Phonebook::handle_input(std::string field) const {
 		if (!input.empty())
 			return (input);
 	}
+}
+
+Phonebook::Phonebook () {
+	index = 0;
+	total = 0;
 }
