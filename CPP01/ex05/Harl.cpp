@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 20:25:12 by eve               #+#    #+#             */
-/*   Updated: 2025/09/30 17:44:51 by eve              ###   ########.fr       */
+/*   Created: 2025/09/30 18:10:11 by eve               #+#    #+#             */
+/*   Updated: 2025/09/30 18:10:25 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replacer.hpp"
+#include "Harl.hpp"
 
-int main(int ac, char *av[])
-{
-	if (ac != 4) {
-		std::cerr << "4 arguments are required" << std::endl;
-		return (0);
-	}
-	FileReplacer	replace(av);
-	replace.replace();
-	return (1);
+void	Harl::debug(void) {
+	
+}
+
+void	Harl::info(void) {
+	
+}
+
+void	Harl::warning(void) {
+	
+}
+
+void	Harl::error(void) {
+	
+}
+
+void	Harl::complain( std::string level ) {
+	
 }

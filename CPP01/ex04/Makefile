@@ -6,24 +6,24 @@
 #    By: eve <eve@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/09 20:16:31 by eve               #+#    #+#              #
-#    Updated: 2025/09/12 22:30:09 by eve              ###   ########.fr        #
+#    Updated: 2025/09/30 17:50:58 by eve              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp
+SRC = main.cpp Replacer.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = zombie
+NAME = replace
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -g -o $(NAME) $(OBJ)
+	$(CXX) $(CXXFLAGS) -g -o $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)

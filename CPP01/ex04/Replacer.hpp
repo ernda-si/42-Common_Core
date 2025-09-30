@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Replacer.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 20:25:12 by eve               #+#    #+#             */
-/*   Updated: 2025/09/30 17:44:51 by eve              ###   ########.fr       */
+/*   Created: 2025/09/30 15:50:14 by eve               #+#    #+#             */
+/*   Updated: 2025/09/30 17:38:47 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Replacer.hpp"
+#ifndef REPLACER_HPP
+#define REPLACER_HPP
 
-int main(int ac, char *av[])
-{
-	if (ac != 4) {
-		std::cerr << "4 arguments are required" << std::endl;
-		return (0);
-	}
-	FileReplacer	replace(av);
-	replace.replace();
-	return (1);
-}
+# include <iostream>
+# include <fstream>
+
+class FileReplacer {
+
+private:
+
+	std::string	filename;
+	std::string	newfile;
+	std::string	s1;
+	std::string	s2;
+
+public:
+
+	FileReplacer(char **av);
+
+	~FileReplacer() {};
+
+	void	replace();
+
+};
+
+#endif
