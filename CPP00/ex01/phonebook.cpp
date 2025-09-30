@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:04:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/29 17:10:51 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/09/30 02:07:40 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	Phonebook::display_index() {
 		i = 0;
 		j = 0;
 		input = handle_input("Enter the contact index");
+		if (input.empty())
+			return;
 		while (input[j])
 		{
 			while (input[j] == ' ' || (input[i] >= 9 && input[i] <= 13))
@@ -67,19 +69,37 @@ void	Phonebook::display_index() {
 }
 
 void	Phonebook::add_cmd() {
+	std::string input;
+	
 	if (this->index >= 8)
 		this->index = 0;
-	contacts[this->index].add_f1(handle_input("first_name"));
-	contacts[this->index].add_f2(handle_input("last_name"));
-	contacts[this->index].add_f3(handle_input("nickname"));
-	contacts[this->index].add_f4(handle_input("phone_number"));
-	contacts[this->index].add_f5(handle_input("darkest_secret"));
+
+	input = handle_input("first_name");
+	if (input.empty()) return;
+	contacts[this->index].add_f1(input);
+
+	input = handle_input("last_name");
+	if (input.empty()) return;
+	contacts[this->index].add_f2(input);
+
+	input = handle_input("nickname");
+	if (input.empty()) return;
+	contacts[this->index].add_f3(input);
+
+	input = handle_input("phone_number");
+	if (input.empty()) return;
+	contacts[this->index].add_f4(input);
+
+	input = handle_input("darkest_secret");
+	if (input.empty()) return;
+	contacts[this->index].add_f5(input);
+
 	this->index++;
 	if (total < 8)
 		this->total++;
 }
 
-std::string	Phonebook::handle_input(std::string field) const {
+std::string	Phonebook::handle_input(const std::string& field) const {
 	std::string	input;
 	int			i = 0;
 
@@ -95,7 +115,7 @@ std::string	Phonebook::handle_input(std::string field) const {
 			return (input);
 		std::cout << field << ": " << std::flush;
 	}
-	exit(0);
+	return ("");
 }
 
 Phonebook::Phonebook () {
