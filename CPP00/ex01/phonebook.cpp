@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 17:04:11 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/09/30 02:07:40 by eve              ###   ########.fr       */
+/*   Updated: 2025/10/01 14:01:18 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,28 @@ void	Phonebook::add_cmd() {
 		this->index = 0;
 
 	input = handle_input("first_name");
-	if (input.empty()) return;
+	if (input.empty())
+		return;
 	contacts[this->index].add_f1(input);
 
 	input = handle_input("last_name");
-	if (input.empty()) return;
+	if (input.empty())
+		return;
 	contacts[this->index].add_f2(input);
 
 	input = handle_input("nickname");
-	if (input.empty()) return;
+	if (input.empty())
+		return;
 	contacts[this->index].add_f3(input);
 
 	input = handle_input("phone_number");
-	if (input.empty()) return;
+	if (input.empty())
+		return;
 	contacts[this->index].add_f4(input);
 
 	input = handle_input("darkest_secret");
-	if (input.empty()) return;
+	if (input.empty())
+		return;
 	contacts[this->index].add_f5(input);
 
 	this->index++;
