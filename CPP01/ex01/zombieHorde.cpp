@@ -20,7 +20,7 @@ Zombie* zombieHorde(int N, std::string name) {
     if (N <= 0)
     {
         std::cout << "N must be greater than 0" << std::endl;
-        exit(1);
+        return NULL;
     }
     zombie = new Zombie[N];
     while (++i < N)

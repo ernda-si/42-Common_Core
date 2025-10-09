@@ -34,7 +34,7 @@ void FileReplacer::replace() {
         std::cerr << "Failed to open outfile" << std::endl;
         return;
     }
-    while (std::getline(infile, line)) {
+    while (s1.size() == 0 && std::getline(infile, line)) {
         size_t start = 0;
         size_t pos;
         while ((pos = line.find(s1, start)) != std::string::npos) {

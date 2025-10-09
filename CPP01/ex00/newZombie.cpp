@@ -15,6 +15,6 @@
 Zombie* Zombie::newZombie(std::string name) {
 	Zombie *zombie;
 
-	zombie = new Zombie(name); //utilizandod construtor
+	zombie = new Zombie(name);
 	return (zombie);
 }

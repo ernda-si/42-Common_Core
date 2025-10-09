@@ -14,8 +14,8 @@
 
 int main(void)
 {
-	Zombie *z1;
-	Zombie *z2;
+	Zombie *z1 = NULL;
+	Zombie *z2 = NULL;
 
 	z1 = z1->newZombie("Carlos");
 	z1->announce();
