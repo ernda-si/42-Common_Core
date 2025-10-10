@@ -16,3 +16,8 @@ cat << a
 cat << a
 exit
 exit
+clear
+a
+ls
+clear
+exit

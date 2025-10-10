@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:54:36 by eve               #+#    #+#             */
-/*   Updated: 2025/09/30 18:10:06 by eve              ###   ########.fr       */
+/*   Created: 2025/10/09 18:47:12 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/10/09 18:50:26 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,10 @@
 
 int main(void)
 {
-    
+	Harl	harl;
+
+	harl.complain("DEBUG");
+	harl.complain("INFO");
+	harl.complain("WARNING");
+	harl.complain("ERROR");
 }

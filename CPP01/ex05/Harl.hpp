@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 17:54:58 by eve               #+#    #+#             */
-/*   Updated: 2025/09/30 18:10:23 by eve              ###   ########.fr       */
+/*   Created: 2025/10/09 18:47:17 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/10/09 18:47:19 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ private:
 	void    error( void );
 
 public:
+
+	Harl() {};
+
+	~Harl() {};
 
 	void complain( std::string level );
 
