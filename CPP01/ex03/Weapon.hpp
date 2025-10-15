@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 16:39:09 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/10 16:39:10 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:26:21 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Weapon {
 
     private:
 
-    std::string type;
+    std::string _type;
 
     public:
 

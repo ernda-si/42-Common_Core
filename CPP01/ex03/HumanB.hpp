@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 16:38:53 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/10 16:38:54 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:26:47 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ class HumanB {
     
     private:
 
-    Weapon      *weapon;
-    std::string name;
+    Weapon      *_Weapon;
+    std::string _name;
 
     public:
 
     HumanB(std::string nm) {
-        name = nm;
+        _name = nm;
     }
     
     ~HumanB() {}

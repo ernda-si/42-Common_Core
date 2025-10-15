@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 16:37:49 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/10 16:37:51 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:27:55 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ class Zombie {
 
 	private:
 
-	std::string name;
+	std::string _name;
 
 	public:
 
 	Zombie(std::string n) {
-		name = n;
+		_name = n;
 	}
 
 	~Zombie() {
-		std::cout << "Zombie " << name << " was destroyed!" << std::endl;
+		std::cout << "Zombie " << _name << " was destroyed!" << std::endl;
 	}
 
 	Zombie* newZombie(std::string name);

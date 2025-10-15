@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 16:38:30 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/10 16:38:32 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 14:57:16 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ int main(void)
     std::cout << str << std::endl;
     std::cout << *ptr << std::endl;
     std::cout << ref << std::endl;
+
 }

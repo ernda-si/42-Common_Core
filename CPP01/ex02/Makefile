@@ -6,7 +6,7 @@
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/10 16:38:35 by ernda-si          #+#    #+#              #
-#    Updated: 2025/10/10 16:38:36 by ernda-si         ###   ########.fr        #
+#    Updated: 2025/10/15 15:29:42 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = zombie
+NAME = zombieBrain
 
 all: $(NAME)
 

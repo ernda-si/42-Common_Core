@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 18:47:17 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/09 18:47:19 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 16:10:55 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ class   Harl {
 	
 private:
 
-	void    debug( void );
+	void    _Debug( void );
 
-	void    info( void );
+	void    _Info( void );
 
-	void    warning( void );
+	void    _Warning( void );
 
-	void    error( void );
+	void    _Error( void );
 
 public:
 
@@ -34,7 +34,7 @@ public:
 
 	~Harl() {};
 
-	void complain( std::string level );
+	void	complain( std::string level );
 
 };
 

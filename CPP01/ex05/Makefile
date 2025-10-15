@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/10 16:39:01 by ernda-si          #+#    #+#              #
-#    Updated: 2025/10/15 15:30:06 by ernda-si         ###   ########.fr        #
+#    Created: 2025/10/10 16:39:18 by ernda-si          #+#    #+#              #
+#    Updated: 2025/10/15 16:12:24 by ernda-si         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = HumanA.cpp HumanB.cpp main.cpp Weapon.cpp
+SRC = main.cpp Harl.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -18,7 +18,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = zombieWeapon
+NAME = harl
 
 all: $(NAME)
 

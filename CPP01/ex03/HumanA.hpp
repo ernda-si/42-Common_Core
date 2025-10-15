@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 16:38:44 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/10 16:38:46 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:27:02 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ class HumanA {
     
     private:
 
-    Weapon      *weapon;
-    std::string name;
+    Weapon      *_Weapon;
+    std::string _name;
 
     public:
 

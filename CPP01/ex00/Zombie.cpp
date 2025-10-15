@@ -6,12 +6,12 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 16:37:43 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/10 16:37:45 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/10/15 15:27:59 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
 void    Zombie::announce(void) const {
-	std::cout << name << ":  BraiiiiiiinnnzzzZ...\n";
+	std::cout << _name << ":  BraiiiiiiinnnzzzZ...\n";
 }
