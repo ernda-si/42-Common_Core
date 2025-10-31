@@ -21,3 +21,72 @@ a
 ls
 clear
 exit
+clear
+ls
+cd ..
+ls
+cd CPP02
+ls
+code .
+exit
+clear
+ls
+clear
+env
+clear
+exit
+a
+clear
+ls
+exit
+exit
+a
+ls
+ls
+exit
+./minishell -b
+./minishell -b
+./minishell -b
+./minishell -b
+./minishell -b
+./minishell -b
+env
+env | grep SH
+exit
+exit
+exit
+exit
+exi
+exit
+exit
+exit
+bash
+ls
+exit
+clear
+cd test/
+cd tst
+cd test2/
+ls
+clear
+pwd
+pwd
+ls
+env
+env | grep PWD
+clear
+env | grep PWD
+cd .
+env | grep PWD
+cd .
+cd .
+cd .
+env | grep PWD
+cd ..
+env | grep PWD
+cd ..
+env | grep PWD
+cd .
+env | grep PWD
+clear
+exit

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pmoreira <pmoreira@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 12:12:04 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/07/02 11:20:54 by pmoreira         ###   ########.fr       */
+/*   Updated: 2025/10/31 15:04:56 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*path_handler(char *arg)
 
 static void	normi_handler(char *c_path, char *n_path, t_env **env)
 {
-	char	*new_path;
+	char	*new_path;	
 	char	*temp;
 
 	new_path = getcwd(NULL, 0);

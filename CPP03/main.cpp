@@ -5,17 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 16:10:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/10/27 16:24:57 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/10/31 15:53:24 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/10/31 16:58:54 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "ClapTrap.hpp"
 
-int main( void ) {
-    Fixed a;
+int main(void)
+{
+    ClapTrap ct("Eve");
 
-    std::cout << a.getRawBits() << std::endl;
+    ct.attack("Adam");
+    ct.beRepaired(50);
+    ct.takeDamage(10);
 
-    return 0;
 }
