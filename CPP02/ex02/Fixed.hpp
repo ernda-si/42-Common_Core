@@ -1,27 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 16:10:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/06 14:18:40 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/11/06 18:01:42 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/11/06 18:14:01 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
-int main( void )
+# include <iostream>
+# include <cmath>
+# include <string>
+
+class Fixed
 {
-    Fixed a;
-    Fixed b( a );
-    Fixed c;
-    
-    c = b;
-    std::cout << a.getRawBits() << std::endl;
-    std::cout << b.getRawBits() << std::endl;
-    std::cout << c.getRawBits() << std::endl;
-    
-    return 0;
+private:
+
+	
+
+public:
+
+	Fixed();
+	
+	~Fixed();
+	
+	bool	&operator==(const Fixed &other)
+	{
+		return ();
+	}
+
+};
+
+Fixed::Fixed(/* args */)
+{
 }
+
+Fixed::~Fixed()
+{
+}
+
+
+#endif

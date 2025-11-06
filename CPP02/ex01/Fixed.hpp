@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 16:10:01 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/06 14:34:11 by ernda-si         ###   ########.fr       */
+/*   Created: 2025/11/06 14:38:38 by ernda-si          #+#    #+#             */
+/*   Updated: 2025/11/06 17:58:38 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,35 @@
 #define FIXED_HPP
 
 # include <iostream>
+# include <cmath>
 
-class Fixed {
-
+class Fixed
+{
 private:
-
-    static const int    _fractionalBits = 8;
+	
+	static const int    _fractionalBits = 8;
     int                 _fixed;
 
 public:
 
-    Fixed();
+	Fixed();
 
-    ~Fixed();
+	Fixed(const int number);
 
-    Fixed(const Fixed &obj);
+	Fixed(const float number);
 
-    Fixed &operator=(const Fixed& obj);
+	~Fixed();
 
-    int getRawBits( void ) const;
+	Fixed(const Fixed &other);
 
-    void setRawBits( int const raw );
+	Fixed &operator=(const Fixed &other);
+
+	int		toInt( void ) const;
+
+	float	toFloat( void ) const;
+
+	friend	std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
+
 
 };
 
