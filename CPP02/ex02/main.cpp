@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:59:23 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/07 17:05:02 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/11/14 17:45:14 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 int main( void ) 
 {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	// Fixed a;
+	// Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed a(10);
+	Fixed b(1);
 
 	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
+	// std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
+	// std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	std::cout << a / b << std::endl;
-	std::cout << a * b << std::endl;
+	// std::cout << a / b << std::endl;
+	// std::cout << a * b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 	// std::cout << Fixed::min( a, b ) << std::endl;
 	
 	return 0;
-}%       
+}
 
 // Add public member functions to your class to overload the following operators:
 
