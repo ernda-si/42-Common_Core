@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:01:42 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/11 16:35:14 by eve              ###   ########.fr       */
+/*   Updated: 2025/11/14 20:13:03 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,68 @@ public:
 	friend	std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
 	Fixed	&operator++();
 	Fixed	operator++(int);
+	Fixed	&operator--();
+	Fixed	operator--(int);
+
+	Fixed	operator*(const Fixed other)
+	{
+		return (this->toFloat() * other.toFloat());
+	}
+
+	Fixed	operator/(const Fixed other)
+	{
+		return (this->toFloat() / other.toFloat());
+	}
+
+	Fixed	operator+(const Fixed other)
+	{
+		return (this->toFloat() + other.toFloat());
+	}
+
+	Fixed	operator-(const Fixed other)
+	{
+		return (this->toFloat() - other.toFloat());
+	}
+
+	static float	max(const Fixed &a, const Fixed &b)
+	{
+		return (a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat());
+	}
+
+	static float	min(const Fixed &a, const Fixed &b)
+	{
+		return (a.toFloat() < b.toFloat() ? a.toFloat() : b.toFloat());
+	}
+
+	bool	operator<(const Fixed &other) const
+	{
+		return (this->toFloat() < other.toFloat());
+	}
+
+	bool	operator>(const Fixed &other) const
+	{
+		return (this->toFloat() > other.toFloat());
+	}
+	
+	bool	operator<=(const Fixed &other) const
+	{
+		return (this->toFloat() <= other.toFloat());
+	}
+
+	bool	operator>=(const Fixed &other) const
+	{
+		return (this->toFloat() >= other.toFloat());
+	}
+
+	bool	operator==(const Fixed &other) const
+	{
+		return (this->toFloat() == other.toFloat());
+	}
+
+	bool	operator!=(const Fixed &other) const
+	{
+		return (this->toFloat() != other.toFloat());
+	}
 
 };
 

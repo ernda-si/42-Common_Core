@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:49:08 by eve               #+#    #+#             */
-/*   Updated: 2025/11/12 21:00:13 by eve              ###   ########.fr       */
+/*   Updated: 2025/11/14 20:12:57 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Fixed::Fixed()
 {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 	_fixed = 0;
 }
 
@@ -32,17 +32,18 @@ Fixed::Fixed(const float number)
 
 Fixed::~Fixed()
 {
-	std::cout << "Default destructor called" << std::endl;
+	// std::cout << "Default destructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &other) : _fixed(other._fixed)
+Fixed::Fixed(const Fixed &other)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
+    _fixed = other._fixed;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 		this->_fixed = other._fixed;
 	return *this;
@@ -80,7 +81,16 @@ Fixed	Fixed::operator++(int)
 	return (old);
 }
 
-Fixed	Fixed::operator*()
+Fixed   &Fixed::operator--()
 {
-	
+	_fixed--;
+	return (*this);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed	old = *this;
+
+	--(*this);
+	return (old);
 }

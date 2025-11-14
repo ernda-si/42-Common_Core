@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:59:23 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/12 21:56:07 by eve              ###   ########.fr       */
+/*   Updated: 2025/11/14 20:13:24 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,58 @@ int main( void )
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
-	std::cout << a << std::endl;
-	std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	std::cout << a / b << std::endl;
-	std::cout << a * b << std::endl;
-	std::cout << Fixed::max( a, b ) << std::endl;
-	// std::cout << Fixed::min( a, b ) << std::endl;
+	std::cout << "a:	" << a << std::endl;
+
+	std::cout << "++a:	" << ++a << std::endl;
+	std::cout << "a:	" << a << std::endl;
+
+	std::cout << "a++:	" << a++ << std::endl;
+	std::cout << "a:	" << a << std::endl;
+
+	std::cout << "--a:	" << --a << std::endl;
+	std::cout << "a:	" << a << std::endl;
+
+	std::cout << "a--:	" << a-- << std::endl;
+	std::cout << "a:	" << a << std::endl;
+
+	std::cout << "b:	" << b << std::endl;
+
+	std::cout << "a / b:	" << a / b << std::endl;
+	std::cout << "a * b:	" << a * b << std::endl;
+
+	std::cout << "a:	" << a << std::endl;
+	std::cout << "b:	" << b << std::endl;
+	std::cout << "a + b:	" << a + b << std::endl;
+	std::cout << "b - a:	" << a - b << std::endl;
+
+	std::cout << "max:	" << Fixed::max( a, b ) << std::endl;
+	std::cout << "min:	" << Fixed::min( a, b ) << std::endl;
+
+	std::cout << "a < b:	" << (a < b) << std::endl;
+	std::cout << "b < a:	" << (b < a) << std::endl;
+
+	std::cout << "a > b:	" << (a > b) << std::endl;
+	std::cout << "b > a:	" << (b > a) << std::endl;
+
+	std::cout << "a <= b:	" << (a <= b) << std::endl;
+	std::cout << "b <= a:	" << (b <= a) << std::endl;
+	
+	std::cout << "a >= b:	" << (a >= b) << std::endl;
+	std::cout << "b >= a:	" << (b >= a) << std::endl;
+	
+	a = b;
+	std::cout << "a = b" << std::endl;
+	std::cout << "a:	" << a << std::endl;
+	std::cout << "b:	" << b << std::endl;
+
+	std::cout << "a <= b:	" << (a <= b) << std::endl;
+	std::cout << "b <= a:	" << (b <= a) << std::endl;
+	
+	std::cout << "a >= b:	" << (a >= b) << std::endl;
+	std::cout << "b >= a:	" << (b >= a) << std::endl;
+
+	std::cout << "a == b:	" << (a == b) << std::endl;
+	std::cout << "a != b:	" << (a != b) << std::endl;
 
 	return 0;
 }
