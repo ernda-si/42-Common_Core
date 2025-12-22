@@ -6,11 +6,12 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 14:45:32 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/06 17:57:30 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/12/22 18:15:40 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <climits>
 
 Fixed::Fixed()
 {
@@ -20,12 +21,27 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int number)
 {
+	int	possibleInt = INT_MAX >> _fractionalBits;
+	if (number > possibleInt || number < -possibleInt - 1)
+	{
+		std::cerr << "Integer overflow/underflow when converting to Fixed point" << std::endl;
+		_fixed = 0;
+		return ;
+	}
 	// _fixed = (number * (2 ^ _fractionalBits));
 	_fixed = number * (1 << _fractionalBits);
 }
 
 Fixed::Fixed(const float number)
 {
+	if (std::isinf(number) || std::isnan(number) ||
+		number > (static_cast<float>(INT_MAX) / (1 << _fractionalBits)) ||
+		number < (static_cast<float>(INT_MIN) / (1 << _fractionalBits)))
+	{
+		std::cerr << "Float overflow/underflow when converting to Fixed point" << std::endl;
+		_fixed = 0;
+		return ;
+	}
 	// _fixed = (number * (2 ^ _fractionalBits))
 	_fixed = roundf(number * (1 << _fractionalBits));
 }

@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+	/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
@@ -56,7 +56,6 @@ int main( void )
 	std::cout << "a >= b:	" << (a >= b) << std::endl;
 	std::cout << "b >= a:	" << (b >= a) << std::endl;
 	
-	a = b;
 	std::cout << "a = b" << std::endl;
 	std::cout << "a:	" << a << std::endl;
 	std::cout << "b:	" << b << std::endl;
@@ -70,6 +69,23 @@ int main( void )
 	std::cout << "a == b:	" << (a == b) << std::endl;
 	std::cout << "a != b:	" << (a != b) << std::endl;
 
+	a = b;
+	std::cout << "a is now equal b" << std::endl;
+	std::cout << "a = b" << std::endl;
+	std::cout << "a:	" << a << std::endl;
+	std::cout << "b:	" << b << std::endl;
+
+	std::cout << "a <= b:	" << (a <= b) << std::endl;
+	std::cout << "b <= a:	" << (b <= a) << std::endl;
+	
+	std::cout << "a >= b:	" << (a >= b) << std::endl;
+	std::cout << "b >= a:	" << (b >= a) << std::endl;
+
+	std::cout << "a == b:	" << (a == b) << std::endl;
+	std::cout << "a != b:	" << (a != b) << std::endl;
+
+	while (a.toFloat())
+		a++;
 	return 0;
 }
 

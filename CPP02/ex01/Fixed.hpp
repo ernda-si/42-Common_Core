@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 14:38:38 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/11 15:19:54 by eve              ###   ########.fr       */
+/*   Updated: 2025/12/22 17:46:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Fixed
 {
 private:
-	
+
 	static const int    _fractionalBits = 8;
     int                 _fixed;
 
@@ -42,7 +42,6 @@ public:
 	float	toFloat( void ) const;
 
 	friend	std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
-
 
 };
 

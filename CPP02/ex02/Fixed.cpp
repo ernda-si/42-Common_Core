@@ -6,44 +6,60 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:49:08 by eve               #+#    #+#             */
-/*   Updated: 2025/11/14 20:12:57 by ernda-si         ###   ########.fr       */
+/*   Updated: 2025/12/22 18:25:28 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <climits>
 
 Fixed::Fixed()
 {
-	// std::cout << "Default constructor called" << std::endl;
+	std::cout << "Default constructor called" << std::endl;
 	_fixed = 0;
 }
 
 Fixed::Fixed(const int number)
 {
+	int	possibleInt = INT_MAX >> _fractionalBits;
+	if (number > possibleInt || number < -possibleInt - 1)
+	{
+		std::cerr << "Error: Integer overflow/underflow when converting to Fixed point representation." << std::endl;
+		_fixed = 0;
+		return ;
+	}
 	// _fixed = (number * (2 ^ _fractionalBits));
 	_fixed = number * (1 << _fractionalBits);
 }
 
 Fixed::Fixed(const float number)
 {
+	if (std::isinf(number) || std::isnan(number) ||
+		number > (static_cast<float>(INT_MAX) / (1 << _fractionalBits)) ||
+		number < (static_cast<float>(INT_MIN) / (1 << _fractionalBits)))
+	{
+		std::cerr << "Float overflow/underflow when converting to Fixed point" << std::endl;
+		_fixed = 0;
+		return ;
+	}
 	// _fixed = (number * (2 ^ _fractionalBits))
 	_fixed = roundf(number * (1 << _fractionalBits));
 }
 
 Fixed::~Fixed()
 {
-	// std::cout << "Default destructor called" << std::endl;
+	std::cout << "Default destructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed &other)
 {
-	// std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
     _fixed = other._fixed;
 }
 
 Fixed &Fixed::operator=(const Fixed &other)
 {
-	// std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &other)
 		this->_fixed = other._fixed;
 	return *this;
@@ -93,4 +109,64 @@ Fixed	Fixed::operator--(int)
 
 	--(*this);
 	return (old);
+}
+
+Fixed	Fixed::operator*(const Fixed other)
+{
+	return (this->toFloat() * other.toFloat());
+}
+
+Fixed	Fixed::operator/(const Fixed other)
+{
+	return (this->toFloat() / other.toFloat());
+}
+
+Fixed	Fixed::operator+(const Fixed other)
+{
+	return (this->toFloat() + other.toFloat());
+}
+
+Fixed	Fixed::operator-(const Fixed other)
+{
+	return (this->toFloat() - other.toFloat());
+}
+
+float	Fixed::max(const Fixed &a, const Fixed &b)
+{
+	return (a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat());
+}
+
+float	Fixed::min(const Fixed &a, const Fixed &b)
+{
+	return (a.toFloat() < b.toFloat() ? a.toFloat() : b.toFloat());
+}
+
+bool	Fixed::operator<(const Fixed &other) const
+{
+	return (this->toFloat() < other.toFloat());
+}
+
+bool	Fixed::operator>(const Fixed &other) const
+{
+	return (this->toFloat() > other.toFloat());
+}
+
+bool	Fixed::operator<=(const Fixed &other) const
+{
+	return (this->toFloat() <= other.toFloat());
+}
+
+bool	Fixed::operator>=(const Fixed &other) const
+{
+	return (this->toFloat() >= other.toFloat());
+}
+
+bool	Fixed::operator==(const Fixed &other) const
+{
+	return (this->toFloat() == other.toFloat());
+}
+
+bool	Fixed::operator!=(const Fixed &other) const
+{
+	return (this->toFloat() != other.toFloat());
 }
