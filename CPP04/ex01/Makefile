@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+         #
+#    By: eve <eve@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/01 14:14:55 by ernda-si          #+#    #+#              #
-#    Updated: 2025/12/27 22:32:07 by ernda-si         ###   ########.fr        #
+#    Updated: 2026/01/03 21:34:22 by eve              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -18,7 +18,7 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-NAME = megaphone
+NAME = Brain
 
 all: $(NAME)
 

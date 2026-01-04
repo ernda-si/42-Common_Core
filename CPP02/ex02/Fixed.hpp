@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:01:42 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/22 15:28:23 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/04 22:04:29 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,53 +27,29 @@ private:
 public:
 
 	Fixed();
-
 	Fixed(const int number);
-
 	Fixed(const float number);
-
 	~Fixed();
-
 	Fixed(const Fixed &other);
-
 	Fixed &operator=(const Fixed &other);
-
 	int		toInt( void ) const;
-
 	float	toFloat( void ) const;
-
 	friend	std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
-
 	Fixed	&operator++();
-
 	Fixed	operator++(int);
-
 	Fixed	&operator--();
-
 	Fixed	operator--(int);
-
 	Fixed	operator*(const Fixed other);
-
 	Fixed	operator/(const Fixed other);
-
 	Fixed	operator+(const Fixed other);
-
 	Fixed	operator-(const Fixed other);;
-
-	static float	max(const Fixed &a, const Fixed &b);
-
-	static float	min(const Fixed &a, const Fixed &b);
-
+	static const Fixed	&max(const Fixed &a, const Fixed &b);
+	static const Fixed	&min(const Fixed &a, const Fixed &b);
 	bool	operator<(const Fixed &other) const;
-
 	bool	operator>(const Fixed &other) const;
-	
 	bool	operator<=(const Fixed &other) const;
-
 	bool	operator>=(const Fixed &other) const;
-
 	bool	operator==(const Fixed &other) const;
-
 	bool	operator!=(const Fixed &other) const;
 
 };

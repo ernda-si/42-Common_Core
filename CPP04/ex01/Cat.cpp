@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:51 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/27 22:28:26 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/03 21:32:51 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Cat::~Cat()
 	std::cout << "Default Cat destructor called" << std::endl;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy)
+Cat::Cat(const Cat &copy) : Animal(copy) , Brain(copy)
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
 	*this = copy;

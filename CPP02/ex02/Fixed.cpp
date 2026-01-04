@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:49:08 by eve               #+#    #+#             */
-/*   Updated: 2025/12/22 18:25:28 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/04 22:04:03 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,14 +131,14 @@ Fixed	Fixed::operator-(const Fixed other)
 	return (this->toFloat() - other.toFloat());
 }
 
-float	Fixed::max(const Fixed &a, const Fixed &b)
+const Fixed	&Fixed::max(const Fixed &a, const Fixed &b)
 {
-	return (a.toFloat() > b.toFloat() ? a.toFloat() : b.toFloat());
+	return (a.toFloat() > b.toFloat() ? a : b);
 }
 
-float	Fixed::min(const Fixed &a, const Fixed &b)
+const Fixed	&Fixed::min(const Fixed &a, const Fixed &b)
 {
-	return (a.toFloat() < b.toFloat() ? a.toFloat() : b.toFloat());
+	return (a.toFloat() < b.toFloat() ? a : b);
 }
 
 bool	Fixed::operator<(const Fixed &other) const

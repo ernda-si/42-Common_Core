@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 14:38:38 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/22 17:46:43 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/04 22:04:54 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,13 @@ private:
 public:
 
 	Fixed();
-
 	Fixed(const int number);
-
 	Fixed(const float number);
-
 	~Fixed();
-
 	Fixed(const Fixed &other);
-
-	Fixed &operator=(const Fixed &other);
-
+	Fixed	&operator=(const Fixed &other);
 	int		toInt( void ) const;
-
 	float	toFloat( void ) const;
-
 	friend	std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
 
 };

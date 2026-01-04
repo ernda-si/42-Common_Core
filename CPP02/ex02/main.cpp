@@ -84,8 +84,6 @@ int main( void )
 	std::cout << "a == b:	" << (a == b) << std::endl;
 	std::cout << "a != b:	" << (a != b) << std::endl;
 
-	while (a.toFloat())
-		a++;
 	return 0;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 16:10:01 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/06 14:34:11 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/04 22:04:36 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,10 @@ private:
 public:
 
     Fixed();
-
     ~Fixed();
-
     Fixed(const Fixed &obj);
-
     Fixed &operator=(const Fixed& obj);
-
     int getRawBits( void ) const;
-
     void setRawBits( int const raw );
 
 };

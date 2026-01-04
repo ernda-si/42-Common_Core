@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:50 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/27 22:28:38 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/03 21:32:39 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Dog::~Dog()
 	std::cout << "Default Dog destructor called" << std::endl;
 }
 
-Dog::Dog(const Dog &copy) : Animal(copy)
+Dog::Dog(const Dog &copy) : Animal(copy) , Brain(copy)
 {
 	std::cout << "Copy Dog constructor called" << std::endl;
 	*this = copy;
