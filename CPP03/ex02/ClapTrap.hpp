@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:53:35 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/04 23:09:03 by eve              ###   ########.fr       */
+/*   Updated: 2026/01/04 23:19:58 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ protected:
 public:
 
 	ClapTrap(std::string name) {
-		std::cout << "Constructor called" << std::endl;
+		std::cout << "ClapTrap constructor called" << std::endl;
 		_name = name;
 		_hitPoints = 10;
 		_energyPoints = 10;
@@ -36,11 +36,11 @@ public:
 	}
 
 	ClapTrap() {
-		std::cout << "Default constructor called" << std::endl;
+		std::cout << "ClapTrap default constructor called" << std::endl;
 	}
 
 	~ClapTrap() {
-		std::cout << "Default destructor called" << std::endl;
+		std::cout << "ClapTrap destructor called" << std::endl;
 	}
 
 	ClapTrap &operator=(const ClapTrap &other);

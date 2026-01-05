@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 15:53:35 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/11/03 15:59:38 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/04 23:09:03 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 class ClapTrap
 {
 
-private:
+protected:
 
 	std::string	_name;
 	int 		_hitPoints;
@@ -45,7 +45,7 @@ public:
 
 	ClapTrap &operator=(const ClapTrap &other);
 
-	ClapTrap(ClapTrap &copy);
+	ClapTrap(const ClapTrap &copy);
 
 	void attack(const std::string& target);
 

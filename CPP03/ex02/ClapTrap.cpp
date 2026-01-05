@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/31 16:11:22 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/04 23:09:03 by eve              ###   ########.fr       */
+/*   Updated: 2026/01/04 23:19:58 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy) {
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap copy constructor called" << std::endl;
 	_name = copy._name;
 	_hitPoints = copy._hitPoints;
 	_energyPoints = copy._energyPoints;
@@ -59,7 +59,7 @@ ClapTrap::ClapTrap(const ClapTrap &copy) {
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
-	std::cout << "Copy assignment operator called!" << std::endl;
+	std::cout << "ClapTrap copy assignment operator called" << std::endl;
 
 	if (this != &other)
 	{
