@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 15:49:08 by eve               #+#    #+#             */
-/*   Updated: 2026/01/04 22:04:03 by eve              ###   ########.fr       */
+/*   Updated: 2026/01/05 14:48:31 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Fixed::Fixed(const int number)
 	int	possibleInt = INT_MAX >> _fractionalBits;
 	if (number > possibleInt || number < -possibleInt - 1)
 	{
-		std::cerr << "Error: Integer overflow/underflow when converting to Fixed point representation." << std::endl;
+		std::cerr << "Integer overflow/underflow when converting to Fixed point representation." << std::endl;
 		_fixed = 0;
 		return ;
 	}
