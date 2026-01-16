@@ -5,20 +5,20 @@
 #                                                     +:+ +:+         +:+      #
 #    By: eve <eve@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/10 16:38:12 by ernda-si          #+#    #+#              #
-#    Updated: 2026/01/14 22:19:18 by eve              ###   ########.fr        #
+#    Created: 2025/10/01 14:14:55 by ernda-si          #+#    #+#              #
+#    Updated: 2026/01/15 12:24:31 by eve              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRC = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
 CXX = c++
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
-NAME = ClapTrap
+NAME = Brain
 
 all: $(NAME)
 

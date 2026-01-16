@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_popen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 17:08:06 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/06 16:26:45 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/01/06 21:15:39 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int    ft_popen(const char *file, char *const argv[], char type)
 }
 
 int main() {
-	int	fd = ft_popen("usr/bin/ls", (char *const[]){"ls", "-l", NULL}, 'w');
+	int	fd = ft_popen("usr/bin/ls", (char *const[]){"ls", "-l", NULL}, 'r');
 
 	while(ft_putstr(get_next_line(fd)));
 }
