@@ -1,0 +1,283 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   picoshell.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/19 15:29:51 by eve               #+#    #+#             */
+/*   Updated: 2026/01/19 19:20:04 by eve              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* Assignment name:    picoshell
+Expected files:        picoshell.c
+Allowed functions:    close, fork, wait, exit, execvp, dup2, pipe
+___
+
+Write the following function:
+
+int    picoshell(char *cmds[]);
+
+The goal of this function is to execute a pipeline. It must execute each
+commands [sic] of cmds and connect the output of one to the input of the
+next command (just like a shell).
+
+Cmds contains a null-terminated list of valid commands. Each rows [sic]
+of cmds are an argv array directly usable for a call to execvp. The first
+arguments [sic] of each command is the command name or path and can be passed
+directly as the first argument of execvp.
+
+If any error occur [sic], The function must return 1 (you must of course
+close all the open fds before). otherwise the function must wait all child
+processes and return 0. You will find in this directory a file main.c which
+contain [sic] something to help you test your function.
+	
+
+Examples: 
+./picoshell /bin/ls "|" /usr/bin/grep picoshell
+picoshell
+./picoshell echo 'squalala' "|" cat "|" sed 's/a/b/g'
+squblblb/
+*/
+
+#include <unistd.h>
+#include <sys/wait.h>
+#include <stdlib.h>
+
+/*
+** picoshell(cmds)
+**
+** Executa um pipeline de comandos, como num shell:
+**   cmds[0] | cmds[1] | cmds[2] | ...
+**
+** - cmds é um array terminado em NULL.
+** - Cada cmds[i] é um argv terminado em NULL, pronto para execvp:
+**     execvp(cmds[i][0], cmds[i]);
+**
+** Retorno:
+** - 0 se todos os comandos terminarem com exit status 0
+** - 1 se ocorrer erro (pipe/fork/dup2/execvp) ou se algum comando terminar != 0
+*/
+int picoshell(char **cmds[])
+{
+    int   i = 0;
+    int   fd[2];        // pipe "atual": fd[0]=read end, fd[1]=write end
+    int   in_fd = 0;    // entrada do comando atual (stdin por padrão é 0)
+    int   ret = 0;      // vira 1 se qualquer comando/erro falhar
+    pid_t pid;
+    int   status;
+
+    /*
+    ** Loop: cria 1 processo por comando.
+    ** A ideia é encadear assim:
+    **   comando i lê de in_fd
+    **   comando i escreve em fd[1] (se existir próximo comando)
+    ** Depois o pai guarda fd[0] como in_fd do próximo comando.
+    */
+    while (cmds[i])
+    {
+        /*
+        ** Se existe um próximo comando (cmds[i+1] != NULL),
+        ** então precisamos de um pipe para conectar a saída do comando i
+        ** à entrada do comando i+1.
+        **
+        ** Se for o último comando, não criamos pipe:
+        ** ele escreve no stdout normal do terminal.
+        */
+        if (cmds[i + 1]) // Se NÃO é o último comando
+        {
+            if (pipe(fd) == -1)
+                return 1;
+        }
+        else
+        {
+            // Marca como "sem pipe" para o último comando
+            fd[0] = -1;
+            fd[1] = -1;
+        }
+
+        /*
+        ** fork(): cria o processo filho que vai executar cmds[i]
+        */
+        pid = fork();
+        if (pid < 0)
+        {
+            /*
+            ** Erro no fork: fechar tudo o que estiver aberto para não vazar FDs
+            */
+            if (fd[0] != -1)
+                close(fd[0]);
+            if (fd[1] != -1)
+                close(fd[1]);
+            if (in_fd != 0)
+                close(in_fd);
+            return 1;
+        }
+
+        if (pid == 0) // FILHO: prepara redirecionamentos e executa o comando
+        {
+            /*
+            ** 1) Conectar stdin do filho
+            ** Se in_fd != 0, significa que este comando deve ler do pipe anterior.
+            ** Então:
+            **   dup2(in_fd, 0)  => stdin (0) passa a vir de in_fd
+            ** E depois fecha in_fd (o FD original não é mais necessário).
+            */
+            if (in_fd != 0)
+            {
+                if (dup2(in_fd, 0) == -1)
+                    exit(1);
+                close(in_fd);
+            }
+
+            /*
+            ** 2) Conectar stdout do filho (se NÃO for o último comando)
+            ** Se fd[1] != -1, existe um próximo comando; logo precisamos mandar
+            ** a saída deste comando para o pipe:
+            **   dup2(fd[1], 1) => stdout (1) passa a escrever no pipe
+            **
+            ** Depois fecha as duas pontas do pipe no filho:
+            ** - fecha fd[1] porque já duplicou para stdout
+            ** - fecha fd[0] porque o filho não vai ler deste pipe, só escrever
+            */
+            if (fd[1] != -1) // se NÃO é o último
+            {
+                if (dup2(fd[1], 1) == -1)
+                    exit(1);
+                close(fd[1]);
+                close(fd[0]);
+            }
+
+            /*
+            ** 3) Executar o comando
+            ** cmds[i][0] é o nome/path do programa.
+            ** cmds[i] é o argv completo (terminado em NULL).
+            */
+            execvp(cmds[i][0], cmds[i]);
+
+            /*
+            ** Se chegou aqui, execvp falhou.
+            */
+            exit(1);
+        }
+        else // PAI: fecha o que não usa e prepara a próxima iteração
+        {
+            /*
+            ** O pai não executa o comando; ele só organiza os pipes.
+            **
+            ** - Se havia um in_fd (pipe anterior), o pai não precisa mais dele
+            **   depois de criar o filho (quem usa agora é o filho). Então fecha.
+            */
+            if (in_fd != 0)
+                close(in_fd);
+
+            /*
+            ** - Se existe um pipe atual, o pai NÃO deve manter a ponta de escrita fd[1]
+            **   aberta, senão o próximo comando pode nunca receber EOF.
+            **   Então fecha fd[1] no pai.
+            */
+            if (fd[1] != -1)
+                close(fd[1]);
+
+            /*
+            ** - A ponta de leitura fd[0] será a entrada (stdin) do próximo comando.
+            **   Então guardamos em in_fd.
+            */
+            in_fd = fd[0];
+
+            i++;
+        }
+    }
+
+    /*
+    ** Depois de lançar todos os processos, esperamos TODOS terminarem.
+    ** Se qualquer um terminar com status != 0, ret vira 1.
+    */
+    while (wait(&status) > 0)
+    {
+        if (WIFEXITED(status) && WEXITSTATUS(status) != 0)
+            ret = 1;
+        else if (!WIFEXITED(status))
+            ret = 1;
+    }
+
+    return ret;
+}
+
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+int picoshell(char **cmds[]);
+
+static int  count_cmds(char **av)
+{
+    int i = 0;
+    int n = 1;
+
+    while (av[i])
+    {
+        if (av[i][0] == '|' && av[i][1] == '\0')
+            n++;
+        i++;
+    }
+    return n;
+}
+
+static int  count_args_until_pipe(char **av)
+{
+    int n = 0;
+
+    while (av[n] && !(av[n][0] == '|' && av[n][1] == '\0'))
+        n++;
+    return n;
+}
+
+int main(int ac, char **av)
+{
+    char ***cmds;
+    int cmd_count;
+    int i = 1;
+    int c = 0;
+
+    if (ac < 2)
+    {
+        write(2, "Usage: ./a.out cmd1 args... '|' cmd2 args... ...\n", 50);
+        return 1;
+    }
+
+    cmd_count = count_cmds(&av[1]);
+    cmds = malloc(sizeof(char **) * (cmd_count + 1));
+    if (!cmds)
+        return 1;
+
+    while (av[i])
+    {
+        int argc_cmd = count_args_until_pipe(&av[i]);
+        cmds[c] = malloc(sizeof(char *) * (argc_cmd + 1));
+        if (!cmds[c])
+            return 1;
+
+        for (int j = 0; j < argc_cmd; j++)
+            cmds[c][j] = av[i + j];
+        cmds[c][argc_cmd] = NULL;
+
+        c++;
+        i += argc_cmd;
+
+        if (av[i] && av[i][0] == '|' && av[i][1] == '\0')
+            i++;
+    }
+    cmds[c] = NULL;
+
+    int ret = picoshell(cmds);
+
+    // libera só o array de ponteiros (os strings são do av original)
+    for (int k = 0; cmds[k]; k++)
+        free(cmds[k]);
+    free(cmds);
+
+    return ret;
+}

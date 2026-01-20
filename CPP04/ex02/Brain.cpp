@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 21:13:58 by eve               #+#    #+#             */
-/*   Updated: 2026/01/14 23:41:49 by eve              ###   ########.fr       */
+/*   Updated: 2026/01/18 16:18:07 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,3 @@ Brain::Brain()
 Brain::~Brain() {
 	std::cout << "Default Brain destructor called" << std::endl;
 }
-

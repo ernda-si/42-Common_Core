@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 22:27:00 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/14 23:41:49 by eve              ###   ########.fr       */
+/*   Updated: 2026/01/18 16:18:48 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ WrongAnimal::WrongAnimal()
 WrongAnimal::~WrongAnimal() {
 	std::cout << "Default WrongAnimal destructor called" << std::endl;
 }
-
