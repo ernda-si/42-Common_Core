@@ -6,35 +6,46 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:42:13 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/03 21:36:49 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/02 18:29:46 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 int main()
 {
-	const WrongAnimal*	wrong = new WrongCat();
-	const Animal*		meta = new Animal();
-	const Animal*		j = new Dog();
-	const Animal*		i = new Cat();
+	int	n = 4;
+	Animal*	animals[n];
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	std::cout << wrong->getType() << " " << std::endl;
+	// Create array: half Dogs, half Cats
+	for (int i = 0; i < n / 2; i++)
+		animals[i] = new Dog();
 
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	wrong->makeSound();
+	for (int i = n / 2; i < n; i++)
+		animals[i] = new Cat();
 
-	delete wrong;
-	delete meta;
-	delete j;
-	delete i;
+	std::cout << "\n=== Testing sounds and types ===" << std::endl;
+	for (int i = 0; i < n; i++)
+	{
+		std::cout << animals[i]->getType() << ": ";
+		animals[i]->makeSound();
+	}
+
+	std::cout << "\n=== Testing deep copy ===" << std::endl;
+	Dog*	original = new Dog();
+	Dog*	copy = new Dog(*original);
+
+	std::cout << "Original Dog deleted..." << std::endl;
+	delete original;
+	std::cout << "Copy Dog still works: ";
+	copy->makeSound();
+	delete copy;
+
+	std::cout << "\n=== Deleting all animals ===" << std::endl;
+	for (int i = 0; i < n; i++)
+		delete animals[i];
+
 	return 0;
 }

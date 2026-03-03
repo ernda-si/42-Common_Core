@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
+/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:51 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/27 22:28:26 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/03/02 18:29:46 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Cat::Cat()
 {
 	std::cout << "Default Cat constructor called" << std::endl;
-	type = "cat";
+	type = "Cat";
 }
 
 Cat::~Cat()

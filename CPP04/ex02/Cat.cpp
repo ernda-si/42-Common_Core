@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:51 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/18 16:18:13 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/02 18:29:46 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Cat::Cat()
 {
 	std::cout << "Default Cat constructor called" << std::endl;
-	type = "cat";
+	type = "Cat";
 	brain = new Brain();
 }
 

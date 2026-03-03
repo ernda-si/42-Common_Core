@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:51 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/08 15:29:22 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/02 18:29:46 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,32 @@
 Cat::Cat()
 {
 	std::cout << "Default Cat constructor called" << std::endl;
-	type = "cat";
+	type = "Cat";
+	brain = new Brain();
 }
 
 Cat::~Cat()
 {
 	std::cout << "Default Cat destructor called" << std::endl;
+	delete brain;
 }
 
-Cat::Cat(const Cat &copy) : Animal(copy) , Brain(copy)
+Cat::Cat(const Cat &copy) : Animal(copy)
 {
 	std::cout << "Copy Cat constructor called" << std::endl;
-	*this = copy;
+	brain = new Brain(*copy.brain);
+	type = copy.type;
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
 	std::cout << "Copy Cat assignment operator called" << std::endl;
 	if (this != &other)
+	{
 		type = other.type;
+		delete brain;
+		brain = new Brain(*other.brain);
+	}
 	return *this;
 }
 

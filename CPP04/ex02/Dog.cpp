@@ -6,7 +6,7 @@
 /*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:50 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/18 16:18:39 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/02 18:29:46 by eve              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Dog::Dog()
 {
 	std::cout << "Default Dog constructor called" << std::endl;
-	type = "dog";
+	type = "Dog";
 	brain = new Brain();
 }
 
