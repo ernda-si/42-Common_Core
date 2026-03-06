@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:17:26 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/04 23:09:03 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/03 12:56:42 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
 	if (this != &other) {
 		ClapTrap::operator=(other);
 	}
-	return *this;
+	return (*this);
 }
 
 void ScavTrap::attack(const std::string& target) {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:03:44 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/04 23:19:58 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/03 12:56:15 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ int main(void)
 	ft2.highFivesGuys();
 
 	std::cout << "\n=== Destructors ===" << std::endl;
-	return 0;
+	return (0);
 }

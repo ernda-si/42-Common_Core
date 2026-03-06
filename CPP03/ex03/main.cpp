@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:03:44 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/14 22:30:37 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/03 12:53:41 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ int main(void)
 	dt2.whoAmI();
 
 	std::cout << "\n=== Destructors ===" << std::endl;
-	return 0;
+	return (0);
 }

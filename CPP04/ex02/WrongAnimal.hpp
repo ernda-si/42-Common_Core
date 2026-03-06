@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 22:09:05 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/14 23:41:49 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/06 17:24:04 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,15 @@ class WrongAnimal
 {
 protected:
 	std::string type;
+
 public:
 	WrongAnimal();
-	~WrongAnimal();
+	virtual ~WrongAnimal();
+	WrongAnimal(const WrongAnimal &copy);
+	WrongAnimal &operator=(const WrongAnimal &other);
+
+	virtual void makeSound() const;
+	std::string getType() const;
 };
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 17:33:52 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/27 22:28:26 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:02:32 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal()
+Animal::Animal() : type("Animal")
 {
 	std::cout << "Default Animal constructor called" << std::endl;
 }

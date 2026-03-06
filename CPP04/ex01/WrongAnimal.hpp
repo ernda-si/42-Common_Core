@@ -6,7 +6,7 @@
 /*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 22:09:05 by ernda-si          #+#    #+#             */
-/*   Updated: 2025/12/27 22:31:19 by ernda-si         ###   ########.fr       */
+/*   Updated: 2026/03/06 17:20:55 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ public:
 	WrongAnimal(const WrongAnimal &copy);
 	WrongAnimal &operator=(const WrongAnimal &other);
 
-	void makeSound() const;
+	virtual void makeSound() const;
 	std::string getType() const;
 };
 

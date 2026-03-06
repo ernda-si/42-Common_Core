@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:42:13 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/03/02 18:29:46 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/06 17:27:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ int main()
 	int	n = 4;
 	Animal*	animals[n];
 
-	// Create array: half Dogs, half Cats
 	for (int i = 0; i < n / 2; i++)
 		animals[i] = new Dog();
-
 	for (int i = n / 2; i < n; i++)
 		animals[i] = new Cat();
 
 	std::cout << "\n=== Testing sounds and types ===" << std::endl;
 	for (int i = 0; i < n; i++)
 	{
-		std::cout << animals[i]->getType() << ": ";
+		std::cout << animals[i]->getType() << ": " << std::endl;
 		animals[i]->makeSound();
 	}
 
@@ -37,9 +35,7 @@ int main()
 	Dog*	original = new Dog();
 	Dog*	copy = new Dog(*original);
 
-	std::cout << "Original Dog deleted..." << std::endl;
 	delete original;
-	std::cout << "Copy Dog still works: ";
 	copy->makeSound();
 	delete copy;
 

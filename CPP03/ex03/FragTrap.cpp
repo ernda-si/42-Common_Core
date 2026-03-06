@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:17:26 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/14 22:30:37 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/03 13:05:43 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ FragTrap &FragTrap::operator=(const FragTrap &other) {
 	if (this != &other) {
 		ClapTrap::operator=(other);
 	}
-	return *this;
+	return (*this);
 }
 
 void FragTrap::highFivesGuys(void) {
-	std::cout << "FragTrap " << _name << " requests a positive high five! ✋" << std::endl;
+	std::cout << "FragTrap " << _name << " requests a positive high five!" << std::endl;
 }

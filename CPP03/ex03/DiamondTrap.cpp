@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   DiamondTrap.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eve <eve@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: ernda-si <ernda-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 16:17:26 by ernda-si          #+#    #+#             */
-/*   Updated: 2026/01/14 22:30:37 by eve              ###   ########.fr       */
+/*   Updated: 2026/03/03 12:54:20 by ernda-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ DiamondTrap &DiamondTrap::operator=(const DiamondTrap &other) {
 		ClapTrap::operator=(other);
 		_name = other._name;
 	}
-	return *this;
+	return (*this);
 }
 
 void DiamondTrap::attack(const std::string& target) {
